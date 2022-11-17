@@ -1,8 +1,8 @@
 <?php
 
-include "CONEXION.php";
+include "./CONEXION.php";
 
-class Categoria implements ICategoria
+class Categoria extends CONEXION implements ICategoria
 {
     private $idCategoria;
     private $nombreCategoria;
