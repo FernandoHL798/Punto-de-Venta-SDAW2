@@ -1,6 +1,6 @@
 <?php
 const SERVER = "localhost";
-const DB = "tie";
+const DB = "inventarioweb";
 const USER = "root";
 const PASS = "";
 

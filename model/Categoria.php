@@ -1,6 +1,7 @@
 <?php
 
-include "./CONEXION.php";
+include "CONEXION.php";
+include "ICategoria.php";
 
 class Categoria extends CONEXION implements ICategoria
 {
@@ -50,7 +51,7 @@ class Categoria extends CONEXION implements ICategoria
 
     public function querylistaCategoria()
     {
-        $query="SELECT";
+        $query="SELECT `Id_categoria`, `nombre_categoria` FROM `categoria` WHERE 1";
         $this->connect();
         $result = $this-> getData($query);
         $this->close();

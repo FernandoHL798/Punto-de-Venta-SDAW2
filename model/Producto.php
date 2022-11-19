@@ -1,6 +1,6 @@
 <?php
 include "./CONEXION.php";
-
+include "./IProducto.php";
 class Producto extends CONEXION implements IProducto
 {
     private $idProducto;
