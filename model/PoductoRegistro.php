@@ -81,4 +81,13 @@ class PoductoRegistro extends Producto implements IRegistroProducto
     {
         // TODO: Implement RegistraSalida() method.
     }
+
+    /**
+     * @param $action que va a relaizar true:agregar a stock, false:reducir de stock
+     * @return mixed
+     */
+    private function modificaStok($action)
+    {
+        // TODO: Implement modificaStok() method.
+    }
 }

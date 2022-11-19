@@ -155,7 +155,7 @@ class Entrada extends CONEXION implements IEntrada
         // TODO: Implement ConsultaEntrada() method.
     }
 
-    public static function Listar($fechaIni, $FechaFin)
+    public function Listar($fechaIni, $FechaFin)
     {
         // TODO: Implement Listar() method.
     }
