@@ -145,12 +145,12 @@ class Entrada extends CONEXION implements IEntrada
     }
 
 
-    public static function RegistraEntrada()
+    public function RegistraEntrada()
     {
         // TODO: Implement RegistraEntrada() method.
     }
 
-    public static function ConsultaEntrada()
+    public function ConsultaEntrada()
     {
         // TODO: Implement ConsultaEntrada() method.
     }

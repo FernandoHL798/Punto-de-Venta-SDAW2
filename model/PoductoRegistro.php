@@ -1,10 +1,28 @@
 <?php
-
-class PoductoRegistro extends Producto
+include "IRegistroProducto.php";
+class PoductoRegistro extends Producto implements IRegistroProducto
 {
     private $cantidad;
     private $precioFinal;
     private $idRegistro;
+    private $accion;
+
+    /**
+     * @return mixed
+     */
+    public function getAccion()
+    {
+        return $this->accion;
+    }
+
+    /**
+     * @param mixed $accion
+     */
+    public function setAccion($accion)
+    {
+        $this->accion = $accion;
+    } //Entrada/Salida
+
 
     /**
      * @return mixed
@@ -52,5 +70,15 @@ class PoductoRegistro extends Producto
     public function setIdRegistro($idRegistro)
     {
         $this->idRegistro = $idRegistro;
+    }
+
+    public function RegistraEntrada()
+    {
+        // TODO: Implement RegistraEntrada() method.
+    }
+
+    public function RegistraSalida()
+    {
+        // TODO: Implement RegistraSalida() method.
     }
 }

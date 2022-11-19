@@ -35,6 +35,7 @@ class Categoria extends CONEXION implements ICategoria
     /**
      * @param mixed $nombreCategoria
      */
+
     public function setNombreCategoria($nombreCategoria)
     {
         $this->nombreCategoria = $nombreCategoria;

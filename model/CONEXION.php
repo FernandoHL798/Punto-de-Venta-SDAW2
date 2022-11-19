@@ -6,10 +6,9 @@ class CONEXION
     private $usuario = USER;
     private $pass = PASS;
     private $db = DB;
-
     private $connection;
 
-    function connect(){
+    protected function connect(){
         $this->connection = mysqli_connect(
             $this->host,
             $this->usuario,
@@ -24,7 +23,7 @@ class CONEXION
         }
     }
 
-    function getData($sql)
+    protected function getData($sql)
     {
         $data = array();
         $result = mysqli_query($this->connection, $sql);
@@ -43,7 +42,7 @@ class CONEXION
         return $data;
     }
 
-    function numRows($sql)
+    protected function numRows($sql)
     {
         $result = mysqli_query($this->connection, $sql);
         $error = mysqli_error($this->connection);
@@ -55,7 +54,7 @@ class CONEXION
         }
     }
 
-    function getDataSingle($sql)
+    protected function getDataSingle($sql)
     {
 
         $result = mysqli_query($this->connection, $sql);
@@ -72,7 +71,7 @@ class CONEXION
         return null;
     }
 
-    function getDataSingleProp($sql, $prop)
+    protected function getDataSingleProp($sql, $prop)
     {
 
         $result = mysqli_query($this->connection, $sql);
@@ -90,7 +89,7 @@ class CONEXION
         return null;
     }
 
-   public  function executeInstruction($sql)
+   protected function executeInstruction($sql)
     {
         $success = mysqli_query($this->connection, $sql);
 
@@ -103,12 +102,12 @@ class CONEXION
         }
     }
 
-    function close()
+    protected function close()
     {
         mysqli_close($this->connection);
     }
 
-    function getLastId()
+    protected function getLastId()
     {
         return mysqli_insert_id($this->connection);
     }
