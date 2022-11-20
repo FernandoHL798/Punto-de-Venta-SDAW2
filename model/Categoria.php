@@ -43,7 +43,7 @@ class Categoria extends CONEXION implements ICategoria
 
     public function queryCrearCategoria()
     {
-        $query="INSERT";
+        $query="INSERT INTO `categoria` (`Id_categoria`, `nombre_categoria`) VALUES (NULL, '".$this->getNombreCategoria()."')";
         $this->connect();
         $result = $this-> executeInstruction($query);
         $this->close();
@@ -61,7 +61,7 @@ class Categoria extends CONEXION implements ICategoria
 
     public function queryEliminaCategoria()
     {
-        $query="INSERT";
+        $query="UPDATE `categoria` SET `Id_categoria` = '".$this->getIdCategoria()."'*-1 WHERE `categoria`.`Id_categoria` = ".$this->getIdCategoria();
         $this->connect();
         $result = $this-> executeInstruction($query);
         $this->close();
@@ -70,7 +70,7 @@ class Categoria extends CONEXION implements ICategoria
 
     public function queryEditarCategoria()
     {
-        $query="UODATE";
+        $query="UPDATE `categoria` SET `nombre_categoria` = '".$this->getNombreCategoria()."' WHERE `categoria`.`Id_categoria` = ".$this->getIdCategoria();
         $this->connect();
         $result = $this-> executeInstruction($query);
         $this->close();

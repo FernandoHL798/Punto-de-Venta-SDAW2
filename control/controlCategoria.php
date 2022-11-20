@@ -32,8 +32,9 @@ function eliminaCategoria($id_Categoria){
 /**
  * Funcion para editar categoria
  */
-function editaCategoria($nombre_categoria){
+function editaCategoria($id_Categoria,$nombre_categoria){
     $obj_categoria = new Categoria();
+    $obj_categoria->setIdCategoria($id_Categoria);
     $obj_categoria->setNombreCategoria($nombre_categoria);
 
     return $obj_categoria->queryEditarCategoria();
