@@ -1,5 +1,8 @@
 <?php
 require_once "../control/controlCategoria.php";
+/**
+ * Variables que se van a usar  que llegan de Front o del API
+ */
 $idCategoria ="9";
 
 if(eliminaCategoria($idCategoria)){
