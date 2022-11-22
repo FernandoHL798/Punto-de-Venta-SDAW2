@@ -12,6 +12,41 @@ class Producto extends CONEXION implements IProducto
     private $sku;
     private $barCode;
     private $status;
+    private $ruta_img;
+    private $porcentaje_ganancia;
+
+    /**
+     * @return mixed
+     */
+    public function getRutaImg()
+    {
+        return $this->ruta_img;
+    }
+
+    /**
+     * @param mixed $ruta_img
+     */
+    public function setRutaImg($ruta_img)
+    {
+        $this->ruta_img = $ruta_img;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPorcentajeGanancia()
+    {
+        return $this->porcentaje_ganancia;
+    }
+
+    /**
+     * @param mixed $porcentaje_ganancia
+     */
+    public function setPorcentajeGanancia($porcentaje_ganancia)
+    {
+        $this->porcentaje_ganancia = $porcentaje_ganancia;
+    }
+    
 
     /**
      * @return mixed
