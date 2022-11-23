@@ -126,26 +126,46 @@ class Proveedor extends CONEXION implements IProveedor
 
     public function queryCreaProveedor()
     {
-        // TODO: Implement queryCreaProveedor() method.
+        $query = "INSERT INTO `proveedor` (`Id_proveedor`, `razon_social`, `direccion`, `telefono`, `correo`, `rfc`, `create_at`) VALUES (NULL, '".$this->getRazonSocial()."', '".$this->getDireccion()."', '".$this->getTelefono()."', '".$this->getCorreo()."', '".$this->getRfc()."', current_timestamp())";
+        $this->connect();
+        $result = $this-> executeInstruction($query);
+        $this->close();
+        return $result;
+
     }
 
     public function queryActualizarProveedor()
     {
-        // TODO: Implement queryActualizarProveedor() method.
+        $query = "UPDATE `proveedor` SET `direccion` = '".$this->getDireccion()."', `telefono` = '".$this->getTelefono()."', `correo` = '".$this->getCorreo()."' WHERE `proveedor`.`Id_proveedor` = ".$this->getIdProveedor();
+        $this->connect();
+        $result = $this-> executeInstruction($query);
+        $this->close();
+        return $result;
     }
 
     public function queryEliminaProveedor()
     {
         // TODO: Implement queryEliminaProveedor() method.
+        $query = "UPDATE `proveedor` SET `Id_proveedor` = ".$this->getIdProveedor()."*-1 WHERE `proveedor`.`Id_proveedor` = ".$this->getIdProveedor();
+        $this->connect();
+        $result = $this-> executeInstruction($query);
+        $this->close();
+        return $result;
     }
 
     public function queryListar()
     {
-        // TODO: Implement queryListar() method.
+        $quuery="SELECT * FROM `proveedor` WHERE Id_proveedor >0";
+        $result = $this-> getData($query);
+        $this->close();
+        return $result;
     }
 
     public function queryInfoProveedor()
     {
-        // TODO: Implement queryInfoProveedor() method.
+        $query = "SELECT * FROM `inventarioweb`.`proveedor` WHERE `Id_proveedor` = ".this->getIdProveedor();
+        $result = $this-> getData($query);
+        $this->close();
+        return $result;
     }
 }
