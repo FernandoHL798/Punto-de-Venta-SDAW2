@@ -61,16 +61,19 @@ class Categoria extends CONEXION implements ICategoria
 
     public function queryEliminaCategoria()
     {
-        $query="UPDATE `categoria` SET `Id_categoria` = '".$this->getIdCategoria()."'*-1 WHERE `categoria`.`Id_categoria` = ".$this->getIdCategoria();
+        $query="UPDATE `categoria` SET `Id_categoria` = '".$this->getIdCategoria()."'*-1 
+            WHERE `categoria`.`Id_categoria` = ".$this->getIdCategoria();
         $this->connect();
         $result = $this-> executeInstruction($query);
         $this->close();
         return $result;
     }
 
+
     public function queryEditarCategoria()
     {
-        $query="UPDATE `categoria` SET `nombre_categoria` = '".$this->getNombreCategoria()."' WHERE `categoria`.`Id_categoria` = ".$this->getIdCategoria();
+        $query="UPDATE `categoria` SET `nombre_categoria` = '".$this->getNombreCategoria()."' 
+            WHERE `categoria`.`Id_categoria` = ".$this->getIdCategoria();
         $this->connect();
         $result = $this-> executeInstruction($query);
         $this->close();
