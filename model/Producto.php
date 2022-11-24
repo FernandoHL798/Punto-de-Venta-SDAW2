@@ -14,6 +14,23 @@ class Producto extends CONEXION implements IProducto
     private $status;
     private $ruta_img;
     private $porcentaje_ganancia;
+    private $cantSuma;
+
+    /**
+     * @return mixed
+     */
+    public function getCantSuma()
+    {
+        return $this->cantSuma;
+    }
+
+    /**
+     * @param mixed $cantSuma
+     */
+    public function setCantSuma($cantSuma)
+    {
+        $this->cantSuma = $cantSuma;
+    }
 
     /**
      * @return mixed
@@ -46,7 +63,7 @@ class Producto extends CONEXION implements IProducto
     {
         $this->porcentaje_ganancia = $porcentaje_ganancia;
     }
-    
+
 
     /**
      * @return mixed
@@ -192,6 +209,11 @@ class Producto extends CONEXION implements IProducto
         $this->status = $status;
     }
 
+    /*
+     * FUNCIONES DE PRODUCTOS
+     * */
+
+
     /**
      * @inheritDoc
      */
@@ -233,7 +255,7 @@ class Producto extends CONEXION implements IProducto
     /**
      * @inheritDoc
      */
-    public function queryEditarCategoria()
+    public function queryEditarProducto()
     {
         $query="INSERT";
         $this->connect();
@@ -247,11 +269,25 @@ class Producto extends CONEXION implements IProducto
      */
     public function queryEliminarProducto()
     {
-        $query="INSERT";
+        $query="DELETE FROM `producto` 
+                WHERE `producto`.`Id_producto` = ".$this->getIdProducto();
         $this->connect();
         $result = $this-> executeInstruction($query);
         $this->close();
         return $result;
     }
 
+    /**
+     * @inheritDoc
+     */
+    public function queryActualizaStock()
+    {
+        $query="UPDATE `producto` SET 
+                      `stock` = `stock` + '".$this->getCantSuma()."' 
+                WHERE `producto`.`Id_producto` = ".$this->getIdProducto();
+        $this->connect();
+        $result = $this-> executeInstruction($query);
+        $this->close();
+        return $result;
+    }
 }

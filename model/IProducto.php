@@ -22,10 +22,16 @@ interface IProducto
     /**
      * @return true cuando se edito el producto de forma correcta
      */
-    public function queryEditarCategoria();
+    public function queryEditarProducto();
 
     /**
      * @return true cuando se edito la Eliminado de forma correcta
      */
     public function queryEliminarProducto();
+
+
+    /**
+     * @return true cuando se ha modificado el stock de la base de datos
+     */
+    public function queryActualizaStock();
 }

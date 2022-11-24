@@ -7,7 +7,6 @@ include_once "../model/CATEGORIA.php";
 function insertaCategoria($nombre_categoria){
     $obj_categoria = new Categoria();
     $obj_categoria->setNombreCategoria($nombre_categoria);
-
     return $obj_categoria->queryCrearCategoria();
 }
 
@@ -25,7 +24,6 @@ function listaCategorias(){
 function eliminaCategoria($id_Categoria){
     $obj_categoria = new Categoria();
     $obj_categoria->setIdCategoria($id_Categoria);
-
     return $obj_categoria->queryEliminaCategoria();
 }
 
@@ -36,7 +34,6 @@ function editaCategoria($id_Categoria,$nombre_categoria){
     $obj_categoria = new Categoria();
     $obj_categoria->setIdCategoria($id_Categoria);
     $obj_categoria->setNombreCategoria($nombre_categoria);
-
     return $obj_categoria->queryEditarCategoria();
 }
 
