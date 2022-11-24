@@ -231,7 +231,7 @@ class Producto extends CONEXION implements IProducto
     /**
      * @inheritDoc
      */
-    public function queryEditarCategoria()
+    public function queryEditarProducto()
     {
         $query="INSERT";
         $this->connect();

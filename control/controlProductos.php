@@ -66,6 +66,6 @@ function editProduct($nombreProducto,$stock,$precioVenta,$stockMinimo,$sku,$barC
     $obj_producto->setRutaImg($ruta_img);
     $obj_producto->setPorcentajeGanancia($porcentaje_ganancia);
 
-    return $obj_producto->queryEditarCategoria();
+    return $obj_producto->queryEditarProducto();
 }
 ?>
