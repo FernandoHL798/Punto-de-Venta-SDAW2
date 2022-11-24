@@ -1,5 +1,5 @@
 <?php
-include_once "../model/CATEGORIA.php";
+include_once "../model/Categoria.php";
 
 /**
  * Funcion para insertar una categoria
