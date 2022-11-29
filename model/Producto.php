@@ -1,6 +1,6 @@
 <?php
-include "./CONEXION.php";
-include "./IProducto.php";
+include "CONEXION.php";
+include "IProducto.php";
 class Producto extends CONEXION implements IProducto
 {
     private $idProducto;
@@ -14,6 +14,23 @@ class Producto extends CONEXION implements IProducto
     private $status;
     private $ruta_img;
     private $porcentaje_ganancia;
+    private $cantSuma;
+
+    /**
+     * @return mixed
+     */
+    public function getCantSuma()
+    {
+        return $this->cantSuma;
+    }
+
+    /**
+     * @param mixed $cantSuma
+     */
+    public function setCantSuma($cantSuma)
+    {
+        $this->cantSuma = $cantSuma;
+    }
 
     /**
      * @return mixed
@@ -46,7 +63,7 @@ class Producto extends CONEXION implements IProducto
     {
         $this->porcentaje_ganancia = $porcentaje_ganancia;
     }
-    
+
 
     /**
      * @return mixed
@@ -192,12 +209,17 @@ class Producto extends CONEXION implements IProducto
         $this->status = $status;
     }
 
+    /*
+     * FUNCIONES DE PRODUCTOS
+     * */
+
+
     /**
      * @inheritDoc
      */
     public function queryCrearProducto()
     {
-        $query="INSERT";
+        $query="INSERT INTO `producto` (`Id_producto`, `nombre_producto`, `stock`, `precio_venta`, `stock_minimo`, `sku`, `bar_code`, `porcentaje_ganancia`, `ruta_img`, `estatus`, `id_categoria_fk`) VALUES (NULL, '".$this->getNombreProducto()."', '".$this->getStock()."', '".$this->getPrecioVenta()."', '".$this->getStockMinimo()."', '".$this->getSku()."', '".$this->getBarCode()."', '".$this->getPorcentajeGanancia()."', '".$this->getRutaImg()."', '".$this->getStatus()."', '".$this->getIdCategoriaFK()."')";
         $this->connect();
         $result = $this->executeInstruction($query);
         $this->close();
@@ -209,7 +231,9 @@ class Producto extends CONEXION implements IProducto
      */
     public function queryBuscaProducto($value)
     {
-        $query="SELECT";
+        // Si el $value es igual a 1 (Codigo de barras), buscar por codigo de barras, sino todos los productos con id mayor a 0
+        $condicion  = $value==1 ? " AND bar_code = '".$this->getBarCode()."'": '' ;
+        $query="SELECT * FROM `producto` WHERE Id_producto > 0 ".$condicion;
         $this->connect();
         $result = $this->getData($query);
         $this->close();
@@ -245,11 +269,25 @@ class Producto extends CONEXION implements IProducto
      */
     public function queryEliminarProducto()
     {
-        $query="INSERT";
+        $query="DELETE FROM `producto` 
+                WHERE `producto`.`Id_producto` = ".$this->getIdProducto();
         $this->connect();
         $result = $this-> executeInstruction($query);
         $this->close();
         return $result;
     }
 
+    /**
+     * @inheritDoc
+     */
+    public function queryActualizaStock()
+    {
+        $query="UPDATE `producto` SET 
+                      `stock` = `stock` + '".$this->getCantSuma()."' 
+                WHERE `producto`.`Id_producto` = ".$this->getIdProducto();
+        $this->connect();
+        $result = $this-> executeInstruction($query);
+        $this->close();
+        return $result;
+    }
 }

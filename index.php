@@ -15,9 +15,7 @@
 <div class="container">
     <div class="row">
         <div class="col-6">
-            <select class="form-select" aria-label="Default select example" id="selector">
-
-            </select>
+            <select class="form-select" aria-label="Default select example" id="selector"></select>
         </div>
     </div>
 </div>
@@ -30,15 +28,17 @@
 <script>
     $.ajax({
         method: "POST",
-        url: "Servicios/Ws_ListarCategorias.php",
-        dataType: "json"
+        url: "./Servicios/Ws_ListarCategorias.php",
+        dataType: "json",
+        success: function(result){
+            console.log(result)
+        }
     })
         .done(function( result ) {
-           console.log(result)
             let template = ``;
-           result.forEach(cat=>{
-               template += `<option value="${cat.Id_categoria}">${cat.nombre_categoria}</option>`;
-           })
+            result.forEach(cat=>{
+                template += `<option value="${cat.Id_categoria}">${cat.nombre_categoria}</option>`;
+            })
             $("#selector").html(template);
         });
 </script>
