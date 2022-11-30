@@ -55,11 +55,11 @@ function listSupplier(){
 
 /**
  * function for search info supplier
- * 
- * TEST, DONT FINISHED
  */
-function searchInfoSupplier(){
+function searchInfoSupplier($Id_proveedor){
     $obj_supplier = new Supplier();
+
+    $obj_supplier->setIdProveedor($Id_proveedor);
 
     return $obj_supplier->queryInfoProveedor();
 }
