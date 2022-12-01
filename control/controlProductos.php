@@ -37,9 +37,9 @@ function getListaProductos($value,$barCode){
 /**
  * funcion para buscar info producto
  */
-function buscaInfoProducto(){
+function buscaInfoProducto($idProducto){
     $obj_producto = new Producto();
-
+    $obj_producto->setIdProducto($idProducto);
     return $obj_producto->queryConsultaInfoProducto();
 }
 

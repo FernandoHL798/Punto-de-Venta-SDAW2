@@ -245,7 +245,7 @@ class Producto extends CONEXION implements IProducto
      */
     public function queryConsultaInfoProducto()
     {
-        $query="SELECT";
+        $query="SELECT * FROM `producto` WHERE `Id_producto`=".$this->getIdProducto();
         $this->connect();
         $result = $this-> getData($query);
         $this->close();
