@@ -4,5 +4,5 @@ interface IEntrada
 {
     public function RegistraEntrada();
     public function ConsultaEntrada();
-    public function Listar($fechaIni,$FechaFin);
+    public function Listar($value,$fechaIni,$FechaFin);
 }

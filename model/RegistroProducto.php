@@ -174,7 +174,7 @@ class PoductoRegistro extends Producto implements IRegistroProducto
     public function modificaStok($action, $idProducto, $cantidad)
     {
         $value = $action ? $cantidad : $cantidad * -1;
-
+        include_once "Producto.php";
         $objProducto = new Producto();
         $objProducto->setIdProducto($idProducto);
         $objProducto->setCantSuma($cantidad);

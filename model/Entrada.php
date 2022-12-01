@@ -1,6 +1,6 @@
 <?php
-include "./CONEXION.php";
-include "./IEntrada.php";
+include "CONEXION.php";
+include "IEntrada.php";
 class Entrada extends CONEXION implements IEntrada
 {
     private $idEntrada;
@@ -148,6 +148,7 @@ class Entrada extends CONEXION implements IEntrada
     public function RegistraEntrada()
     {
         // TODO: Implement RegistraEntrada() method.
+
     }
 
     public function ConsultaEntrada()
@@ -155,8 +156,14 @@ class Entrada extends CONEXION implements IEntrada
         // TODO: Implement ConsultaEntrada() method.
     }
 
-    public function Listar($fechaIni, $FechaFin)
+    public function Listar($value,$fechaIni, $fechaFin)
     {
-        // TODO: Implement Listar() method.
+        //Si se piden entre dos fechas value=1 sino, son todos
+        $condition  = $value==1 ? "WHERE fecha_orden >='".$fechaIni."' AND fecha_orden<= '".$fechaFin."'": '';
+        $query="SELECT * FROM `ordencompra` ".$condition;
+        $this->connect();
+        $result = $this-> getData($query);
+        $this->close();
+        return $result;
     }
 }
