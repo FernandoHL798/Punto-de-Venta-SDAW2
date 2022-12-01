@@ -2,9 +2,15 @@
 
 //Al ser muchos parametros, se usa el metodo params para poder guardar
 //los datos en un objeto llamado params para no enviar tanta variable por parametro
+
+//DEFINIDA POR FRONTEND
+$nombre = $_POST['nombreProducto'];
+$stock = $_POST['stock'];
+//DEFINIDA POR FRONTEND
+
 $params = [
-	"nombreProducto" =>"Algodon",
-	"stock" =>"10",
+	"nombreProducto" =>$nombre,
+	"stock" =>$stock,
 	"precioVenta" =>"5",
 	"stockMinimo" =>"5",
 	"sku" =>"98928918",
