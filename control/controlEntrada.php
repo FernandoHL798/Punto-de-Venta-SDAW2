@@ -33,11 +33,7 @@ function listarEntrada(){
 function ListaEntradaDate($value,$fechaIni,$fechaFin){
 	$obj_entrada = new Entrada();
 	//Value es el valor que maneja la condicion de si se piden todos o solo los que tengan la fecha inicial y fecha final
-	if($value==1){
-		$obj_entrada->setFecha($fechaIni);
-        $obj_entrada->setCreatedAt($fechaFin);
-	}
-	return $obj_entrada->Listar($value);
+	return $obj_entrada->Listar($value,$fechaIni,$fechaFin);
 }
 
 ?>

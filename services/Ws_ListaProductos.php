@@ -1,6 +1,6 @@
 <?php
 $barCode = "5031540419";
-$value = 1;
+$value = 0;
 
 include_once "../control/controlProductos.php";
 
