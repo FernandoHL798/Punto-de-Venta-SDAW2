@@ -48,9 +48,7 @@ function buscaInfoProducto($idProducto){
  */
 function eliminaProducto($idProducto){
     $obj_producto = new Producto();
-
     $obj_producto->setIdProducto($idProducto);
-
     return $obj_producto->queryEliminarProducto();
 }
 

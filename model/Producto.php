@@ -269,8 +269,7 @@ class Producto extends CONEXION implements IProducto
      */
     public function queryEliminarProducto()
     {
-        $query="DELETE FROM `producto` 
-                WHERE `producto`.`Id_producto` = ".$this->getIdProducto();
+        $query="UPDATE `producto` SET `Id_producto` = ".$this->getIdProducto()."*-1 WHERE `producto`.`Id_producto` = ".$this->getIdProducto();
         $this->connect();
         $result = $this-> executeInstruction($query);
         $this->close();
