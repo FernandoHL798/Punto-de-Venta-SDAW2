@@ -4,18 +4,20 @@ include_once "../model/Producto.php";
 /**
  * Function for insert product
  */
-function insertProduct($nombreProducto,$stock,$precioVenta,$stockMinimo,$sku,$barCode,$status,$ruta_img,$porcentaje_ganancia){
+
+//$nombreProducto,$stock,$precioVenta,$stockMinimo,$sku,$barCode,$status,$ruta_img,$porcentaje_ganancia
+function insertProduct($params){
     $obj_producto = new Producto();
 
-    $obj_producto->setNombreProducto($nombreProducto);
-    $obj_producto->setStock($stock);
-    $obj_producto->setPrecioVenta($precioVenta);
-    $obj_producto->setStockMinimo($stockMinimo);
-    $obj_producto->setSku($sku);
-    $obj_producto->setBarCode($barCode);
-    $obj_producto->setRutaImg($ruta_img);
-    $obj_producto->setPorcentajeGanancia($porcentaje_ganancia);
-
+    $obj_producto->setNombreProducto($params["nombreProducto"]);
+    $obj_producto->setStock($params["stock"]);
+    $obj_producto->setPrecioVenta($params["precioVenta"]);
+    $obj_producto->setStockMinimo($params["stockMinimo"]);
+    $obj_producto->setSku($params["sku"]);
+    $obj_producto->setBarCode($params["barCode"]);
+    $obj_producto->setRutaImg($params["ruta_img"]);
+    $obj_producto->setPorcentajeGanancia($params["porcentaje_ganancia"]);
+    $obj_producto->setIdCategoriaFk($params["id_categoria_fk"]);
     return $obj_producto->queryCrearProducto();
 }
 
