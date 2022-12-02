@@ -7,7 +7,7 @@ Registros de entrada
 */
 function registroEntrada($idProducto,$idRegistroEntrada,$cantidad,$precioCompra){
 	include_once "../model/RegistroProducto.php";
-	$obj_registro = new PoductoRegistro();
+	$obj_registro = new ProductoRegistro();
 	$obj_registro->setIdProducto($idProducto);
 	$obj_registro->setIdRegistroEntrada($idRegistroEntrada);
 	$obj_registro->setCantidad($cantidad);
@@ -25,5 +25,15 @@ function registroEntrada($idProducto,$idRegistroEntrada,$cantidad,$precioCompra)
 Registros de entrada
 */
 function registroSalida($idRegistroSalida,$idProducto,$cantidad){
-
+	include_once "../model/RegistroProducto.php";
+	$obj_registro = new ProductoRegistro ();
+	$obj_registro->setIdRegistroSalida($idRegistroSalida);
+	$obj_registro->setIdProducto($idProducto);
+	$obj_registro->setCantidad($cantidad);
+	if($obj_registro->queryRegistraSalida()){
+		//Si se realiza la salida correctamente, el stock se modificará, haciendo una resta a el stockk actual al que se le quita la cantidad
+		return $obj_registro->modificaStock(false,$idProducto,$cantidad);
+	}
+	//en caso de que no se registre, se retorna un false directamente;
+	return false;
 }
