@@ -176,10 +176,8 @@ class ProductoRegistro extends Producto implements IRegistroProducto
     {
         //Si la accion es true, entonces se manda a adicionar con una nueva cantidad, si es false, se hará negativa la nueva cantidad y se le restará al actual
         $newCant = $action ? $cantidad : $cantidad * -1;
-        include_once "Producto.php";
-        $objProducto = new Producto();
-        $objProducto->setIdProducto($idProducto);
-        $objProducto->setCantSuma($newCant);
-        return $objProducto->queryActualizaStock();
+        $this->setIdProducto($idProducto);
+        $this->setCantSuma($newCant);
+        return $this->queryActualizaStock();
     }
 }

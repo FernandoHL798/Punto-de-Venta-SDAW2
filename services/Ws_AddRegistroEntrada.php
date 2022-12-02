@@ -1,6 +1,6 @@
 <?php
 include_once  "../control/controlRegistros.php";
-$idProducto = 5;
+$idProducto = 2;
 $idRegistroEntrada= 10;
 $cantidad = 20;
 $precioCompra = 265;

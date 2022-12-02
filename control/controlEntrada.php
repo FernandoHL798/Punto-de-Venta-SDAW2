@@ -14,7 +14,6 @@ function insertarEntrada($PRODUCTOS_REGISTRO,$PROVEEDOR,$fecha,$createdAT,$subTo
     $obj_entrada->setSubTotalCompra($subTotalCompra);
     $obj_entrada->setIvaTotal($ivaTotal);
     $obj_entrada->setTotalCompra($totalCompra);
-    
     return $obj_entrada->RegistraEntrada();
 }
 

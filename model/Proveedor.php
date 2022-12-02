@@ -1,6 +1,6 @@
 <?php
-include "./CONEXION.php";
-include "./IProveedor.php";
+include "CONEXION.php";
+include "IProveedor.php";
 class Proveedor extends CONEXION implements IProveedor
 {
 
@@ -155,7 +155,7 @@ class Proveedor extends CONEXION implements IProveedor
 
     public function queryListar()
     {
-        $quuery="SELECT * FROM `proveedor` WHERE Id_proveedor >0";
+        $quuery="SELECT * FROM `proveedor`";
         $result = $this-> getData($query);
         $this->close();
         return $result;
@@ -163,7 +163,7 @@ class Proveedor extends CONEXION implements IProveedor
 
     public function queryInfoProveedor()
     {
-        $query = "SELECT * FROM `inventarioweb`.`proveedor` WHERE `Id_proveedor` = ".this->getIdProveedor();
+        $query = "SELECT * FROM `inventarioweb`.`proveedor` WHERE `Id_proveedor` = ".$this->getIdProveedor();
         $result = $this-> getData($query);
         $this->close();
         return $result;

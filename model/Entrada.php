@@ -147,8 +147,11 @@ class Entrada extends CONEXION implements IEntrada
 
     public function RegistraEntrada()
     {
-        // TODO: Implement RegistraEntrada() method.
-
+        $query="INSERT INTO `ordencompra` (`Id_compra`, `id_proveedor_fk`, `fecha_orden`, `create_at`) VALUES ('".$this->getIdEntrada()."', '".$this->getPROVEEDOR()."', '".$this->getFecha()."', current_timestamp())";
+        $this->connect();
+        $result = $this-> executeInstruction($query);
+        $this->close();
+        return $result;
     }
 
     public function ConsultaEntrada()
