@@ -190,7 +190,7 @@
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="inventario.html">Inicio</a></li>
           <li class="breadcrumb-item active">Orden entrada</li>
-
+            
         </ol>
       </nav>
     </div>
@@ -218,7 +218,7 @@
                 <div class="card-body">
                   <h5 class="card-title">Ultimas entradas <span>| Entradas recientes.</span></h5>
 
-                  <table class="table table-borderless datatable">
+                  <table class="table table-hover">
                     <thead>
                       <tr>
                         <th scope="col">#Ticket</th>
@@ -227,80 +227,8 @@
                         <th scope="col">Total de compra</th>
                       </tr>
                     </thead>
-                    <tbody>
-                      <tr>
-                        <th scope="row"><a href="#">#1234</a></th>
-                        <td><a href="" class="text-secondary">1232</a></td>
-                        <td><a class="text-secondary">11/09/2022</a></td>
-                        <td><a class="text-secondary">$3,500</a></td>
-
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#">#1456</a></th>
-                        <td><a href="" class="text-secondary">9784</a></td>
-                        <td><a class="text-secondary">11/09/2022</a></td>
-                        <td><a class="text-secondary">$15,000</a></td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#">#5647</a></th>
-                        <td><a href="" class="text-secondary">1111</a></td>
-                        <td><a class="text-secondary">11/09/2022</a></td>
-                        <td><a class="text-secondary">$14,000</a></td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#">#1222</a></th>
-                        <td><a href="" class="text-secondary">3453</a></td>
-                        <td><a class="text-secondary">11/09/2022</a></td>
-                        <td><a class="text-secondary">$34,000</a></td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#">#5678</a></th>
-                        <td><a href="" class="text-secondary">1232</a></td>
-                        <td><a class="text-secondary">11/09/2022</a></td>
-                        <td><a class="text-secondary">$750</a></td>
-                      </tr>
-                      <tr>
-                       <th scope="row"><a href="#">#9101</a></th>
-                        <td><a href="" class="text-secondary">1232</a></td>
-                        <td><a class="text-secondary">11/09/2022</a></td>
-                        <td><a class="text-secondary">$22,800</a></td>
-                      </tr>
-                      <tr>
-                       <th scope="row"><a href="#">#5674</a></th>
-                        <td><a href="" class="text-secondary">1234</a></td>
-                        <td><a class="text-secondary">11/09/2022</a></td>
-                        <td><a class="text-secondary">02:25 pm</a></td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#">#2457</a></th>
-                        <td><a href="" class="text-secondary">1232</a></td>
-                        <td><a class="text-secondary">11/09/2022</a></td>
-                        <td><a class="text-secondary">02:25 pm</a></td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#">#3457</a></th>
-                        <td><a href="" class="text-secondary">1278</a></td>
-                        <td><a class="text-secondary">11/09/2022</a></td>
-                        <td><a class="text-secondary">02:25 pm</a></td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#">#6457</a></th>
-                        <td><a href="" class="text-secondary">5532</a></td>
-                        <td><a class="text-secondary">11/09/2022</a></td>
-                        <td><a class="text-secondary">02:25 pm</a></td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#">#8457</a></th>
-                        <td><a href="" class="text-secondary">6132</a></td>
-                        <td><a class="text-secondary">11/09/2022</a></td>
-                        <td><a class="text-secondary">02:25 pm</a></td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#">#2487</a></th>
-                        <td><a href="" class="text-secondary">1932</a></td>
-                        <td><a class="text-secondary">11/09/2022</a></td>
-                        <td><a class="text-secondary">02:25 pm</a></td>
-                      </tr>
+                    <tbody id="dataTable">
+                      
                       
                     </tbody>
                   </table>  
@@ -357,3 +285,29 @@
 ?>
  -->
 </html>
+<!-- CONEXION CON EL BACKEND-->
+<script src="./assets/lib/jquery-3.6.1.min.js"></script>
+<script>
+  $.ajax({
+    method: "POST",
+    url: "./services/Ws_ListaEntrada.php",
+    dataType: "json",
+    success: function(result){
+      console.log(result)
+    }
+  })
+          .done(function( result ) {
+            let template = ``;
+            result.forEach(cat=>{
+              template += `<tr>
+                            <th scope="row"><a href="#">#${cat.id_compra}</a></th>
+                            <td><a href="" class="text-secondary">#${cat.fecha_orden}</a></td>
+                            <td><a class="text-secondary">#${cat.create_at}</a></td>
+                            <td><a class="text-secondary">#${cat.total_compra}</a></td>
+                          </tr>
+                      <tr>`;
+            })
+            $("#dataTable").html(template);
+          });
+</script>
+<!-- CONEXION CON EL BACKEND-->
