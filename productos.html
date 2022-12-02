@@ -203,6 +203,40 @@
           <div class="row">
 
             <!-- Catalogo productos -->
+            <div class="col-xxl-12 col-xl-12">
+              <div class="card info-card customers-card">
+                <div class="filter">
+                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                    <li class="dropdown-header text-start">
+                      <h6>Filtrar</h6>
+                    </li>
+                    <li><a class="dropdown-item" href="#">Este mes</a></li>
+                    <li><a class="dropdown-item" href="#">Este año</a></li>
+                  </ul>
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title">Ultimas entradas <span>| Entradas recientes.</span></h5>
+
+                  <table class="table table-hover">
+                    <thead>
+                      <tr>
+                        <th scope="col">#Ticket</th>
+                        <th scope="col">Fecha de compra</th>
+                        <th scope="col">Fecha de alta</th>
+                        <th scope="col">Total de compra</th>
+                      </tr>
+                    </thead>
+                    <tbody id="dataTable">
+                      
+                      
+                    </tbody>
+                  </table>  
+
+                </div>
+              </div>
+
+            </div
 
             <!-- Fin catalogo -->
 
@@ -253,3 +287,29 @@
 ?>
  -->
 </html>
+<!-- CONEXION CON EL BACKEND-->
+<script src="./assets/lib/jquery-3.6.1.min.js"></script>
+<script>
+  $.ajax({
+    method: "POST",
+    url: "./services/Ws_ListaEntrada.php",
+    dataType: "json",
+    success: function(result){
+      console.log(result)
+    }
+  })
+          .done(function( result ) {
+            let template = ``;
+            result.forEach(cat=>{
+              template += `<tr>
+                            <th scope="row"><a href="#">#${cat.id_compra}</a></th>
+                            <td><a href="" class="text-secondary">#${cat.fecha_orden}</a></td>
+                            <td><a class="text-secondary">#${cat.create_at}</a></td>
+                            <td><a class="text-secondary">#${cat.total_compra}</a></td>
+                          </tr>
+                      <tr>`;
+            })
+            $("#dataTable").html(template);
+          });
+</script>
+<!-- CONEXION CON EL BACKEND-->
