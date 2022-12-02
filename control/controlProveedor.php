@@ -18,15 +18,12 @@ function insertSupplier($razon_social,$direccion,$telefono,$correo,$rfc){
 /**
  * Function for update supplier
  */
-function updateSupplier($razon_social,$direccion,$telefono,$correo,$rfc,$create_at){
+function updateSupplier($idProveedor,$direccion,$telefono,$correo){
     $obj_supplier = new Proveedor();
-
-    $obj_supplier->setRazonSocial($razon_social);
+    $obj_supplier ->setIdProveedor($idProveedor);
     $obj_supplier->setDireccion($direccion);
-    $obj_supplier->setPrecioVenta($precioVenta);
     $obj_supplier->setTelefono($telefono);
     $obj_supplier->setCorreo($correo);
-    $obj_supplier->setRfc($rfc);
     
     return $obj_supplier->queryActualizarProveedor();
 }
