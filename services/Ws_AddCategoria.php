@@ -1,9 +1,14 @@
 <?php
-require_once "../control/controlCategoria.php";
+require_once "../control/controlCategorias.php";
 /**
  * Variables que se van a usar  que llegan de Front o del API
  */
-$nombre_categoria="Oficina";
+
+//DEFINIDA POR FRONTEND
+$nombre_categoria =  $_POST['nombreCategoria'];
+//DEFINIDA POR FRONTEND
+
+
 if(insertaCategoria($nombre_categoria)){
     $mjeType =  "1";
     $mjeText =  "Se ha registrado correctamente";

@@ -206,23 +206,19 @@
 
                 <div class="card-body">
                   <h5 class="card-title">Categorias <span>| Nuevo registro</span></h5>
-
                   <div class="row mb-3">
-                      <label for="firstNombre" class="col-md-4 col-lg-3 col-form-label"># Categoria</label>
+                      <label for="nombreCategoria" class="col-md-4 col-lg-3 col-form-label">Nombre categoria</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="firstNombre" type="text" class="form-control" id="firstNombre">
+                        <input name="nombreCategoria" type="text" class="form-control" id="nombreCategoria">
                       </div>
                   </div>
                   <div class="row mb-3">
-                      <label for="lastName" class="col-md-4 col-lg-3 col-form-label">Nombre categoria</label>
-                      <div class="col-md-8 col-lg-9">
-                        <input name="lastName" type="text" class="form-control" id="lastName">
-                      </div>
-                  </div>
-                  
-                  <div class="input-group mb-3">
-                    <input type="file" class="form-control" id="inputGroupFile02">
-                    <label class="input-group-text" for="inputGroupFile02">Subir</label>
+                    <div class="col">
+                      <button class="btn btn-dark" onclick="guardarCategoria()">Enviar</button>
+                    </div>
+                    <div class="col">
+                      <div id="alerta"></div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -276,3 +272,51 @@
 ?>
  -->
 </html>
+
+<script src="./assets/lib/jquery-3.6.1.min.js"></script>
+<script>
+
+  function guardarCategoria() {
+    //Obtenemos los datos del fomilario por ID
+    var nombreCategoria = $("#nombreCategoria").val();
+
+    //Validamos (En caso de ser necesario)
+    if (nombreCategoria === ""){
+      //El campo de input esta vacio
+      alert("Debe escibir un nombre")
+    }
+    else{
+      //Si escribio algo en el input
+
+      $.ajax({
+        method: "POST",
+        url: "./services/Ws_AddCategoria.php",
+        data : {
+                  nombreCategoria: nombreCategoria,
+                  dato1: "valor",
+                  dato2: "valo"
+                },
+        dataType: "json",
+        success: function(result){
+          console.log(result)
+        },
+        error: function(result){
+          console.log(result);
+        }
+      })
+        .done(function( result ) {
+          $("#nombreCategoria").val("");
+             let template = `<div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>Excente!</strong> Se ha registrado tu categoria
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>`;
+          $("#alerta").html(template);
+        });
+
+    }
+  }
+
+
+
+
+</script>

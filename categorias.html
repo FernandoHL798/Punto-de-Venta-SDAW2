@@ -217,69 +217,8 @@
                         
                       </tr>
                     </thead>
-                    <tbody>
-                      <tr>
-                        <th scope="row"><a href="#">#1234</a></th>
-                        <td><a href="" class="text-secondary">Coca</a></td>
-                        
+                    <tbody id="dataTable">
 
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#">#1456</a></th>
-                        <td><a href="" class="text-secondary">Marinela</a></td>
-                        
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#">#5647</a></th>
-                        <td><a href="" class="text-secondary">Gamesa</a></td>
-                      
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#">#1222</a></th>
-                        <td><a href="" class="text-secondary">asdfghj</a></td>
-                       
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#">#5678</a></th>
-                        <td><a href="" class="text-secondary">aragon</a></td>
-                        
-                      </tr>
-                      <tr>
-                       <th scope="row"><a href="#">#9101</a></th>
-                        <td><a href="" class="text-secondary">cuauti</a></td>
-                        
-                      </tr>
-                      <tr>
-                       <th scope="row"><a href="#">#5674</a></th>
-                        <td><a href="" class="text-secondary">Marte</a></td>
-                        
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#">#2457</a></th>
-                        <td><a href="" class="text-secondary">Sabritas</a></td>
-                       
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#">#3457</a></th>
-                        <td><a href="" class="text-secondary">qwert</a></td>
-                        
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#">#6457</a></th>
-                        <td><a href="" class="text-secondary">asdfg</a></td>
-                        
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#">#8457</a></th>
-                        <td><a href="" class="text-secondary">qwqr</a></td>
-                        
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#">#2487</a></th>
-                        <td><a href="" class="text-secondary">loiujh</a></td>
-                       
-                      </tr>
-                      
                     </tbody>
                   </table>  
 
@@ -335,3 +274,26 @@
 ?>
  -->
 </html>
+<!-- CONEXION CON EL BACKEND-->
+<script src="./assets/lib/jquery-3.6.1.min.js"></script>
+<script>
+  $.ajax({
+    method: "POST",
+    url: "./services/Ws_ListarCategorias.php",
+    dataType: "json",
+    success: function(result){
+      console.log(result)
+    }
+  })
+          .done(function( result ) {
+            let template = ``;
+            result.forEach(cat=>{
+              template += `<tr>
+                            <th scope="row"><a href="#">#${cat.Id_categoria}</a></th>
+                            <td><a href="" class="text-secondary">${cat.nombre_categoria}</a></td>
+                          </tr>`;
+            })
+            $("#dataTable").html(template);
+          });
+</script>
+<!-- CONEXION CON EL BACKEND-->

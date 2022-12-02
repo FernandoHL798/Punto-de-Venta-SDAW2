@@ -28,7 +28,7 @@
 <script>
     $.ajax({
         method: "POST",
-        url: "./Servicios/Ws_ListarCategorias.php",
+        url: "./services/Ws_ListarCategorias.php",
         dataType: "json",
         success: function(result){
             console.log(result)
