@@ -1,5 +1,6 @@
 <?php
 include "IRegistroProducto.php";
+include "Producto.php";
 class PoductoRegistro extends Producto implements IRegistroProducto
 {
     private $cantidad;
@@ -8,39 +9,39 @@ class PoductoRegistro extends Producto implements IRegistroProducto
     private $accion;
     private $idRegistroEntrada;
     private $idRegistroSalida;
-    private $previoVenta;
-    private $previoCompra;
+    private $precioVenta;
+    private $precioCompra;
 
     /**
      * @return mixed
      */
-    public function getPrevioVenta()
+    public function getPrecioVenta()
     {
-        return $this->previoVenta;
+        return $this->precioVenta;
     }
 
     /**
-     * @param mixed $previoVenta
+     * @param mixed $precioVenta
      */
-    public function setPrevioVenta($previoVenta)
+    public function setPrecioVenta($precioVenta)
     {
-        $this->previoVenta = $previoVenta;
+        $this->precioVenta = $precioVenta;
     }
 
     /**
      * @return mixed
      */
-    public function getPrevioCompra()
+    public function getPrecioCompra()
     {
-        return $this->previoCompra;
+        return $this->precioCompra;
     }
 
     /**
-     * @param mixed $previoCompra
+     * @param mixed $precioCompra
      */
-    public function setPrevioCompra($previoCompra)
+    public function setPrecioCompra($precioCompra)
     {
-        $this->previoCompra = $previoCompra;
+        $this->precioCompra = $precioCompra;
     }
 
     /**
@@ -144,10 +145,10 @@ class PoductoRegistro extends Producto implements IRegistroProducto
     /**
      * @return verdadero al registrar realizado en la base de datos
      */
-    public function RegistraEntrada()
+    public function queryRegistraEntrada()
     {
         $query="INSERT INTO `registroentrada` (`Id_entrada`, `id_producto_fk`, `id_orden_fk`, `cantidad`, `precio_compra`) 
-            VALUES (NULL, '".$this->getIdProducto()."', '".$this->getIdRegistroEntrada()."', '".$this->getCantidad()."', '".$this->getPrevioCompra()."')";
+            VALUES (NULL, '".$this->getIdProducto()."', '".$this->getIdRegistroEntrada()."', '".$this->getCantidad()."', '".$this->getPrecioCompra()."')";
         $this->connect();
         $result = $this-> executeInstruction($query);
         $this->close();
@@ -157,7 +158,7 @@ class PoductoRegistro extends Producto implements IRegistroProducto
     /**
      * @return verdadero al registrar realizado en la base de datos
      */
-    public function RegistraSalida()
+    public function queryRegistraSalida()
     {
         $query="INSERT INTO `registrosalida` (`Id_registro_s`, `id_salida_fk`, `id_producto_fk`, `cantidad`) 
                 VALUES (NULL, '".$this->getIdRegistroSalida()."', '".$this->getIdProducto()."', '".$this->getCantidad()."');";
@@ -171,13 +172,14 @@ class PoductoRegistro extends Producto implements IRegistroProducto
      * @param $action que va a relaizar true:agregar a stock, false:reducir de stock, se envia a la clase producto
      * @return mixed
      */
-    public function modificaStok($action, $idProducto, $cantidad)
+    public function modificaStock($action, $idProducto, $cantidad)
     {
-        $value = $action ? $cantidad : $cantidad * -1;
+        //Si la accion es true, entonces se manda a adicionar con una nueva cantidad, si es false, se hará negativa la nueva cantidad y se le restará al actual
+        $newCant = $action ? $cantidad : $cantidad * -1;
         include_once "Producto.php";
         $objProducto = new Producto();
         $objProducto->setIdProducto($idProducto);
-        $objProducto->setCantSuma($cantidad);
-        return $objProducto->queryActualizaStock($value);
+        $objProducto->setCantSuma($newCant);
+        return $objProducto->queryActualizaStock();
     }
 }
