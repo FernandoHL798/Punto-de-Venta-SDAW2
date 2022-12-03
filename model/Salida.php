@@ -85,8 +85,11 @@ class Salida extends CONEXION implements ISalida
         return $result;
     }
 
-    public function ConsultaSalida()
+
+    //AQUI NO SUPE COMO PONER LAS CONDICIONES EN EL BETWEEEN
+    public function ConsultaSalida($fechaIni, $FechaFin)
     {
+        $query = "SELECT `Id_registro_s`, `id_salida_fk`, `id_producto_fk`, `cantidad`, producto.nombre_producto, salida.Id_salida, salida.log, salida.create_at FROM `registrosalida` INNER JOIN producto on registrosalida.id_producto_fk = producto.Id_producto INNER JOIN salida on registrosalida.id_salida_fk = salida.Id_salida WHERE `create_at` BETWEEN '2020-01-01' AND '2022-12-31'";
 
         // SELECT `Id_salida`, `log`, `create_at` FROM `salida` WHERE `create_at` BETWEEN '01-01-2020' AND '31-12-2022'
     }
@@ -99,8 +102,13 @@ class Salida extends CONEXION implements ISalida
                     WHERE 1";
     }
 
-    public function InfoSalida($fechaIni, $FechaFin)
+    public function InfoSalida()
     {
+        $query = "SELECT `Id_registro_s`, `id_producto_fk`, `cantidad`, producto.nombre_producto, salida.Id_salida, salida.log, salida.create_at FROM `registrosalida` INNER JOIN producto on registrosalida.id_producto_fk = producto.Id_producto INNER JOIN salida on registrosalida.id_salida_fk = salida.Id_salida WHERE registrosalida.id_salida_fk =".$this->getIdSalida();
+            $this->connect();
+            $result = $this-> getData($query);
+            $this->close(); 
+            return $result;
         // SELECT `Id_salida`, `log`, `create_at` FROM `salida` WHERE `Id_salida` = 2
     }
 }

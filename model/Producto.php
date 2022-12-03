@@ -257,7 +257,7 @@ class Producto extends CONEXION implements IProducto
      */
     public function queryEditarProducto()
     {
-        $query="INSERT";
+        $query="UPDATE producto SET nombre_producto=".$this->getNombreProducto().",precio_venta = ".$this->getPrecioVenta().", sku = ".$this->getSku().", bar_code =".$this->getBarCode().", porcentaje_ganancia =".$this->getPorcentajeGanancia()."WHERE Id_producto =".$this->getIdProducto();
         $this->connect();
         $result = $this-> executeInstruction($query);
         $this->close();

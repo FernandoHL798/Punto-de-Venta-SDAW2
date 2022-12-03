@@ -156,6 +156,7 @@ class Entrada extends CONEXION implements IEntrada
 
     public function ConsultaEntrada()
     {
+        $query= "SELECT `Id_entrada`, `id_producto_fk`, `id_orden_fk`, producto.nombre_producto, `cantidad`, `precio_compra`, proveedor.razon_social, ordencompra.fecha_orden, ordencompra.create_at FROM `registroentrada` INNER JOIN ordencompra on registroentrada.id_orden_fk = ordencompra.Id_compra INNER JOIN proveedor on ordencompra.id_proveedor_fk = proveedor.Id_proveedor INNER JOIN producto on registroentrada.id_producto_fk = producto.Id_producto WHERE registroentrada.Id_entrada =".$this->getIdEntrada();
         // TODO: Implement ConsultaEntrada() method.
     }
 
