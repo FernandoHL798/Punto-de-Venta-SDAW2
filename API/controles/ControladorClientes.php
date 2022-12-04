@@ -30,14 +30,14 @@ class ControladorClientes
             /*=============================================
             Generar credenciales del cliente
             =============================================*/
-            $token_privado= str_replace("$","c",crypt($datos["nombre"].$datos["role"].$datos["email"] ,'$2a$07$afartwetsdAD52356FEDGsfhsd$'));
+            $username= str_replace("$","c",crypt($datos["nombre"].$datos["role"].$datos["email"] ,'$2a$07$afartwetsdAD52356FEDGsfhsd$'));
 
             $llave_secreta= str_replace("$","a",crypt($datos["email"].$datos["role"].$datos["nombre"] ,'$2a$07$afartwetsdAD52356FEDGsfhsd$'));
 
             $datos = array("nombre"=>$datos["nombre"],
                 "role"=>$datos["role"],
                 "email"=>$datos["email"],
-                "id_cliente"=>$token_privado,
+                "username"=>$username,
                 "llave_secreta"=>$llave_secreta,
                 "created_at"=>date('Y-m-d h:i:s'),
                 "updated_at"=>date('Y-m-d h:i:s')
@@ -51,7 +51,7 @@ class ControladorClientes
                 $json=array(
                     "status"=>200,
                     "detalle"=> "se genero sus credenciales",
-                    "token_privado"=>$token_privado,
+                    "username"=>$username,
                     "llave_secreta"=>$llave_secreta
                 );
 

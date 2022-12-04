@@ -8,7 +8,23 @@ class Usuario extends CONEXION implements IUsuario
     private $Email;
     private $Password;
     private $Role;
-    private $TokenPrivado;
+    private $Username;
+
+    /**
+     * @return mixed
+     */
+    public function getUsername()
+    {
+        return $this->Username;
+    }
+
+    /**
+     * @param mixed $Username
+     */
+    public function setUsername($Username)
+    {
+        $this->Username = $Username;
+    }
     private $Secret_key;
     private $CreatedAt;
     private $UpdatedAt;
@@ -93,21 +109,6 @@ class Usuario extends CONEXION implements IUsuario
         $this->Role = $Role;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getTokenPrivado()
-    {
-        return $this->TokenPrivado;
-    }
-
-    /**
-     * @param mixed $TokenPrivado
-     */
-    public function setTokenPrivado($TokenPrivado)
-    {
-        $this->TokenPrivado = $TokenPrivado;
-    }
 
     /**
      * @return mixed
