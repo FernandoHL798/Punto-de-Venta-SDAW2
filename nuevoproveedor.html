@@ -209,47 +209,44 @@
                   <h5 class="card-title">Producto <span>| Nuevo registro</span></h5>
 
                   <div class="row mb-3">
-                      <label for="firstNombre" class="col-md-4 col-lg-3 col-form-label">Razon Social</label>
+                      <label   for="razon_social" class="col-md-4 col-lg-3 col-form-label">Razon Social</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="firstNombre" type="text" class="form-control" id="firstNombre">
+                        <input name="razon_social" type="text" class="form-control" id="razon_social">
                       </div>
                   </div>
                   <div class="row mb-3">
-                      <label for="lastName" class="col-md-4 col-lg-3 col-form-label">Direccion</label>
+                      <label for="direccion" class="col-md-4 col-lg-3 col-form-label">Direccion</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="lastName" type="text" class="form-control" id="lastName">
+                        <input name="direccion" type="text" class="form-control" id="direccion">
                       </div>
                   </div>
                   <div class="row mb-3">
-                      <label for="idTicket" class="col-md-4 col-lg-3 col-form-label">Telefono</label>
+                      <label for="telefono" class="col-md-4 col-lg-3 col-form-label">Telefono</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="idTicket" type="text" class="form-control" id="idTicket">
+                        <input name="telefono" type="text" class="form-control" id="telefono">
                       </div>
                   </div>
                   <div class="row mb-3">
-                      <label for="eMail" class="col-md-4 col-lg-3 col-form-label">Correo</label>
+                      <label for="correo" class="col-md-4 col-lg-3 col-form-label">Correo</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="eMail" type="text" class="form-control" id="eMail">
+                        <input name="correo" type="text" class="form-control" id="correo">
                       </div>
                   </div>
                   <div class="row mb-3">
-                      <label for="eMail" class="col-md-4 col-lg-3 col-form-label">RFC</label>
+                      <label for="rfc" class="col-md-4 col-lg-3 col-form-label">RFC</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="eMail" type="text" class="form-control" id="eMail">
+                        <input name="rfc" type="text" class="form-control" id="rfc">
                       </div>
                   </div>
                   
                   <div class="row mb-3">
-                    
-                      <div class="d-grid gap-2 col-6 mx-auto">
-                        <button class="btn" type="button">Guardar</button>
-                        
-                      </div>
-                      
-                    
-                    
+                    <div class="col">
+                      <button class="btn " onclick="guardarProveedor()">Guardar</button>
+                    </div>
+                    <div class="col">
+                      <div id="alerta"></div>
+                    </div>
                   </div>
-                </div>
               </div>
 
             </div><!-- Fin del formulario -->
@@ -293,11 +290,65 @@
   <script src="assets/js/main.js"></script>
 
 </body>
-<!--
-<?php
-    include "../main_profesor/Modal_profesor/edita_periodo.php";
-    include_once "./modal_alumno/subir_avatar.php";
-    include $path."includes_general/js.php";
-?>
- -->
+
 </html>
+
+<!-- -->
+
+<script src="./assets/lib/jquery-3.6.1.min.js"></script>
+<script>
+
+  function guardarProveedor() {
+    //Obtenemos los datos del fomilario por ID
+    var razon_social = $("#razon_social").val();
+    var direccion = $("#direccion").val();
+    var telefono = $("#telefono").val();
+    var correo = $("#correo").val();
+    var rfc = $("#rfc").val();
+
+    //Validamos (En caso de ser necesario)
+    if (razon_social === "" || direccion == ""){
+      //El campo de input esta vacio
+      alert("Debe escibir en el campo")
+    }
+    else{
+      //Si escribio algo en el input
+
+      $.ajax({
+        method: "POST",
+        url: "./services/Ws_AddProveedor.php",
+        data : {
+                  razon_social: razon_social,
+                  direccion: direccion,
+                  telefono: telefono,
+                  correo: correo,
+                  rfc: rfc
+                },
+        dataType: "json",
+        success: function(result){
+          console.log(result)
+        },
+        error: function(result){
+          console.log(result);
+        }
+      })
+        .done(function( result ) {
+          $("#razon_social").val("");
+          $("#telefono").val("");
+          $("#correo").val("");
+          $("#direccion").val("");
+          $("#rfc").val("");
+             let template = `<div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>Excente!</strong> Se ha registrado tu proveedor
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>`;
+          $("#alerta").html(template);
+        });
+
+    }
+  }
+
+
+
+
+</script>

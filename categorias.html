@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Entradas</title>
+  <title>Categorias</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -168,7 +168,7 @@
               <li class="nav-item">
                 <a href="./productos.html" class="nav-link collapsed">
                   <i class="fa-thin fa-circle"></i>
-                  <span>Przoductos</span>
+                  <span>Productos</span>
                 </a>
               </li>
             
@@ -214,6 +214,8 @@
                       <tr>
                         <th scope="col"> #Categoria</th>
                         <th scope="col">Nombre categoria</th>
+                        <th class="text-white" scope="col">E/B</th>
+                        <th class="text-white" scope="col">E/B</th>
                         
                       </tr>
                     </thead>
@@ -291,6 +293,8 @@
               template += `<tr>
                             <th scope="row"><a href="#">#${cat.Id_categoria}</a></th>
                             <td><a href="" class="text-secondary">${cat.nombre_categoria}</a></td>
+                            <td><a class="text-dark" href="./nuevoProducto.html"><i class="bi bi-pencil-square"></i></td>
+                            <td><a class="text-dark" href="./nuevoProducto.html"><i class="bi bi-trash"></i></td>
                           </tr>`;
             })
             $("#dataTable").html(template);

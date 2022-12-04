@@ -1,10 +1,11 @@
 <?php
 include_once "../control/controlProveedor.php";
-$razon_social = "ReckreaStudios SA de CV";
-$direccion = "Yanga S/N Col Independencia";
-$telefono ="562525388";
-$correo = "fernando@gmail.com";
-$rfc = "HHEUU34553";
+//DEFINIDA POR FRONTEND
+$razon_social = $_POST['razon_social'];
+$direccion = $_POST['direccion'];
+$telefono = $_POST['telefono'];
+$correo = $_POST['correo'];
+$rfc = $_POST['rfc'];
 
 if(insertSupplier($razon_social,$direccion,$telefono,$correo,$rfc)){
 	$mjeType =  "1";
