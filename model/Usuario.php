@@ -164,6 +164,16 @@ class Usuario extends CONEXION implements IUsuario
     public function queryRegistrarUsuario()
     {
         // TODO: Implement queryRegistrarUsuario() method.
+
+        $query="INSERT INTO `usuario`(`nombre_usuario`, `email`, `password`, `role`, `username`, `secret_key`, `create_at`)
+        VALUES ('".$this->getNombreUsuario()."','".$this->getEmail()."', '".$this->getPassword()."', '".$this->getRole()."', '".$this->getUsername()."', '".$this->getSecretKey()."', 'current_timestamp()')";
+        $this->connect();
+        $result = $this->executeInstruction($query);
+        $this->close();
+        return $result;
+
+        /*INSERT INTO `usuario`(`nombre_usuario`, `email`, `password`, `role`, `username`, `secret_key`, `create_at`) 
+            VALUES ('Emmanuel','emmanuel@gmail.com','lalalala','usuario','emmanuel123','123','2022-12-04')*/
     }
 
     /**
@@ -172,6 +182,14 @@ class Usuario extends CONEXION implements IUsuario
     public function queryBuscaCorreoDuplicado()
     {
         // TODO: Implement queryBuscaCorreoDuplicado() method.
+
+        $query="SELECT email, COUNT(*) TotalRepetido FROM usuario WHERE email = '".$this->getEmail()."' GROUP BY email HAVING COUNT(*) > 1";
+        $this->connect();
+        $result = $this->getData($query);
+        $this->close();
+        return $result;
+
+        /*SELECT email, COUNT(*) TotalRepetido FROM usuario WHERE email = "@gmail.com" GROUP BY email HAVING COUNT(*) > 1*/
     }
 
     /**
@@ -180,6 +198,14 @@ class Usuario extends CONEXION implements IUsuario
     public function queryUpdateUsuario()
     {
         // TODO: Implement queryUpdateUsuario() method.
+
+        $query="UPDATE `usuario` SET `nombre_usuario`=".$this->getNombreUsuario().",`email`=".$this->getEmail().",`password`=".$this->getPassword().",`role`=".$this->getRole().",`username`=".$this->getUsername().",`secret_key`=".$this->getSecretKey().",`update_at`= CURRENT_TIMESTAMP 
+            WHERE id_usuario =".$this->getIdUsuario();
+        $this->connect();
+        $result = $this-> executeInstruction($query);
+        $this->close();
+        return $result;
+
     }
 
     /**
@@ -187,6 +213,15 @@ class Usuario extends CONEXION implements IUsuario
      */
     public function queryConsultaUsuario()
     {
+
         // TODO: Implement queryConsultaUsuario() method.
+
+        $query="SELECT `id_usuario`, `nombre_usuario`, `email`, `password`, `role`, `username`, `secret_key`, `create_at`, `update_at` FROM `usuario` WHERE username = '".$this->getUsername()."' and password = '".$this->getPassword();
+        $this->connect();
+        $result = $this-> executeInstruction($query);
+        $this->close();
+        return $result;
+
+        /*SELECT `id_usuario`, `nombre_usuario`, `email`, `password`, `role`, `username`, `secret_key`, `create_at`, `update_at` FROM `usuario` WHERE username = 'emmanuel123' and password = 'lalalala'*/
     }
 }
