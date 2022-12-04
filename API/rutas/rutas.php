@@ -53,12 +53,22 @@ else{
                 Registrar un usuario para el acceso de APIS
                 ==========================================================================================================*/
                 if (isset($_SERVER['REQUEST_METHOD']) && ($_SERVER['REQUEST_METHOD']) == "POST"){
-                    $datos = array("nombre" => $_POST["nombre"],
-                        "role"=>$_POST["role"],
-                        "pw"=>$_POST["pw"],
-                        "email" => $_POST["email"]);
-                    $control = new ControladorClientes();
-                    $control ->registroClient();
+                    if (isset($_POST['nombre']) && isset($_POST['role']) && $_POST['pw'] && isset($_POST['email'])){
+                        $datos = array("nombre" => $_POST["nombre"],
+                            "role"=>$_POST["role"],
+                            "pw"=>$_POST["pw"],
+                            "email" => $_POST["email"]);
+                        $control = new ControladorClientes();
+                        $control ->registroClient($datos);
+                    }
+                    else{
+                        $json = array(
+                            "detalle"=>"ERROR DE PETICION, LOS DATOS SON INCORRECTOS",
+                            "status"=>404
+                        );
+                        echo json_encode($json,true);
+                    }
+
                 }
                 break;
             default:

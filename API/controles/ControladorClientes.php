@@ -2,34 +2,7 @@
 
 class ControladorClientes
 {
-    private function validaString($value){
-        return isset($value) && !preg_match('/^[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+$/' , $value);
-    }
-
-
     public function registroClient($datos){
-        /*=============================================
-          Validar nombre
-          =============================================*/
-        if(!$this->validaString($datos['nombre'])){
-            $json = array(
-                "status" => 404,
-                "detalle" => "error en el campo del nombre permitido solo letras en el nombre"
-            );
-            echo json_encode($json, true);
-        }
-
-        /*=============================================
-          Validar ROLE
-          =============================================*/
-        if(!$this->validaString($datos['role'])){
-            $json = array(
-                "status" => 404,
-                "detalle" => "error en el campo ROL permitido deben ser solo letras"
-            );
-            echo json_encode($json, true);
-        }
-
         /*=============================================
           Validar email
           =============================================*/
@@ -41,6 +14,7 @@ class ControladorClientes
 
             );
             echo json_encode($json,true);
+            return;
         }
 
         /*=============================================
@@ -56,19 +30,18 @@ class ControladorClientes
             /*=============================================
             Generar credenciales del cliente
             =============================================*/
-            $id_cliente= str_replace("$","c",crypt($datos["nombre"].$datos["apellido"].$datos["email"] ,'$2a$07$afartwetsdAD52356FEDGsfhsd$'));
+            $token_privado= str_replace("$","c",crypt($datos["nombre"].$datos["role"].$datos["email"] ,'$2a$07$afartwetsdAD52356FEDGsfhsd$'));
 
-            $llave_secreta= str_replace("$","a",crypt($datos["email"].$datos["apellido"].$datos["nombre"] ,'$2a$07$afartwetsdAD52356FEDGsfhsd$'));
+            $llave_secreta= str_replace("$","a",crypt($datos["email"].$datos["role"].$datos["nombre"] ,'$2a$07$afartwetsdAD52356FEDGsfhsd$'));
 
             $datos = array("nombre"=>$datos["nombre"],
-                "apellido"=>$datos["apellido"],
+                "role"=>$datos["role"],
                 "email"=>$datos["email"],
-                "id_cliente"=>$id_cliente,
+                "id_cliente"=>$token_privado,
                 "llave_secreta"=>$llave_secreta,
                 "created_at"=>date('Y-m-d h:i:s'),
                 "updated_at"=>date('Y-m-d h:i:s')
             );
-
             /*=============================================
             Crear el usuario en la BD y regresar Credenciales
             =============================================*/
@@ -76,9 +49,9 @@ class ControladorClientes
 
             if($create){
                 $json=array(
-                    "status"=>404,
+                    "status"=>200,
                     "detalle"=> "se genero sus credenciales",
-                    "id_cliente"=>$id_cliente,
+                    "token_privado"=>$token_privado,
                     "llave_secreta"=>$llave_secreta
                 );
 
