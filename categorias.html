@@ -253,6 +253,7 @@
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/chart.js/chart.min.js"></script>
@@ -287,13 +288,49 @@
   })
           .done(function( result ) {
             let template = ``;
+            let i= 1;
             result.forEach(cat=>{
               template += `<tr>
-                            <th scope="row"><a href="#">#${cat.Id_categoria}</a></th>
+                            <th scope="row"><a href="#">#${i}</a></th>
                             <td><a href="" class="text-secondary">${cat.nombre_categoria}</a></td>
+                            <td>  <button type="button" class="btn btn-outline-warning" onclick="editaCategoria(${cat.Id_categoria})"><i class="fa-regular fa-pen-to-square"></i></button>
+                                  <button type="button" class="btn btn-outline-danger" onclick="eliminaCategoria(${cat.Id_categoria})"><i class="fa-solid fa-trash"></i></button></td>
                           </tr>`;
+                          i++;
             })
             $("#dataTable").html(template);
           });
 </script>
+<script>
+  /*
+    Funcion edita categoria 
+  */
+  function editaCategoria(idCategoria){
+    alert("Entrando a la funcion editar con ID"+ idCategoria);
+    swal("Hello world!");
+  }
+  /*
+    Funcion elimina categoria 
+  */
+
+function eliminaCategoria(idCategoria){
+   swal({
+        title: "¿Estas seguro de eliminar esta categoria?",
+        text: "Una vez eliminado, no podrás volver a activar esta categoria",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      })
+      .then((willDelete) => {
+        if (willDelete) {
+          swal("Poof! Your imaginary file has been deleted!", {
+            icon: "success",
+          });
+        } else {
+          swal("Your imaginary file is safe!");
+        }
+      });
+  }
+</script>
+  
 <!-- CONEXION CON EL BACKEND-->
