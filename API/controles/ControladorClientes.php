@@ -50,9 +50,7 @@ class ControladorClientes
                 "role"=>$datos["role"],
                 "email"=>$datos["email"],
                 "username"=>$username,
-                "llave_secreta"=>$llave_secreta,
-                "created_at"=>date('Y-m-d h:i:s'),
-                "updated_at"=>date('Y-m-d h:i:s')
+                "llave_secreta"=>$llave_secreta
             );
             /*=============================================
             Crear el usuario en la BD y regresar Credenciales
@@ -66,9 +64,7 @@ class ControladorClientes
                     "username"=>$username,
                     "llave_secreta"=>$llave_secreta
                 );
-
                 echo json_encode($json,true);
-
             }
         }
 

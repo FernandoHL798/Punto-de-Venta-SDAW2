@@ -42,10 +42,31 @@ else{
                     Registra una salida en por POST con una lista de objetos a descontar del inventario
                 ==========================================================================================================*/
                 if (isset($_SERVER['REQUEST_METHOD']) && ($_SERVER['REQUEST_METHOD']) == "POST"){
-                    $datos = array("barCode" => $_POST["barCode"],
-                                    "");
-                    $control = new ControladorVentas();
-                    $control ->registraVenta();
+                    //Reciniendo el array por POST
+                    $json = file_get_contents('php://input');
+                    $data = json_decode($json,true);
+                    // Converts it into a PHP object
+                    if ($json != NULL){
+                        if (count($data) > 0){
+                            $control = new ControladorVentas();
+                            $control ->registraVenta($data);
+                        }
+                        else{
+                            $json = array(
+                                "detalle"=>"La lista de elementos no debe estar vacia",
+                                "status"=>400
+                            );
+                            echo json_encode($json,true);
+                        }
+                    }
+                     else{
+                         $json = array(
+                             "detalle"=>"Parametros no permitidos por la API, porfavor indique en un JSON los valores a 
+                                        dar de baja de almacen, Consulte la documentacion para mas detalles",
+                             "status"=>400
+                         );
+                         echo json_encode($json,true);
+                     }
                 }
                 break;
             case "usuario":
@@ -116,5 +137,4 @@ else{
             echo json_encode($json,true);
         }
     }
-
 }
