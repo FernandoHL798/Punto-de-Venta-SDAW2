@@ -75,7 +75,7 @@ class ControladorProductos
     public function show($id){
         if ($this->AuthProductos()){
             require_once "../control/controlProductos.php";
-            $listaProductos = getListaProductos("1",$id);
+            $listaProductos = buscaInfoProducto($id);
             if(count($listaProductos)>0){
                 $json = array(
                     "data"=>$listaProductos

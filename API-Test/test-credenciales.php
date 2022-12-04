@@ -1,4 +1,5 @@
 <?php
+header('Access-Control-Allow-Origin: *');
 /*===========================================================================================================
 * Variables TO create KeyAccouint API
 =========================================================================================================== */
@@ -13,7 +14,7 @@ $email = "chris@mail.com";
 $curl = curl_init();
 
 curl_setopt_array($curl, [
-    CURLOPT_URL => "http://localhost/Punto-de-Venta-SDAW2/API/usuario",
+    CURLOPT_URL => "https://reckreastudios.com/proyectos/SDAW2/API/usuario/",
     CURLOPT_RETURNTRANSFER => true,
     CURLOPT_ENCODING => "",
     CURLOPT_MAXREDIRS => 10,

@@ -12,7 +12,7 @@ $barCode = "123456789";
 $curl = curl_init();
 
 curl_setopt_array($curl, [
-    CURLOPT_URL => "http://localhost/Punto-de-Venta-SDAW2/API/producto",
+    CURLOPT_URL => "https://reckreastudios.com/proyectos/SDAW2/API/producto/",
     CURLOPT_RETURNTRANSFER => true,
     CURLOPT_ENCODING => "",
     CURLOPT_MAXREDIRS => 10,
