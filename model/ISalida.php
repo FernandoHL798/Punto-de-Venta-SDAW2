@@ -3,7 +3,7 @@
 interface ISalida
 {
     public function RegistraSalida();
-    public function ConsultaSalida();
+    public function ConsultaSalidas($FechaIni,$FechaFin);
     public function Listar();
-    public function InfoSalida($fechaIni,$FechaFin);
+    public function InfoSalida();
 }

@@ -1,7 +1,7 @@
 <?php
 include "IRegistroProducto.php";
 include "Producto.php";
-class ProductoRegistro extends Producto implements IRegistroProducto
+class RegistroProducto extends Producto implements IRegistroProducto
 {
     private $cantidad;
     private $precioFinal;

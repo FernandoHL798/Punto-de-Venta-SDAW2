@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Entradas</title>
+  <title>Categorias</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -168,7 +168,7 @@
               <li class="nav-item">
                 <a href="./productos.html" class="nav-link collapsed">
                   <i class="fa-thin fa-circle"></i>
-                  <span>Przoductos</span>
+                  <span>Productos</span>
                 </a>
               </li>
             
@@ -214,6 +214,8 @@
                       <tr>
                         <th scope="col"> #Categoria</th>
                         <th scope="col">Nombre categoria</th>
+                        <th class="text-white" scope="col">E/B</th>
+                        <th class="text-white" scope="col">E/B</th>
                         
                       </tr>
                     </thead>
@@ -265,7 +267,8 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
-
+  <!-- Alertas SCRIPT -->
+  <script src="assets/js/alertas.js"></script>
 </body>
 <!--
 <?php
@@ -293,8 +296,8 @@
               template += `<tr>
                             <th scope="row"><a href="#">#${i}</a></th>
                             <td><a href="" class="text-secondary">${cat.nombre_categoria}</a></td>
-                            <td>  <button type="button" class="btn btn-outline-warning" onclick="editaCategoria(${cat.Id_categoria})"><i class="fa-regular fa-pen-to-square"></i></button>
-                                  <button type="button" class="btn btn-outline-danger" onclick="eliminaCategoria(${cat.Id_categoria})"><i class="fa-solid fa-trash"></i></button></td>
+                            <td>  <button type="button" class="btn btn-outline-warning" onclick="editaCategoria(${cat.Id_categoria})"><i class="bi bi-pencil-square"></i></button>
+                                  <button type="button" class="btn btn-outline-danger" onclick="eliminaCategoria(${cat.Id_categoria})"><i class="bi bi-trash"></i></button></td>
                           </tr>`;
                           i++;
             })
