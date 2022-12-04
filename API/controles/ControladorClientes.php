@@ -2,6 +2,18 @@
 
 class ControladorClientes
 {
+    static public function validaCredenciales(){
+        return (isset($_SERVER['PHP_AUTH_USER']) && isset($_SERVER['PHP_AUTH_PW']));
+    }
+
+    static public function consultaEnDBLocal(){
+        //acceder a la carpeta DE CONTROL USUARIO
+        require_once "../../control/controlRegistros.php";
+        $username = isset($_SERVER['PHP_AUTH_USER']);
+        $pw = $_SERVER['PHP_AUTH_PW'];
+        return consultaUsuario($username, $pw);
+    }
+
     public function registroClient($datos){
         /*=============================================
           Validar email

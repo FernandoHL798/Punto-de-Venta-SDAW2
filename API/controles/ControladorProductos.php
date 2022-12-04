@@ -2,13 +2,40 @@
 
 class ControladorProductos
 {
+
+    static function accedeProductos(){
+        if (!$AuthBasic = ControladorClientes::validaCredenciales()){
+            return false;
+        }
+        else{
+            ///validar que el login sea el correcto
+
+        }
+    }
+
     public function index(){
-        //Acceso a los CONTROLES del CORE
-        require_once "../control/controlProductos.php";
-        $listaProductos = getListaProductos("","");
-        $json = array(
-            "detalle"=>$listaProductos
-        );
+        /*===========================================================================================================
+         * VALIDANDO LAS CREDENCIALES DEL CLIENTE
+         =========================================================================================================== */
+
+        if ($AuthBasic){
+
+
+            //Acceso a los CONTROLES del CORE
+            require_once "../control/controlProductos.php";
+            $listaProductos = getListaProductos("","");
+            $json = array(
+                "detalle"=>$listaProductos
+            );
+        }
+        else{
+            $json = array(
+                "data"=>null,
+                "status"=>400,
+                "info"=>"Tokens No validos"
+            );
+        }
+
         echo json_encode($json,true);
     }
     public function busqueda($data){

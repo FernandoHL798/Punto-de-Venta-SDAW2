@@ -181,4 +181,12 @@ class Usuario extends CONEXION implements IUsuario
     {
         // TODO: Implement queryUpdateUsuario() method.
     }
+
+    /**
+     * @return regresa informacion del usuario en la BD que concida con el User y el Pw
+     */
+    public function queryConsultaUsuario()
+    {
+        // TODO: Implement queryConsultaUsuario() method.
+    }
 }
