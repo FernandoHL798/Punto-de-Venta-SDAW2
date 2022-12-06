@@ -232,7 +232,7 @@
                         <input name="precio" type="text" class="form-control" id="precio" placeholder="Precio">
                     </div>
                     <div class="col-md-2 ">
-                        <button type="button" class="btn">Agregar</button>
+                        <button id="boton" type="button" class="btn" onclick="ingresa()">Agregar</button>
                     </div>
                    
                   </div> 
@@ -259,7 +259,7 @@
         <!-- aqui-->
         <div class= "row mb-3">
           <div class="col-xxl-12 col-xl-12">
-            <table class="table">
+            <table id="tabla" class="table">
   <thead>
     <tr>
       <th scope="col">#</th>
@@ -270,32 +270,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>55</td>
-      <td>$30</td>
-      <td>$1,650</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>15</td>
-      <td>$45</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td >Bird</td>
-      <td>35</td>
-      <td>$55</td>
-    </tr>
-    <tr>
-      <th scope="row"></th>
-      <td ></td>
-      <td ></td>
-      <th scope="row">Total</th>
-      <td>$55,555</td>
-    </tr>
+    
   </tbody>
 </table>
           </div>
@@ -425,3 +400,55 @@
     }
   }
 -->
+
+<!-- Tabla -->
+
+<script>
+    function ingresa() {
+      class total {
+      constructor({
+      producto,
+      proveedor,
+      cantidad,
+      precio
+    }) 
+      {
+
+      this.producto=producto;
+      this.proveedor=proveedor;
+      this.cantidad=cantidad;
+      this.precio=precio;
+    }
+
+    }
+
+
+    var producto =document.getElementById("producto").value;
+    var proveedor =document.getElementById("proveedor").value;
+    var cantidad =document.getElementById("cantidad").value;
+    var precio =document.getElementById("precio").value;
+
+    hola = new total({
+      producto:producto,
+      proveedor:proveedor,
+      cantidad:cantidad,
+      precio:precio
+      
+      
+    });
+
+    pasar();
+    console.log(hola);     
+    }
+    var guardar =[];
+      function pasar(){
+
+        guardar.push({producto: hola.producto, proveedor: hola.proveedor, cantidad: hola.cantidad, precio: hola.precio});
+        console.log(guardar);
+
+        document.getElementById("tabla").innerHTML += '<tbody><tr><td>' +hola.producto+'</td><td>'+hola.proveedor+'</td><td>'+hola.cantidad+'</td><td>'+hola.precio+'</td><tr></tbody';
+      }
+
+
+
+  </script>

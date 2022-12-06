@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Nuuevo Producto</title>
+  <title>Nuevo Producto</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -222,41 +222,53 @@
                   <div class="row mb-3">
                       <label for="firstNombre" class="col-md-4 col-lg-3 col-form-label">Nombre</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="firstNombre" type="text" class="form-control" id="firstNombre">
+                        <input name="firstNombre" type="text" class="form-control" id="nombreProducto">
                       </div>
                   </div>
                   <div class="row mb-3">
                       <label for="lastName" class="col-md-4 col-lg-3 col-form-label">Stock minimo</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="lastName" type="text" class="form-control" id="lastName">
+                        <input name="lastName" type="text" class="form-control" id="stockMinimo">
                       </div>
                   </div>
                   <div class="row mb-3">
-                      <label for="idTicket" class="col-md-4 col-lg-3 col-form-label">Precio de compra</label>
+                      <label for="idTicket" class="col-md-4 col-lg-3 col-form-label">SKU</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="idTicket" type="text" class="form-control" id="idTicket">
+                        <input name="idTicket" type="text" class="form-control" id="sku">
                       </div>
                   </div>
                   <div class="row mb-3">
                       <label for="eMail" class="col-md-4 col-lg-3 col-form-label">Precio de venta</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="eMail" type="text" class="form-control" id="eMail">
+                        <input name="eMail" type="text" class="form-control" id="precioVenta">
+                      </div>
+                  </div>
+
+                  <div class="mb-3 row">
+                    <label for="" class="col-md-2 col-lg-3">Categoria</label>
+                    <div class="col-md-7 col-lg-7">
+                        <select id="categoria" class="form-select" aria-label="Default select example">
+                            <option selected>Seleccione una categoria</option>
+                            
+                          </select>
+                    </div>
+                    <div class="col-md-2">
+                        
+                        <a  class="btn " href="./nuevaCategoria.html">Nueva categoria</a>
                       </div>
                   </div>
                   
                   <div class="input-group mb-3">
-                    <input type="file" class="form-control" id="inputGroupFile02">
+                    <input type="file" class="form-control" id="ruta_img">
                     <label class="input-group-text" for="inputGroupFile02">Subir</label>
                   </div>
                   <div class="row mb-3">
-                    
-                      <div class="d-grid gap-2 col-6 mx-auto">
-                        <button class="btn" type="button">Guardar</button>
-                        
-                      </div>
-                      
-                    
-                    
+                    <div class="col">
+                      <button class="btn " onclick="guardarProducto()">Enviar</button>
+                    </div>
+                    <div class="col">
+                      <div id="alerta"></div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -302,11 +314,83 @@
   <script src="assets/js/main.js"></script>
 
 </body>
-<!--
-<?php
-    include "../main_profesor/Modal_profesor/edita_periodo.php";
-    include_once "./modal_alumno/subir_avatar.php";
-    include $path."includes_general/js.php";
-?>
- -->
+
 </html>
+
+<!--  Lista proveedores-->
+<script src="./assets/lib/jquery-3.6.1.min.js"></script>
+<script>
+  $.ajax({
+    method: "POST",
+    url: "./services/Ws_ListarCategorias.php",
+    dataType: "json",
+    success: function(result){
+      console.log(result)
+    }
+  })
+          .done(function( result ) {
+            let template = ``;
+            result.forEach(cat=>{
+              template += `
+                           <option value="">${cat.nombre_categoria}</option>`;
+            })
+            $("#categoria").html(template);
+          });
+</script>
+<!-- CONEXION CON EL BACKEND-->
+<!-- Guardar producto -->
+<script src="./assets/lib/jquery-3.6.1.min.js"></script>
+<script>
+
+  function guardarProducto() {
+    //Obtenemos los datos del fomilario por ID
+    var nombreProducto = $("#nombreProducto").val();
+    var stockMinimo = $("#stockMinimo").val();
+    var sku = $("#sku").val();
+    var precioVenta = $("#precioVenta").val();
+
+    //Validamos (En caso de ser necesario)
+    if (nombreProducto === "" || stockMinimo === "" || sku === "" || precioVenta === "" ){
+      //El campo de input esta vacio
+      alert("Debe llenar el campo")
+    }
+    else{
+      //Si escribio algo en el input
+
+      $.ajax({
+        method: "POST",
+        url: "./services/Ws_AddProducto.php",
+        data : {
+                  nombreProducto: nombreProducto,
+                  stockMinimo: stockMinimo,
+                  sku: sku,
+                  precioVenta: precioVenta,
+                  ruta_img: ruta_img
+
+                },
+        dataType: "json",
+        success: function(result){
+          console.log(result)
+        },
+        error: function(result){
+          console.log(result);
+        }
+      })
+        .done(function( result ) {
+          $("#nombreProducto").val("");
+          $("#stockMinimo").val("");
+          $("#sku").val("");
+          $("#precioVenta").val("");
+          $("#ruta_img").val("");
+
+             let template = `<div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>Excente!</strong> Se ha registrado un nuevo producto
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>`;
+          $("#alerta").html(template);
+        });
+
+    }
+  }
+</script>
+<!-- Guardar producto -->
