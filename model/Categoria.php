@@ -52,7 +52,7 @@ class Categoria extends CONEXION implements ICategoria
 
     public function querylistaCategoria()
     {
-        $query="SELECT `Id_categoria`, `nombre_categoria` FROM `categoria` WHERE 1";
+        $query="SELECT `Id_categoria`, `nombre_categoria` FROM `categoria` WHERE Id_categoria >0";
         $this->connect();
         $result = $this-> getData($query);
         $this->close();

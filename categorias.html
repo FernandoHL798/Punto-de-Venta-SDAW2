@@ -255,7 +255,7 @@
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
-  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/chart.js/chart.min.js"></script>
@@ -281,13 +281,16 @@
 <!-- CONEXION CON EL BACKEND-->
 <script src="./assets/lib/jquery-3.6.1.min.js"></script>
 <script>
-  $.ajax({
+  cargaCategorias();
+
+  function cargaCategorias(){
+    $.ajax({
     method: "POST",
     url: "./services/Ws_ListarCategorias.php",
     dataType: "json",
     success: function(result){
       console.log(result)
-    }
+    },
   })
           .done(function( result ) {
             let template = ``;
@@ -296,44 +299,110 @@
               template += `<tr>
                             <th scope="row"><a href="#">#${i}</a></th>
                             <td><a href="" class="text-secondary">${cat.nombre_categoria}</a></td>
-                            <td>  <button type="button" class="btn btn-outline-warning" onclick="editaCategoria(${cat.Id_categoria})"><i class="bi bi-pencil-square"></i></button>
-                                  <button type="button" class="btn btn-outline-danger" onclick="eliminaCategoria(${cat.Id_categoria})"><i class="bi bi-trash"></i></button></td>
+                            <td> 
+                            <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="editarCategoria(${cat.Id_categoria},'${cat.nombre_categoria}');">
+  <i class="bi bi-pencil-square"></i>
+</button>
+                                  <button type="button" class="btn btn-outline-danger" onclick="eliminaCategoria(${cat.Id_categoria})"><i class="bi bi-trash"></i></button>
+                                  </td>
+                                    <!-- Button trigger modal -->
+
+
                           </tr>`;
                           i++;
             })
             $("#dataTable").html(template);
           });
+  }
+  
 </script>
 <script>
   /*
     Funcion edita categoria 
   */
-  function editaCategoria(idCategoria){
-    alert("Entrando a la funcion editar con ID"+ idCategoria);
-    swal("Hello world!");
+  function editarCategoria(idCategoria,nombreCategoria){
+
+    document.getElementById('idCat').value=idCategoria;
+    document.getElementById('nombre_cat').value=nombreCategoria;
   }
   /*
     Funcion elimina categoria 
   */
 
 function eliminaCategoria(idCategoria){
-   swal({
-        title: "¿Estas seguro de eliminar esta categoria?",
-        text: "Una vez eliminado, no podrás volver a activar esta categoria",
-        icon: "warning",
-        buttons: true,
-        dangerMode: true,
-      })
-      .then((willDelete) => {
-        if (willDelete) {
-          swal("Poof! Your imaginary file has been deleted!", {
-            icon: "success",
-          });
-        } else {
-          swal("Your imaginary file is safe!");
+  $.ajax({
+    method: "POST",
+    url: "./services/Ws_DeleteCategoria.php",
+    dataType: "json",
+    data : {idCategoria : idCategoria},
+    success: function(result){
+      //console.log(result)
+    },
+    error: function(result){
+          //console.log(result);
         }
-      });
+  })
+          .done(function( result ) {
+            //console.log(result);
+            cargaCategorias();
+          });
   }
 </script>
+
+<script>
   
+$("#frm-edita-categoria").on("submit", function(e){
+  alert("Entrando al submit");
+    var f = $(this);
+    var formData = new FormData(document.getElementById("frm-add-alumno"));
+    formData.append("dato", "valor");
+    /*
+    $.ajax({
+        url: "./app/webhook/add-alumno.php",
+        type: "post",
+        dataType: "json",
+        data: formData,
+        cache: false,
+        contentType: false,
+        processData: false,
+        success: function (result) {
+            if(result.mjeType!=1){
+                alerta("Este correo o Matricula (o No Cuenta) ya estan registrados.","Porfavor, revisa la información, si olvidaste la contraseña, puedes recuperarla dando clic en OLVIDE MI CONTRASEÑA","error");
+            }else{
+                alerta("Tu registro fue exitoso","Porfavor, ingresa con los datos que proporcionaste","success");
+                $("#frm-add-alumno").trigger('reset');
+                $("#inlineForm").modal('hide');
+            }
+        }
+    });*/
+    e.preventDefault();
+});
+
+</script>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form id="frm-edita-categoria">
+      <div class="modal-body">
+        <div class="mb-3">
+          <input type="hidden" class="form-control" id="idCat" placeholder=" ">
+        </div>
+        <div class="mb-3">
+          <label for="nombre_cat" class="form-label">Nombre Categoria</label>
+          <input type="text" class="form-control" id="nombre_cat" placeholder="Categoria">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+      </div>
+    </form>
+    </div>
+  </div>
+</div>
 <!-- CONEXION CON EL BACKEND-->

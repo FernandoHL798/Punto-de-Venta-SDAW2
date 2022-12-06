@@ -1,9 +1,9 @@
 <?php
-require_once "../control/controlCategoria.php";
+include_once "../control/controlCategorias.php";
 /**
  * Variables que se van a usar  que llegan de Front o del API
  */
-$idCategoria ="9";
+$idCategoria =$_POST['idCategoria'];
 
 if(eliminaCategoria($idCategoria)){
     $mjeType = "1";
