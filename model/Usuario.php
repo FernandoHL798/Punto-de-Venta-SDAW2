@@ -216,7 +216,9 @@ class Usuario extends CONEXION implements IUsuario
 
         // TODO: Implement queryConsultaUsuario() method.
 
-        $query="SELECT `id_usuario`, `nombre_usuario`, `email`, `password`, `role`, `username`, `secret_key`, `create_at`, `update_at` FROM `usuario` WHERE username = '".$this->getUsername()."' and password = '".$this->getPassword();
+        $query="SELECT `id_usuario`, `nombre_usuario`, `email`, `password`, `role`, `username`, `secret_key`, 
+                    `create_at`, `update_at` FROM `usuario` WHERE username = '".$this->getUsername()."' 
+                    and password = '".$this->getPassword();
         $this->connect();
         $result = $this-> executeInstruction($query);
         $this->close();
