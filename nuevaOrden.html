@@ -91,10 +91,9 @@
   </header>
 
   <!-- ======= Barra lateral ======= -->
-  <aside id="sidebar" class="sidebar">
+<aside id="sidebar" class="sidebar">
 
     <ul class="sidebar-nav" id="sidebar-nav">
-      
       <li class="nav-item">
         <a class="nav-link collapsed" href="users-profile.html">
           <i class="bi bi-handbag"></i>
@@ -113,47 +112,60 @@
           <span>Help Desk</span>
         </a>
       </li>
-      <li class="nav-item menu-open">
-            <a href="./inventario.html" class="nav-link collapsed ">
-              <i class="bi bi-box-seam"></i>
-              <span>Inventario</span>
-                <i class="right fas fa-angle-left"></i>
-              </p>
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+          <i class="bi bi-box-seam"></i>
+          <span>Inventario</span>
+        </a>
+        <ul>
+          <li>
+            <a class="collapse" id="collapseExample" href="./inventario.html">
+              <i class="bi bi-shop-window"></i>
+              <span>Stock</span>
             </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="./ordenEntrada.html" class="nav-link collapsed ">
-                  <i class="fa-duotone fa-circle"></i>
-                  <span>Orden entrada</span>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="./ordenSalida.html" class="nav-link collapsed">
-                  <i class="far fa-circle nav-icon"></i>
-                  <span>Orden Salida</span>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="./proveedores.html" class="nav-link collapsed">
-                  <i class="far fa-circle nav-icon"></i>
-                  <span>Proveedores            .  .</span>
-                </a>
-              </li>
-              <li class="nav-item">
-               <a href="./categorias.html" class="nav-link collapsed">
-                  <i class="far fa-circle nav-icon"></i>
-                  <span>Categorias       .   .  .  .</span>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="./productos.html" class="nav-link collapsed">
-                  <i class="fa-thin fa-circle"></i>
-                  <span>Productos</span>
-                </a>
-              </li>
-            </ul>
           </li>
-      
+        </ul>
+        <ul>
+          <li>
+            <a class="collapse" id="collapseExample" href="./ordenEntrada.html">
+              <i class="bi bi-box-arrow-in-right"></i>
+              <span>Orden Entrada</span>
+            </a>
+          </li>
+        </ul>
+        <ul>
+          <li>
+            <a class="collapse" id="collapseExample" href="./ordenSalida.html">
+              <i class="bi bi-box-arrow-in-left"></i>
+              <span>Orden Salida</span>
+            </a>
+          </li>
+        </ul>
+        <ul>
+          <li>
+            <a class="collapse" id="collapseExample" href="./proveedores.html">
+              <i class="bi bi-person-lines-fill"></i>
+              <span>Proveedores</span>
+            </a>
+          </li>
+        </ul>
+        <ul>
+          <li>
+            <a class="collapse" id="collapseExample" href="./categorias.html">
+              <i class="bi bi-ui-radios"></i>
+              <span>Categorias</span>
+            </a>
+          </li>
+        </ul>
+        <ul>
+          <li>
+            <a class="collapse" id="collapseExample" href="./productos.html">
+              <i class="bi bi-bag-check-fill"></i>
+              <span>Productos</span>
+            </a>
+          </li>
+        </ul>
+      </li>
     </ul>
   </aside>
 

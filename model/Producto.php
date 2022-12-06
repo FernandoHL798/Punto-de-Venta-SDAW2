@@ -245,11 +245,22 @@ class Producto extends CONEXION implements IProducto
      */
     public function queryConsultaInfoProducto()
     {
+        $query="SELECT `Id_producto`, `nombre_producto`, `stock`, `precio_venta`, `stock_minimo`, `sku`, `bar_code`,
+                `porcentaje_ganancia`, `ruta_img`, `estatus`, `id_categoria_fk`, categoria.nombre_categoria 
+                FROM `producto` INNER JOIN categoria on producto.id_categoria_fk = categoria.Id_categoria
+                WHERE producto.Id_producto =".$this->getIdProducto();
+        $this->connect();
+        $result = $this-> getData($query);
+        $this->close();
+        return $result;
+
+        /*
         $query="SELECT * FROM `producto` WHERE `Id_producto`=".$this->getIdProducto();
         $this->connect();
         $result = $this-> getData($query);
         $this->close();
         return $result;
+        */
     }
 
     /**
