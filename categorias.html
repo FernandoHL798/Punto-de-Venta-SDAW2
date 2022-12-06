@@ -361,33 +361,40 @@ function eliminaCategoria(idCategoria){
 </script>
 
 <script>
-  
-$("#frm-edita-categoria").on("submit", function(e){
-  alert("Entrando al submit");
-    var f = $(this);
-    var formData = new FormData(document.getElementById("frm-add-alumno"));
-    formData.append("dato", "valor");
-    /*
+
+/*
+Funcion actualizar categoria
+*/
+function updateCategoria(){
+  //Definimos las variables
+  var idCategoria = $("#idCat").val();
+  var nombreCategoria = $("#nombre_cat").val();
+  //Verificamos que los datos no esten vacios
+  if(idCategoria!="" && nombreCategoria !=""){
+    //Enviamos los datos
     $.ajax({
-        url: "./app/webhook/add-alumno.php",
-        type: "post",
+        method: "POST",
+        url: "./services/Ws_UpdateCategoria.php",
+        data : {
+                  idCategoria : idCategoria,
+                  nombreCategoria: nombreCategoria
+                },
         dataType: "json",
-        data: formData,
-        cache: false,
-        contentType: false,
-        processData: false,
-        success: function (result) {
-            if(result.mjeType!=1){
-                alerta("Este correo o Matricula (o No Cuenta) ya estan registrados.","Porfavor, revisa la información, si olvidaste la contraseña, puedes recuperarla dando clic en OLVIDE MI CONTRASEÑA","error");
-            }else{
-                alerta("Tu registro fue exitoso","Porfavor, ingresa con los datos que proporcionaste","success");
-                $("#frm-add-alumno").trigger('reset');
-                $("#inlineForm").modal('hide');
-            }
+        success: function(result){
+          console.log(result)
+        },
+        error: function(result){
+          console.log(result);
         }
-    });*/
-    e.preventDefault();
-});
+      })
+        .done(function( result ) {
+          alert("Se ha actualizado con exito");
+          cargaCategorias();
+           $("#exampleModal").modal("hide");
+        });
+  }
+  
+}
 
 </script>
 <!-- Modal -->
@@ -401,16 +408,16 @@ $("#frm-edita-categoria").on("submit", function(e){
       <form id="frm-edita-categoria">
       <div class="modal-body">
         <div class="mb-3">
-          <input type="hidden" class="form-control" id="idCat" placeholder=" ">
+          <input type="hidden" class="form-control" id="idCat" name="idCat" placeholder=" ">
         </div>
         <div class="mb-3">
           <label for="nombre_cat" class="form-label">Nombre Categoria</label>
-          <input type="text" class="form-control" id="nombre_cat" placeholder="Categoria">
+          <input type="text" class="form-control" id="nombre_cat" name="nombre_cat" placeholder="Categoria">
         </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+        <button type="button" class="btn btn-primary" onclick="updateCategoria();">Guardar Cambios</button>
       </div>
     </form>
     </div>
