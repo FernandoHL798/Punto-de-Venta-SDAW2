@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Nueva Categoria</title>
+  <title>Inicio</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -42,7 +42,6 @@
       <i class="bi bi-list toggle-sidebar-btn"></i>
     </div>
 
-    <!-- La barra de  búsqueda está aquí -->
     
 
     <nav class="header-nav ms-auto">
@@ -50,7 +49,7 @@
 
         
 
-      <!-- La configuración de usuario está aquí xd -->
+      <!-- La configuración de usuario está aquí  -->
       <!-- Esta es la foto de perfil si es que lleva (Referenciada) -->
         <li class="nav-item dropdown pe-3">
 
@@ -111,7 +110,7 @@
   </header>
 
   <!-- ======= Barra lateral ======= -->
-<aside id="sidebar" class="sidebar">
+  <aside id="sidebar" class="sidebar">
 
     <ul class="sidebar-nav" id="sidebar-nav">
       <li class="nav-item">
@@ -188,22 +187,10 @@
       </li>
     </ul>
   </aside>
-
+<!-- fin sidebar -->
   <main id="main" class="main">
-    <div class="pagetitle">
-      <h1>Nueva Categoria</h1>
-
-      
-      
-      <nav>
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="inventario.html">Inicio</a></li>
-          <li class="breadcrumb-item active"><a href="categorias.html">Categorias</a></li>
-          <li class="breadcrumb-item active">Categoria Nueva</li>
-
-
-        </ol>
-      </nav>
+    <div class="pagetitle" style="text-align: center;">
+      <h1>Inventario</h1>
     </div>
 
     <section class="section dashboard">
@@ -214,27 +201,75 @@
           <div class="row">
 
             <!-- Formulario -->
-            <div class="col-xxl-12 col-xl-12">
-              <div class="card info-card customers-card">
-
-                <div class="card-body">
-                  <h5 class="card-title">Categorias <span>| Nuevo registro</span></h5>
-                  <div class="row mb-3">
-                      <label for="nombreCategoria" class="col-md-4 col-lg-3 col-form-label">Nombre categoria</label>
-                      <div class="col-md-8 col-lg-9">
-                        <input name="nombreCategoria" type="text" class="form-control" id="nombreCategoria">
+            <div class="col">
+              <div class="row">
+                    <div class="col-xxl-12 col-xl-12">
+                      <div class="row">
+                        <div class="col-md-4 col-lg-4">
+                          <div class="card" style="text-align: center;">
+                            <div class="card-header" style="color: #012970">
+                              <h5 >Productos</h5>
+                            </div>
+                            <img src="assets/img/bag-check-fill.svg" class="rounded mx-auto d-block" alt="..." style="width: 10rem;">
+                            <div class="card-body">   
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-4 col-lg-4">
+                          <div class="card" style="text-align: center;">
+                            <div class="card-header" style="color: #012970">
+                              <h5 >Entradas</h5>
+                            </div>
+                            <img src="assets/img/box-arrow-in-right.svg" class="rounded mx-auto d-block" alt="..." style="width: 10rem;">
+                            <div class="card-body">   
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-4 col-lg-4">
+                          <div class="card" style="text-align: center;">
+                            <div class="card-header" style="color: #012970">
+                              <h5 >Salidas</h5>
+                            </div>
+                            <img src="assets/img/box-arrow-in-left.svg" class="rounded mx-auto d-block" alt="..." style="width: 10rem;">
+                            <div class="card-body">   
+                            </div>
+                          </div>
+                        </div> 
                       </div>
+                    </div>
                   </div>
                   <div class="row mb-3">
-                    <div class="col">
-                      <button class="btn " onclick="guardarCategoria()">Enviar</button>
+                    <div class="col-md-4 col-lg-4">
+                          <div class="card" style="text-align: center;">
+                            <div class="card-header" style="color: #012970">
+                              <h5 >Proveedores</h5>
+                            </div>
+                            <img src="assets/img/person-lines-fill.svg" class="rounded mx-auto d-block" alt="..." style="width: 10rem;">
+                            <div class="card-body">   
+                            </div>
+                          </div>
+                    </div> 
+                    <div class="col-md-4 col-lg-4">
+                          <div class="card" style="text-align: center;">
+                            <div class="card-header" style="color: #012970">
+                              <h5 >Categorias</h5>
+                            </div>
+                            <img src="assets/img/ui-radios.svg" class="rounded mx-auto d-block" alt="..." style="width: 10rem;">
+                            <div class="card-body">   
+                            </div>
+                          </div>
                     </div>
-                    <div class="col">
-                      <div id="alerta"></div>
+                    <div class="col-md-4 col-lg-4">
+                          <div class="card" style="text-align: center;">
+                            <div class="card-header" style="color: #012970">
+                              <h5 >Productos</h5>
+                            </div>
+                            <img src="assets/img/bag-check-fill.svg" class="rounded mx-auto d-block" alt="..." style="width: 10rem;">
+                            <div class="card-body">   
+                            </div>
+                          </div>
                     </div>
                   </div>
-                </div>
-              </div>
 
             </div><!-- Fin del formulario -->
 
@@ -277,57 +312,5 @@
   <script src="assets/js/main.js"></script>
 
 </body>
-<!--
-<?php
-    include "../main_profesor/Modal_profesor/edita_periodo.php";
-    include_once "./modal_alumno/subir_avatar.php";
-    include $path."includes_general/js.php";
-?>
- -->
+
 </html>
-
-<script src="./assets/lib/jquery-3.6.1.min.js"></script>
-<script>
-
-  function guardarCategoria() {
-    //Obtenemos los datos del fomilario por ID
-    var nombreCategoria = $("#nombreCategoria").val();
-
-    //Validamos (En caso de ser necesario)
-    if (nombreCategoria === ""){
-      //El campo de input esta vacio
-      alert("Debe escibir un nombre")
-    }
-    else{
-      //Si escribio algo en el input
-
-      $.ajax({
-        method: "POST",
-        url: "./services/Ws_AddCategoria.php",
-        data : {
-                  nombreCategoria: nombreCategoria,
-                },
-        dataType: "json",
-        success: function(result){
-          console.log(result)
-        },
-        error: function(result){
-          console.log(result);
-        }
-      })
-        .done(function( result ) {
-          $("#nombreCategoria").val("");
-             let template = `<div class="alert alert-success alert-dismissible fade show" role="alert">
-                <strong>Excente!</strong> Se ha registrado tu categoria
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-              </div>`;
-          $("#alerta").html(template);
-        });
-
-    }
-  }
-
-
-
-
-</script>

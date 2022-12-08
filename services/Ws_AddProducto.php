@@ -6,19 +6,24 @@
 //DEFINIDA POR FRONTEND
 $nombre = $_POST['nombreProducto'];
 $stock = $_POST['stock'];
+$precioVenta = $_POST['precioVenta'];
+$stockMinimo = $_POST['stockMinimo'];
+$sku = $_POST['sku'];
+$barCode = $_POST['barCode'];
+$id_categoria_fk = $_POST['id_categoria_fk'];
 //DEFINIDA POR FRONTEND
 
 $params = [
 	"nombreProducto" =>$nombre,
 	"stock" =>$stock,
-	"precioVenta" =>"5",
-	"stockMinimo" =>"5",
-	"sku" =>"98928918",
-	"barCode" =>"778834876834",
+	"precioVenta" =>$precioVenta,
+	"stockMinimo" =>$stockMinimo,
+	"sku" =>$sku,
+	"barCode" =>$barCode,
 	"status" =>"1",
 	"ruta_img" =>"786732846hdsuhudsf",
 	"porcentaje_ganancia" =>"30",
-	"id_categoria_fk"=>"2"
+	"id_categoria_fk"=>$id_categoria_fk
 ];
 include_once "../control/controlProductos.php";
 

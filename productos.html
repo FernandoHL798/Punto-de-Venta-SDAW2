@@ -227,15 +227,17 @@
                   </ul>
                 </div>
                 <div class="card-body">
-                  <h5 class="card-title">Ultimas entradas <span>| Entradas recientes.</span></h5>
+                  <h5 class="card-title">Ultimas productos <span>| Entradas recientes.</span></h5>
 
                   <table class="table table-hover">
                     <thead>
                       <tr>
-                        <th scope="col">#Ticket</th>
-                        <th scope="col">Fecha de compra</th>
-                        <th scope="col">Fecha de alta</th>
-                        <th scope="col">Total de compra</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">SKU</th>
+                        <th scope="col">Bar Code</th>
+                        <th scope="col">Stock</th>
+                        <th scope="col">Precio de venta</th>
+                        <th scope="col">Estado</th>
                         <th class="text-white" scope="col">E/B</th>
                         <th class="text-white" scope="col">E/B</th>
                       </tr>
@@ -245,11 +247,13 @@
                       
                     </tbody>
                   </table>  
-
+                  <div class="col">
+                      <div id="alerta"></div>
+                    </div>
                 </div>
               </div>
 
-            </div
+            </div>
 
             <!-- Fin catalogo -->
 
@@ -292,20 +296,17 @@
   <script src="assets/js/main.js"></script>
 
 </body>
-<!--
-<?php
-    include "../main_profesor/Modal_profesor/edita_periodo.php";
-    include_once "./modal_alumno/subir_avatar.php";
-    include $path."includes_general/js.php";
-?>
- -->
+
 </html>
 <!-- CONEXION CON EL BACKEND-->
 <script src="./assets/lib/jquery-3.6.1.min.js"></script>
 <script>
+
+  
+
   $.ajax({
     method: "POST",
-    url: "./services/Ws_ListaEntrada.php",
+    url: "./services/Ws_ListaProductos.php",
     dataType: "json",
     success: function(result){
       console.log(result)
@@ -315,10 +316,12 @@
             let template = ``;
             result.forEach(cat=>{
               template += `<tr>
-                            <td><a class="text-dark" href="#">${cat.id_compra}</a></th>
-                            <td><a href="" class="text-secondary">${cat.fecha_orden}</a></td>
-                            <td><a class="text-secondary">${cat.create_at}</a></td>
-                            <td><a class="text-secondary">${cat.total_compra}</a></td>
+                            <td><a class="text-dark" href="#">${cat.nombre_producto}</a></th>
+                            <td><a class="text-secondary">${cat.sku}</a></td>
+                            <td><a class="text-secondary">${cat.bar_code}</a></td>
+                            <td><a class="text-secondary">${cat.stock}</a></td>
+                            <td><a class="text-secondary">${cat.precio_venta}</a></td>
+                            <td><span class="badge bg-danger" id="estatus">${cat.estatus}</span></td>
                             <td><a class="text-dark" href="./nuevoProducto.html"><i class="bi bi-pencil-square"></i></td>
                             <td><a class="text-dark" href="./nuevoProducto.html"><i class="bi bi-trash"></i></td>
                           </tr>
@@ -326,5 +329,19 @@
             })
             $("#dataTable").html(template);
           });
+          
+
+  var estatus = $("#estatus").val();
+  //Cambiar valor del status
+    if (estatus == 0 ){
+      //El campo de input esta vacio
+      console.log('Minimo');
+
+    }
+    else{
+      console.log('Maximo');
+
+    }
 </script>
 <!-- CONEXION CON EL BACKEND-->
+

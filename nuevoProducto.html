@@ -226,6 +226,12 @@
                       </div>
                   </div>
                   <div class="row mb-3">
+                      <label for="lastName" class="col-md-4 col-lg-3 col-form-label">Stock </label>
+                      <div class="col-md-8 col-lg-9">
+                        <input name="lastName" type="text" class="form-control" id="stock">
+                      </div>
+                  </div>
+                  <div class="row mb-3">
                       <label for="lastName" class="col-md-4 col-lg-3 col-form-label">Stock minimo</label>
                       <div class="col-md-8 col-lg-9">
                         <input name="lastName" type="text" class="form-control" id="stockMinimo">
@@ -235,6 +241,12 @@
                       <label for="idTicket" class="col-md-4 col-lg-3 col-form-label">SKU</label>
                       <div class="col-md-8 col-lg-9">
                         <input name="idTicket" type="text" class="form-control" id="sku">
+                      </div>
+                  </div>
+                  <div class="row mb-3">
+                      <label for="lastName" class="col-md-4 col-lg-3 col-form-label">Stock minimo</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input name="lastName" type="text" class="form-control" id="bar_Code">
                       </div>
                   </div>
                   <div class="row mb-3">
@@ -339,7 +351,6 @@
 </script>
 <!-- CONEXION CON EL BACKEND-->
 <!-- Guardar producto -->
-<script src="./assets/lib/jquery-3.6.1.min.js"></script>
 <script>
 
   function guardarProducto() {
@@ -347,7 +358,9 @@
     var nombreProducto = $("#nombreProducto").val();
     var stockMinimo = $("#stockMinimo").val();
     var sku = $("#sku").val();
+    var stock = $("#precioVenta").val();
     var precioVenta = $("#precioVenta").val();
+    var bar_Code = $("#bar_Code").val();
 
     //Validamos (En caso de ser necesario)
     if (nombreProducto === "" || stockMinimo === "" || sku === "" || precioVenta === "" ){
@@ -364,8 +377,10 @@
                   nombreProducto: nombreProducto,
                   stockMinimo: stockMinimo,
                   sku: sku,
+                  stock: stock,
                   precioVenta: precioVenta,
-                  ruta_img: ruta_img
+                  bar_Code: bar_Code
+                  
 
                 },
         dataType: "json",
@@ -381,7 +396,8 @@
           $("#stockMinimo").val("");
           $("#sku").val("");
           $("#precioVenta").val("");
-          $("#ruta_img").val("");
+          $("#stock").val("");
+          $("#bar_Code").val("");
 
              let template = `<div class="alert alert-success alert-dismissible fade show" role="alert">
                 <strong>Excente!</strong> Se ha registrado un nuevo producto
