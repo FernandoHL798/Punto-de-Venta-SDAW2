@@ -23,7 +23,8 @@ $params = [
 	"status" =>"1",
 	"ruta_img" =>"786732846hdsuhudsf",
 	"porcentaje_ganancia" =>"30",
-	"id_categoria_fk"=>$id_categoria_fk
+	//solo si la categoria esta definida se guardan los productos
+	"id_categoria_fk"=>52
 ];
 include_once "../control/controlProductos.php";
 
