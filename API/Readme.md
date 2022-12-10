@@ -62,8 +62,8 @@ $response = Http::asForm()
     ->post('http://localhost/Punto-de-Venta-SDAW2/API/usuario',[ 
         'nombre'=>'Juan', 
         'role'=>'ADMIN', 
-        'email'=>'qkerlukeq_f491k@oysa.life', 
-        'pw'=>'fsL2QTqiTg9HnSp', 
+        'email'=>'email@example.com', 
+        'pw'=>'secreyWord', 
     ]); 
 echo $response->body();
 ```
