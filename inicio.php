@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +8,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Productos</title>
+  <title>Inicio</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -42,27 +45,23 @@
       <i class="bi bi-list toggle-sidebar-btn"></i>
     </div>
 
-    <!-- La barra de  búsqueda está aquí -->
     
 
     <nav class="header-nav ms-auto">
       <ul class="d-flex align-items-center">
-
-        
-
-      <!-- La configuración de usuario está aquí xd -->
+      <!-- La configuración de usuario está aquí  -->
       <!-- Esta es la foto de perfil si es que lleva (Referenciada) -->
         <li class="nav-item dropdown pe-3">
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-            <img src="assets/img/pp.jpg" alt="Profile" class="rounded-circle">
+            <img src="<?php echo $_SESSION['avatar'] ?>" alt="Profile" class="rounded-circle">
             <span class="d-none d-md-block dropdown-toggle ps-2">Administrador</span>
           </a>
         <!-- Aquí va la info del dropdown-->
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
             <li class="dropdown-header">
               <h6>Administrador</h6>
-              <span>Nombre</span>
+              <span><?php echo $_SESSION['name'] ?></span>
             </li>
         <!-- Aquí vans las configs y otras cosas del perfil-->    
             <li>
@@ -99,7 +98,7 @@
             </li>
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="#">
+              <a class="dropdown-item d-flex align-items-center" href="./log-out.php">
                 <i class="bi bi-box-arrow-right"></i>
                 <span>Salir</span>
               </a>
@@ -111,7 +110,7 @@
   </header>
 
   <!-- ======= Barra lateral ======= -->
-<aside id="sidebar" class="sidebar">
+  <aside id="sidebar" class="sidebar">
 
     <ul class="sidebar-nav" id="sidebar-nav">
       <li class="nav-item">
@@ -139,7 +138,7 @@
         </a>
         <ul>
           <li>
-            <a class="collapse" id="collapseExample" href="./inventario.html">
+            <a class="collapse" id="collapseExample" href="inventario.php">
               <i class="bi bi-shop-window"></i>
               <span>Stock</span>
             </a>
@@ -147,7 +146,7 @@
         </ul>
         <ul>
           <li>
-            <a class="collapse" id="collapseExample" href="./ordenEntrada.html">
+            <a class="collapse" id="collapseExample" href="ordenEntrada.php">
               <i class="bi bi-box-arrow-in-right"></i>
               <span>Orden Entrada</span>
             </a>
@@ -155,7 +154,7 @@
         </ul>
         <ul>
           <li>
-            <a class="collapse" id="collapseExample" href="./ordenSalida.html">
+            <a class="collapse" id="collapseExample" href="ordenSalida.php">
               <i class="bi bi-box-arrow-in-left"></i>
               <span>Orden Salida</span>
             </a>
@@ -163,7 +162,7 @@
         </ul>
         <ul>
           <li>
-            <a class="collapse" id="collapseExample" href="./proveedores.html">
+            <a class="collapse" id="collapseExample" href="proveedores.php">
               <i class="bi bi-person-lines-fill"></i>
               <span>Proveedores</span>
             </a>
@@ -171,7 +170,7 @@
         </ul>
         <ul>
           <li>
-            <a class="collapse" id="collapseExample" href="./categorias.html">
+            <a class="collapse" id="collapseExample" href="categorias.php">
               <i class="bi bi-ui-radios"></i>
               <span>Categorias</span>
             </a>
@@ -179,7 +178,7 @@
         </ul>
         <ul>
           <li>
-            <a class="collapse" id="collapseExample" href="./productos.html">
+            <a class="collapse" id="collapseExample" href="productos.php">
               <i class="bi bi-bag-check-fill"></i>
               <span>Productos</span>
             </a>
@@ -188,22 +187,10 @@
       </li>
     </ul>
   </aside>
-
+<!-- fin sidebar -->
   <main id="main" class="main">
-    <div class="pagetitle">
-      <h1>Catalogo productos</h1>
-      <a  class="btn " href="./nuevoProducto.html">Nuevo producto</a>
-       
-
-      <!-- modal-->
-      
-      <nav>
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="./inicio.html">Inicio</a></li>
-          <li class="breadcrumb-item active">Productos</li>
-
-        </ol>
-      </nav>
+    <div class="pagetitle" style="text-align: center;">
+      <h1>Inventario</h1>
     </div>
 
     <section class="section dashboard">
@@ -213,56 +200,84 @@
         <div class="col-lg-12">
           <div class="row">
 
-            <!-- Catalogo productos -->
-            <div class="col-xxl-12 col-xl-12">
-              <div class="card info-card customers-card">
-                <div class="filter">
-                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                    <li class="dropdown-header text-start">
-                      <h6>Filtrar</h6>
-                    </li>
-                    <li><a class="dropdown-item" href="#">Este mes</a></li>
-                    <li><a class="dropdown-item" href="#">Este año</a></li>
-                  </ul>
-                </div>
-                <div class="card-body">
-                  <h5 class="card-title">Ultimas productos <span>| Entradas recientes.</span></h5>
-
-                  <table class="table table-hover">
-                    <thead>
-                      <tr>
-                        <th scope="col">Nombre</th>
-                        <th scope="col">SKU</th>
-                        <th scope="col">Bar Code</th>
-                        <th scope="col">Stock</th>
-                        <th scope="col">Precio de venta</th>
-                        <th scope="col">Categoria</th>
-                        <th scope="col">Estado</th>
-                        <th class="text-white" scope="col">E/B</th>
-                        <th class="text-white" scope="col">E/B</th>
-                      </tr>
-                    </thead>
-                    <tbody id="dataTable">
-                      
-                      
-                    </tbody>
-                  </table>  
-                  <div class="col">
-                      <div id="alerta"></div>
+            <!-- Formulario -->
+            <div class="col">
+              <div class="row">
+                    <div class="col-xxl-12 col-xl-12">
+                      <div class="row">
+                        <div class="col-md-4 col-lg-4">
+                          <div class="card" style="text-align: center;">
+                            <div class="card-header" style="color: #012970">
+                              <h5 >Productos</h5>
+                            </div>
+                            <a href="productos.php"><img src="assets/img/bag-check-fill.svg" class="rounded mx-auto d-block" alt="..." style="width: 10rem;"></a>
+                            <div class="card-body">   
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-4 col-lg-4">
+                          <div class="card" style="text-align: center;">
+                            <div class="card-header" style="color: #012970">
+                              <h5 >Entradas</h5>
+                            </div>
+                            <a href="ordenEntrada.php"><img src="assets/img/box-arrow-in-right.svg" class="rounded mx-auto d-block" alt="..." style="width: 10rem;"></a>
+                            <div class="card-body">   
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-4 col-lg-4">
+                          <div class="card" style="text-align: center;">
+                            <div class="card-header" style="color: #012970">
+                              <h5 >Salidas</h5>
+                            </div>
+                            <a href="ordenSalida.php"><img src="assets/img/box-arrow-in-left.svg" class="rounded mx-auto d-block" alt="..." style="width: 10rem;"></a>
+                            <div class="card-body">   
+                            </div>
+                          </div>
+                        </div> 
+                      </div>
                     </div>
-                </div>
-              </div>
+                  </div>
+                  <div class="row mb-3">
+                    <div class="col-md-4 col-lg-4">
+                          <div class="card" style="text-align: center;">
+                            <div class="card-header" style="color: #012970">
+                              <h5 >Proveedores</h5>
+                            </div>
+                            <a href="proveedores.php"><img src="assets/img/person-lines-fill.svg" class="rounded mx-auto d-block" alt="..." style="width: 10rem;"></a>
+                            <div class="card-body">   
+                            </div>
+                          </div>
+                    </div> 
+                    <div class="col-md-4 col-lg-4">
+                          <div class="card" style="text-align: center;">
+                            <div class="card-header" style="color: #012970">
+                              <h5 >Categorias</h5>
+                            </div>
+                            <a href="categorias.php"><img src="assets/img/ui-radios.svg" class="rounded mx-auto d-block" alt="..." style="width: 10rem;"></a>
+                            <div class="card-body">   
+                            </div>
+                          </div>
+                    </div>
+                    <div class="col-md-4 col-lg-4">
+                          <div class="card" style="text-align: center;">
+                            <div class="card-header" style="color: #012970">
+                              <h5 >Productos</h5>
+                            </div>
+                            <img src="assets/img/bag-check-fill.svg" class="rounded mx-auto d-block" alt="..." style="width: 10rem;">
+                            <div class="card-body">   
+                            </div>
+                          </div>
+                    </div>
+                  </div>
 
-            </div>
-
-            <!-- Fin catalogo -->
+            </div><!-- Fin del formulario -->
 
 
           </div>
         </div><!-- End Left side columns -->
 
-        
+        <!-- Ajustar el tamaño de la barra de otra información -->
         
         </div><!-- End Right side columns -->
 
@@ -299,51 +314,3 @@
 </body>
 
 </html>
-<!-- CONEXION CON EL BACKEND-->
-<script src="./assets/lib/jquery-3.6.1.min.js"></script>
-<script>
-
-  
-
-  $.ajax({
-    method: "POST",
-    url: "./services/Ws_ListaProductos.php",
-    dataType: "json",
-    success: function(result){
-      console.log(result)
-    }
-  })
-          .done(function( result ) {
-            let template = ``;
-            result.forEach(cat=>{
-              template += `<tr>
-                            <td><a class="text-dark" href="#">${cat.nombre_producto}</a></th>
-                            <td><a class="text-secondary">${cat.sku}</a></td>
-                            <td><a class="text-secondary">${cat.bar_code}</a></td>
-                            <td><a class="text-secondary">${cat.stock}</a></td>
-                            <td><a class="text-secondary">${cat.precio_venta}</a></td>
-                            <td><a class="text-secondary">${cat.id_categoria_fk}</a></td>
-                            <td><span class="badge bg-danger" id="estatus">${cat.estatus}</span></td>
-                            <td><a class="text-dark" href="./nuevoProducto.html"><i class="bi bi-pencil-square"></i></td>
-                            <td><a class="text-dark" href="./nuevoProducto.html"><i class="bi bi-trash"></i></td>
-                          </tr>
-                      <tr>`;
-            })
-            $("#dataTable").html(template);
-          });
-          
-
-  var estatus = $("#estatus").val();
-  //Cambiar valor del status
-    if (estatus == 0 ){
-      //El campo de input esta vacio
-      console.log('Minimo');
-
-    }
-    else{
-      console.log('Maximo');
-
-    }
-</script>
-<!-- CONEXION CON EL BACKEND-->
-

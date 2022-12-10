@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Inicio</title>
+  <title>Entradas</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -42,6 +42,7 @@
       <i class="bi bi-list toggle-sidebar-btn"></i>
     </div>
 
+    <!-- La barra de  búsqueda está aquí -->
     
 
     <nav class="header-nav ms-auto">
@@ -49,7 +50,7 @@
 
         
 
-      <!-- La configuración de usuario está aquí  -->
+      <!-- La configuración de usuario está aquí xd -->
       <!-- Esta es la foto de perfil si es que lleva (Referenciada) -->
         <li class="nav-item dropdown pe-3">
 
@@ -110,7 +111,7 @@
   </header>
 
   <!-- ======= Barra lateral ======= -->
-  <aside id="sidebar" class="sidebar">
+<aside id="sidebar" class="sidebar">
 
     <ul class="sidebar-nav" id="sidebar-nav">
       <li class="nav-item">
@@ -138,7 +139,7 @@
         </a>
         <ul>
           <li>
-            <a class="collapse" id="collapseExample" href="./inventario.html">
+            <a class="collapse" id="collapseExample" href="inventario.php">
               <i class="bi bi-shop-window"></i>
               <span>Stock</span>
             </a>
@@ -146,7 +147,7 @@
         </ul>
         <ul>
           <li>
-            <a class="collapse" id="collapseExample" href="./ordenEntrada.html">
+            <a class="collapse" id="collapseExample" href="ordenEntrada.php">
               <i class="bi bi-box-arrow-in-right"></i>
               <span>Orden Entrada</span>
             </a>
@@ -154,7 +155,7 @@
         </ul>
         <ul>
           <li>
-            <a class="collapse" id="collapseExample" href="./ordenSalida.html">
+            <a class="collapse" id="collapseExample" href="ordenSalida.php">
               <i class="bi bi-box-arrow-in-left"></i>
               <span>Orden Salida</span>
             </a>
@@ -162,7 +163,7 @@
         </ul>
         <ul>
           <li>
-            <a class="collapse" id="collapseExample" href="./proveedores.html">
+            <a class="collapse" id="collapseExample" href="proveedores.php">
               <i class="bi bi-person-lines-fill"></i>
               <span>Proveedores</span>
             </a>
@@ -170,7 +171,7 @@
         </ul>
         <ul>
           <li>
-            <a class="collapse" id="collapseExample" href="./categorias.html">
+            <a class="collapse" id="collapseExample" href="categorias.php">
               <i class="bi bi-ui-radios"></i>
               <span>Categorias</span>
             </a>
@@ -178,7 +179,7 @@
         </ul>
         <ul>
           <li>
-            <a class="collapse" id="collapseExample" href="./productos.html">
+            <a class="collapse" id="collapseExample" href="productos.php">
               <i class="bi bi-bag-check-fill"></i>
               <span>Productos</span>
             </a>
@@ -187,10 +188,22 @@
       </li>
     </ul>
   </aside>
-<!-- fin sidebar -->
+
   <main id="main" class="main">
-    <div class="pagetitle" style="text-align: center;">
-      <h1>Inventario</h1>
+    <div class="pagetitle">
+      <h1>Orden entrada</h1>
+      <a  class="btn " href="nuevaOrden.php">Nueva Orden</a>
+       
+
+      <!-- modal-->
+      
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="inicio.php">Inicio</a></li>
+          <li class="breadcrumb-item active">Orden entrada</li>
+            
+        </ol>
+      </nav>
     </div>
 
     <section class="section dashboard">
@@ -201,77 +214,40 @@
           <div class="row">
 
             <!-- Formulario -->
-            <div class="col">
-              <div class="row">
-                    <div class="col-xxl-12 col-xl-12">
-                      <div class="row">
-                        <div class="col-md-4 col-lg-4">
-                          <div class="card" style="text-align: center;">
-                            <div class="card-header" style="color: #012970">
-                              <h5 >Productos</h5>
-                            </div>
-                            <a href="./productos.html"><img src="assets/img/bag-check-fill.svg" class="rounded mx-auto d-block" alt="..." style="width: 10rem;"></a>
-                            <div class="card-body">   
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-md-4 col-lg-4">
-                          <div class="card" style="text-align: center;">
-                            <div class="card-header" style="color: #012970">
-                              <h5 >Entradas</h5>
-                            </div>
-                            <a href="./ordenEntrada.html"><img src="assets/img/box-arrow-in-right.svg" class="rounded mx-auto d-block" alt="..." style="width: 10rem;"></a>
-                            <div class="card-body">   
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-md-4 col-lg-4">
-                          <div class="card" style="text-align: center;">
-                            <div class="card-header" style="color: #012970">
-                              <h5 >Salidas</h5>
-                            </div>
-                            <a href="./ordenSalida.html"><img src="assets/img/box-arrow-in-left.svg" class="rounded mx-auto d-block" alt="..." style="width: 10rem;"></a>
-                            <div class="card-body">   
-                            </div>
-                          </div>
-                        </div> 
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row mb-3">
-                    <div class="col-md-4 col-lg-4">
-                          <div class="card" style="text-align: center;">
-                            <div class="card-header" style="color: #012970">
-                              <h5 >Proveedores</h5>
-                            </div>
-                            <a href="./proveedores.html"><img src="assets/img/person-lines-fill.svg" class="rounded mx-auto d-block" alt="..." style="width: 10rem;"></a>
-                            <div class="card-body">   
-                            </div>
-                          </div>
-                    </div> 
-                    <div class="col-md-4 col-lg-4">
-                          <div class="card" style="text-align: center;">
-                            <div class="card-header" style="color: #012970">
-                              <h5 >Categorias</h5>
-                            </div>
-                            <a href="./categorias.html"><img src="assets/img/ui-radios.svg" class="rounded mx-auto d-block" alt="..." style="width: 10rem;"></a>
-                            <div class="card-body">   
-                            </div>
-                          </div>
-                    </div>
-                    <div class="col-md-4 col-lg-4">
-                          <div class="card" style="text-align: center;">
-                            <div class="card-header" style="color: #012970">
-                              <h5 >Productos</h5>
-                            </div>
-                            <img src="assets/img/bag-check-fill.svg" class="rounded mx-auto d-block" alt="..." style="width: 10rem;">
-                            <div class="card-body">   
-                            </div>
-                          </div>
-                    </div>
-                  </div>
+            <div class="col-xxl-12 col-xl-12">
+              <div class="card info-card customers-card">
+                <div class="filter">
+                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                    <li class="dropdown-header text-start">
+                      <h6>Filtrar</h6>
+                    </li>
+                    <li><a class="dropdown-item" href="#">Este mes</a></li>
+                    <li><a class="dropdown-item" href="#">Este año</a></li>
+                  </ul>
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title">Ultimas entradas <span>| Entradas recientes.</span></h5>
 
-            </div><!-- Fin del formulario -->
+                  <table class="table table-hover">
+                    <thead>
+                      <tr>
+                        <th scope="col">#Ticket</th>
+                        <th scope="col">Fecha de compra</th>
+                        <th scope="col">Fecha de alta</th>
+                        <th scope="col">Total de compra</th>
+                      </tr>
+                    </thead>
+                    <tbody id="dataTable">
+                      
+                      
+                    </tbody>
+                  </table>  
+
+                </div>
+              </div>
+
+            </div><!-- Fin de tabla -->
 
 
           </div>
@@ -312,5 +288,37 @@
   <script src="assets/js/main.js"></script>
 
 </body>
-
+<!--
+<?php
+    include "../main_profesor/Modal_profesor/edita_periodo.php";
+    include_once "./modal_alumno/subir_avatar.php";
+    include $path."includes_general/js.php";
+?>
+ -->
 </html>
+<!-- CONEXION CON EL BACKEND-->
+<script src="./assets/lib/jquery-3.6.1.min.js"></script>
+<script>
+  $.ajax({
+    method: "POST",
+    url: "./services/Ws_ListaEntrada.php",
+    dataType: "json",
+    success: function(result){
+      console.log(result)
+    }
+  })
+          .done(function( result ) {
+            let template = ``;
+            result.forEach(cat=>{
+              template += `<tr>
+                            <th scope="row"><a href="#">#${cat.Id_compra}</a></th>
+                            <td><a href="" class="text-secondary">#${cat.fecha_orden}</a></td>
+                            <td><a class="text-secondary">#${cat.create_at}</a></td>
+                            <td><a class="text-secondary">#${cat.total_compra}</a></td>
+                          </tr>
+                      <tr>`;
+            })
+            $("#dataTable").html(template);
+          });
+</script>
+<!-- CONEXION CON EL BACKEND-->

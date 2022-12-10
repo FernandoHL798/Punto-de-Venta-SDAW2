@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Proveedores</title>
+  <title>Inventario</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -43,7 +42,6 @@
       <i class="bi bi-list toggle-sidebar-btn"></i>
     </div>
 
-    <!-- La barra de  búsqueda está aquí -->
     
 
     <nav class="header-nav ms-auto">
@@ -51,7 +49,7 @@
 
         
 
-      <!-- La configuración de usuario está aquí xd -->
+      <!-- La configuración de usuario está aquí  -->
       <!-- Esta es la foto de perfil si es que lleva (Referenciada) -->
         <li class="nav-item dropdown pe-3">
 
@@ -112,7 +110,7 @@
   </header>
 
   <!-- ======= Barra lateral ======= -->
-<aside id="sidebar" class="sidebar">
+  <aside id="sidebar" class="sidebar">
 
     <ul class="sidebar-nav" id="sidebar-nav">
       <li class="nav-item">
@@ -140,7 +138,7 @@
         </a>
         <ul>
           <li>
-            <a class="collapse" id="collapseExample" href="./inventario.html">
+            <a class="collapse" id="collapseExample" href="inventario.php">
               <i class="bi bi-shop-window"></i>
               <span>Stock</span>
             </a>
@@ -148,7 +146,7 @@
         </ul>
         <ul>
           <li>
-            <a class="collapse" id="collapseExample" href="./ordenEntrada.html">
+            <a class="collapse" id="collapseExample" href="ordenEntrada.php">
               <i class="bi bi-box-arrow-in-right"></i>
               <span>Orden Entrada</span>
             </a>
@@ -156,7 +154,7 @@
         </ul>
         <ul>
           <li>
-            <a class="collapse" id="collapseExample" href="./ordenSalida.html">
+            <a class="collapse" id="collapseExample" href="ordenSalida.php">
               <i class="bi bi-box-arrow-in-left"></i>
               <span>Orden Salida</span>
             </a>
@@ -164,7 +162,7 @@
         </ul>
         <ul>
           <li>
-            <a class="collapse" id="collapseExample" href="./proveedores.html">
+            <a class="collapse" id="collapseExample" href="proveedores.php">
               <i class="bi bi-person-lines-fill"></i>
               <span>Proveedores</span>
             </a>
@@ -172,7 +170,7 @@
         </ul>
         <ul>
           <li>
-            <a class="collapse" id="collapseExample" href="./categorias.html">
+            <a class="collapse" id="collapseExample" href="categorias.php">
               <i class="bi bi-ui-radios"></i>
               <span>Categorias</span>
             </a>
@@ -180,7 +178,7 @@
         </ul>
         <ul>
           <li>
-            <a class="collapse" id="collapseExample" href="./productos.html">
+            <a class="collapse" id="collapseExample" href="productos.php">
               <i class="bi bi-bag-check-fill"></i>
               <span>Productos</span>
             </a>
@@ -189,19 +187,16 @@
       </li>
     </ul>
   </aside>
+
   <main id="main" class="main">
     <div class="pagetitle">
-      <h1>Proveedores</h1>
-      <a  class="btn " href="./nuevoproveedor.html">Agregar proveedor</a>
-       
-
-      <!-- modal-->
+      <h1>Inventario</h1>
       
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="./inicio.html">Inicio</a></li>
-          <li class="breadcrumb-item active">Proveedores</li>
-
+          <li class="breadcrumb-item"><a href="inicio.php">Inicio</a></li>
+          <li class="breadcrumb-item active">Inventario</li>
+          
         </ol>
       </nav>
     </div>
@@ -216,113 +211,144 @@
             <!-- Formulario -->
             <div class="col-xxl-12 col-xl-12">
               <div class="card info-card customers-card">
-                <div class="filter">
-                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                    <li class="dropdown-header text-start">
-                      <h6>Filtrar</h6>
-                    </li>
-                    <li><a class="dropdown-item" href="#">Este mes</a></li>
-                    <li><a class="dropdown-item" href="#">Este año</a></li>
-                  </ul>
-                </div>
+                
                 <div class="card-body">
                   <h5 class="card-title">Ultimas entradas <span>| Entradas recientes.</span></h5>
 
                   <table class="table table-hover">
                     <thead>
                       <tr>
-                        <th scope="col">Razon social</th>
-                        <th scope="col">Direccion</th>
-                        <th scope="col">Tel</th>
-                        <th scope="col">Correo</th>
-                        <th scope="col">RFC</th>
+                        <th scope="col">SKU</th>
+                        <th scope="col">Descripcion</th>
+                        <th scope="col">Categoria</th>
+                        <th scope="col">Stock</th>
+                        <th scope="col">Estado</th>
+                        <th scope="col">Proveedor</th>
+                        <th scope="col">Precio de venta</th>
+                        <th scope="col">Ganancia</th>
+                        
+
                       </tr>
                     </thead>
-                    <tbody id="dataTable">
+                    <tbody>
                       <tr>
                         <th scope="row"><a href="#">#1234</a></th>
-                        <td><a href="" class="text-secondary">Cuautitlan #3</a></td>
-                        <td><a class="text-secondary">15554221</a></td>
-                        <td><a class="text-secondary">mari@gmail.com</a></td>
-                        <td><a class="text-secondary">ASD1421</a></td>
+                        <td><a href="" class="text-secondary">Almohada</a></td>
+                        <td><a class="text-secondary">01</a></td>
+                        <td><a class="text-secondary">5</a></td>
+                        <td><span class="badge bg-danger">Minimo</span></td>
+                        <td><a class="text-secondary">Slim</a></td>
+                        <td><a class="text-secondary">$54</a></td>
+                        <td><a class="text-secondary">5%</a></td>
+
+
 
                       </tr>
                       <tr>
-                        <th scope="row"><a href="#">#1456</a></th>
-                        <td><a href="" class="text-secondary">Cuauti #4</a></td>
-                        <td><a class="text-secondary">1234567890</a></td>
-                        <td><a class="text-secondary">sdfghjkl@gmail.com</a></td>
-                        <td><a class="text-secondary">FGHJ1234</a></td>
+                        <th scope="row"><a href="#">#1234</a></th>
+                        <td><a href="" class="text-secondary">Almohada</a></td>
+                        <td><a class="text-secondary">01</a></td>
+                        <td><a class="text-secondary">67</a></td>
+                        <td><span class="badge bg-success">Bien</span></td>
+                        <td><a class="text-secondary">Slim</a></td>
+                        <td><a class="text-secondary">$54</a></td>
+                        <td><a class="text-secondary">5%</a></td>
                       </tr>
                       <tr>
-                        <th scope="row"><a href="#">#1224</a></th>
-                        <td><a href="" class="text-secondary">Cuautitlan #6</a></td>
-                        <td><a class="text-secondary">15554221</a></td>
-                        <td><a class="text-secondary">mariAS@gmail.com</a></td>
-                        <td><a class="text-secondary">ASD1431</a></td>
+                        <th scope="row"><a href="#">#1234</a></th>
+                        <td><a href="" class="text-secondary">Almohada</a></td>
+                        <td><a class="text-secondary">01</a></td>
+                        <td><a class="text-secondary">15</a></td>
+                        <td><span class="badge bg-warning">Alerta</span></td>
+                        <td><a class="text-secondary">Slim</a></td>
+                        <td><a class="text-secondary">$54</a></td>
+                        <td><a class="text-secondary">5%</a></td>
                       </tr>
                       <tr>
-                        <th scope="row"><a href="#">#5678</a></th>
-                        <td><a href="" class="text-secondary">Cuautitlan #6</a></td>
-                        <td><a class="text-secondary">15556789</a></td>
-                        <td><a class="text-secondary">mar@gmail.com</a></td>
-                        <td><a class="text-secondary">ART1421</a></td>
+                        <th scope="row"><a href="#">#1234</a></th>
+                        <td><a href="" class="text-secondary">Almohada</a></td>
+                        <td><a class="text-secondary">01</a></td>
+                        <td><a class="text-secondary">67</a></td>
+                        <td></td>
+                        <td><a class="text-secondary">Slim</a></td>
+                        <td><a class="text-secondary">$54</a></td>
+                        <td><a class="text-secondary">5%</a></td>
                       </tr>
                       <tr>
-                        <th scope="row"><a href="#">#12342</a></th>
-                        <td><a href="" class="text-secondary">Cuautitlan #35</a></td>
-                        <td><a class="text-secondary">155542221</a></td>
-                        <td><a class="text-secondary">mar3i@gmail.com</a></td>
-                        <td><a class="text-secondary">ASD14213</a></td>
+                        <th scope="row"><a href="#">#1234</a></th>
+                        <td><a href="" class="text-secondary">Almohada</a></td>
+                        <td><a class="text-secondary">01</a></td>
+                        <td><a class="text-secondary">67</a></td>
+                        <td></td>
+                        <td><a class="text-secondary">Slim</a></td>
+                        <td><a class="text-secondary">$54</a></td>
+                        <td><a class="text-secondary">5%</a></td>
                       </tr>
                       <tr>
-                      <th scope="row"><a href="#">#3456</a></th>
-                        <td><a href="" class="text-secondary">Cuautitlan #3</a></td>
-                        <td><a class="text-secondary">155542212</a></td>
-                        <td><a class="text-secondary">marQi@gmail.com</a></td>
-                        <td><a class="text-secondary">ASD7721</a></td>
+                       <th scope="row"><a href="#">#1234</a></th>
+                        <td><a href="" class="text-secondary">Almohada</a></td>
+                        <td><a class="text-secondary">01</a></td>
+                        <td><a class="text-secondary">67</a></td>
+                        <td></td>
+                        <td><a class="text-secondary">Slim</a></td>
+                        <td><a class="text-secondary">$54</a></td>
+                        <td><a class="text-secondary">5%</a></td>
                       </tr>
                       <tr>
-                       <th scope="row"><a href="#">#5674</a></th>
-                        <td><a href="" class="text-secondary">1234</a></td>
-                        <td><a class="text-secondary">11/09/2022</a></td>
-                        <td><a class="text-secondary">02:25 pm</a></td>
-                        <td><a class="text-secondary">$3,500</a></td>
+                       <th scope="row"><a href="#">#1234</a></th>
+                        <td><a href="" class="text-secondary">Almohada</a></td>
+                        <td><a class="text-secondary">01</a></td>
+                        <td><a class="text-secondary">67</a></td>
+                        <td></td>
+                        <td><a class="text-secondary">Slim</a></td>
+                        <td><a class="text-secondary">$54</a></td>
+                        <td><a class="text-secondary">5%</a></td>
                       </tr>
                       <tr>
-                        <th scope="row"><a href="#">#2457</a></th>
-                        <td><a href="" class="text-secondary">1232</a></td>
-                        <td><a class="text-secondary">11/09/2022</a></td>
-                        <td><a class="text-secondary">02:25 pm</a></td>
-                        <td><a class="text-secondary">$3,500</a></td>
+                        <th scope="row"><a href="#">#1234</a></th>
+                        <td><a href="" class="text-secondary">Almohada</a></td>
+                        <td><a class="text-secondary">01</a></td>
+                        <td><a class="text-secondary">67</a></td>
+                        <td></td>
+                        <td><a class="text-secondary">Slim</a></td>
+                        <td><a class="text-secondary">$54</a></td>
+                        <td><a class="text-secondary">5%</a></td>
                       </tr>
                       <tr>
-                        <th scope="row"><a href="#">#3457</a></th>
-                        <td><a href="" class="text-secondary">1278</a></td>
-                        <td><a class="text-secondary">11/09/2022</a></td>
-                        <td><a class="text-secondary">02:25 pm</a></td><td><a class="text-secondary">$3,500</a></td>
+                        <th scope="row"><a href="#">#1234</a></th>
+                        <td><a href="" class="text-secondary">Almohada</a></td>
+                        <td><a class="text-secondary">01</a></td>
+                        <td><a class="text-secondary">67</a></td>
+                        <td></td>
+                        <td><a class="text-secondary">Slim</a></td>
+                        <td><a class="text-secondary">$54</a></td>
+                        <td><a class="text-secondary">5%</a></td>
                       </tr>
                       <tr>
-                        <th scope="row"><a href="#">#6457</a></th>
-                        <td><a href="" class="text-secondary">5532</a></td>
-                        <td><a class="text-secondary">11/09/2022</a></td>
-                        <td><a class="text-secondary">02:25 pm</a></td>
-                        <td><a class="text-secondary">$3,500</a></td>
+                        <th scope="row"><a href="#">#1234</a></th>
+                        <td><a href="" class="text-secondary">Almohada</a></td>
+                        <td><a class="text-secondary">01</a></td>
+                        <td><a class="text-secondary">67</a></td>
+                        <td></td>
+                        <td><a class="text-secondary">Slim</a></td>
+                        <td><a class="text-secondary">$54</a></td>
+                        <td><a class="text-secondary">5%</a></td>
                       </tr>
                       <tr>
-                        <th scope="row"><a href="#">#8457</a></th>
-                        <td><a href="" class="text-secondary">6132</a></td>
-                        <td><a class="text-secondary">11/09/2022</a></td>
-                        <td><a class="text-secondary">02:25 pm</a></td>
-                        <td><a class="text-secondary">$3,500</a></td>
+                        <th scope="row"><a href="#">#1234</a></th>
+                        <td><a href="" class="text-secondary">Almohada</a></td>
+                        <td><a class="text-secondary">01</a></td>
+                        <td><a class="text-secondary">67</a></td>
+                        <td><a class="text-secondary">$54</a></td>
+                        <td><a class="text-secondary">5%</a></td>
                       </tr>
                       <tr>
-                        <th scope="row"><a href="#">#2487</a></th>
-                        <td><a href="" class="text-secondary">1932</a></td>
-                        <td><a class="text-secondary">11/09/2022</a></td>
-                        <td><a class="text-secondary">02:25 pm</a></td>
-                        <td><a class="text-secondary">$3,500</a></td>
+                        <th scope="row"><a href="#">#1234</a></th>
+                        <td><a href="" class="text-secondary">Almohada</a></td>
+                        <td><a class="text-secondary">01</a></td>
+                        <td><a class="text-secondary">67</a></td>
+                        <td><a class="text-secondary">$54</a></td>
+                        <td><a class="text-secondary">5%</a></td>
                       </tr>
                       
                     </tbody>
@@ -372,37 +398,5 @@
   <script src="assets/js/main.js"></script>
 
 </body>
-<!--
-<?php
-    include "../main_profesor/Modal_profesor/edita_periodo.php";
-    include_once "./modal_alumno/subir_avatar.php";
-    include $path."includes_general/js.php";
-?>
- -->
+
 </html>
-<!-- CONEXION CON EL BACKEND-->
-<script src="./assets/lib/jquery-3.6.1.min.js"></script>
-<script>
-  $.ajax({
-    method: "POST",
-    url: "./services/Ws_ListaProveedores.php",
-    dataType: "json",
-    success: function(result){
-      console.log(result)
-    }
-  })
-          .done(function( result ) {
-            let template = ``;
-            result.forEach(cat=>{
-              template += `<tr>
-                        <th scope="col"><a href="#">${cat.razon_social}</a></th>
-                        <td><a href="" class="text-secondary">${cat.direccion}</a></td>
-                        <td><a class="text-secondary">${cat.telefono}</a></td>
-                        <td><a class="text-secondary">${cat.correo}</a></td>
-                        <td><a class="text-secondary">${cat.rfc}</a></td>
-                      </tr>`;
-            })
-            $("#dataTable").html(template);
-          });
-</script>
-<!-- CONEXION CON EL BACKEND-->

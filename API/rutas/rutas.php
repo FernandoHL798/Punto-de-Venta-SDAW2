@@ -1,7 +1,11 @@
 <?php
-
+define('RUTA', "2");
+define('PATH', "3");
+define('PARAMETRO', "4");
+//const PATH = 3;
+//const RUTA = 4;
 $arrayRutas = explode("/",$_SERVER["REQUEST_URI"]);
-if (count(array_filter($arrayRutas))== 3){
+if (count(array_filter($arrayRutas))== RUTA){
     $json = array(
         "detalle"=>"Ruta No valida"
     );
@@ -9,10 +13,10 @@ if (count(array_filter($arrayRutas))== 3){
     return;
 }
 else{
-     if (count(array_filter($arrayRutas))==4)
+     if (count(array_filter($arrayRutas))==PATH)
      {
         # existe una peticion de una ruta en URL
-        switch (array_filter($arrayRutas)[4])
+        switch (array_filter($arrayRutas)[PATH])
         {
             case "catalogo":
                 /*==========================================================================================================
@@ -89,12 +93,11 @@ else{
                         );
                         echo json_encode($json,true);
                     }
-
                 }
                 break;
             default:
                 $json = array(
-                    "detalle"=>"ERROR DE PETICION",
+                    "detalle"=>"ERROR DE PETICION END POINT",
                     "status"=>400
                 );
                 echo json_encode($json,true);
@@ -106,15 +109,16 @@ else{
         /*==========================================================================================================
                         Regresa un producto en específico dependiendo le ID pasado por URL
          ==========================================================================================================*/
-        if (array_filter($arrayRutas)[4] == "producto" && is_numeric(array_filter($arrayRutas)[5])) {
+        if (array_filter($arrayRutas)[PATH] == "producto" && is_numeric(array_filter($arrayRutas)[PARAMETRO])) {
             if (isset($_SERVER['REQUEST_METHOD']) && ($_SERVER['REQUEST_METHOD']) == "GET") {
                 $producto = new ControladorProductos();
-                $producto->show(array_filter($arrayRutas)[5]);
+                $producto->show(array_filter($arrayRutas)[PARAMETRO]);
             }
         } /*==========================================================================================================
                 Regresa un producto en específico dependiendo le ID pasado por URL
         ==========================================================================================================*/
-        else if (array_filter($arrayRutas)[4] == "venta" && is_numeric(array_filter($arrayRutas)[5])) {
+        else if (array_filter($arrayRutas)[PATH] == "venta" && is_numeric(array_filter($arrayRutas)[PARAMETRO]))
+        {
             /*==========================================================================================================
             Registrando los productos por methon PUT, creando la salida por VENTA
             ==========================================================================================================*/
@@ -126,12 +130,12 @@ else{
             ==========================================================================================================*/
             else if (isset($_SERVER['REQUEST_METHOD']) && ($_SERVER['REQUEST_METHOD']) == "DELETE") {
                 $control = new ControladorVentas();
-                $control->cancelaVenta(array_filter($arrayRutas)[4]);
+                $control->cancelaVenta(array_filter($arrayRutas)[RUTA]);
             }
         }
         else{
             $json = array(
-                "detalle"=>"ERROR VALOR NO VALIDO",
+                "detalle"=>"ERROR VALOR NO VALIDO, PARAMETRO O RUTA INVALIDA INVALIDO",
                 "status"=>400
             );
             echo json_encode($json,true);

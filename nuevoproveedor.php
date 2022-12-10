@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Categorias</title>
+  <title>Nuevo Proveedor</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -139,7 +139,7 @@
         </a>
         <ul>
           <li>
-            <a class="collapse" id="collapseExample" href="./inventario.html">
+            <a class="collapse" id="collapseExample" href="inventario.php">
               <i class="bi bi-shop-window"></i>
               <span>Stock</span>
             </a>
@@ -147,7 +147,7 @@
         </ul>
         <ul>
           <li>
-            <a class="collapse" id="collapseExample" href="./ordenEntrada.html">
+            <a class="collapse" id="collapseExample" href="ordenEntrada.php">
               <i class="bi bi-box-arrow-in-right"></i>
               <span>Orden Entrada</span>
             </a>
@@ -155,7 +155,7 @@
         </ul>
         <ul>
           <li>
-            <a class="collapse" id="collapseExample" href="./ordenSalida.html">
+            <a class="collapse" id="collapseExample" href="ordenSalida.php">
               <i class="bi bi-box-arrow-in-left"></i>
               <span>Orden Salida</span>
             </a>
@@ -163,7 +163,7 @@
         </ul>
         <ul>
           <li>
-            <a class="collapse" id="collapseExample" href="./proveedores.html">
+            <a class="collapse" id="collapseExample" href="proveedores.php">
               <i class="bi bi-person-lines-fill"></i>
               <span>Proveedores</span>
             </a>
@@ -171,7 +171,7 @@
         </ul>
         <ul>
           <li>
-            <a class="collapse" id="collapseExample" href="./categorias.html">
+            <a class="collapse" id="collapseExample" href="categorias.php">
               <i class="bi bi-ui-radios"></i>
               <span>Categorias</span>
             </a>
@@ -179,7 +179,7 @@
         </ul>
         <ul>
           <li>
-            <a class="collapse" id="collapseExample" href="./productos.html">
+            <a class="collapse" id="collapseExample" href="productos.php">
               <i class="bi bi-bag-check-fill"></i>
               <span>Productos</span>
             </a>
@@ -191,16 +191,15 @@
 
   <main id="main" class="main">
     <div class="pagetitle">
-      <h1>Categorias</h1>
-      <a  class="btn " href="./nuevaCategoria.html">Agregar categoria</a>
-       
+      <h1>Nuevo proveedor</h1>
 
-      <!-- modal-->
+      
       
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="./inicio.html">Inicio</a></li>
-          <li class="breadcrumb-item active">Categorias</li>
+          <li class="breadcrumb-item"><a href="inicio.php">Inicio</a></li>
+          <li class="breadcrumb-item active"><a href="proveedores.php">Proveedores</a></li>
+          <li class="breadcrumb-item active">Proveedor nuevo</li>
 
         </ol>
       </nav>
@@ -216,26 +215,49 @@
             <!-- Formulario -->
             <div class="col-xxl-12 col-xl-12">
               <div class="card info-card customers-card">
-                
+
                 <div class="card-body">
-                  <h5 class="card-title">Ultimas entradas <span>| Entradas recientes.</span></h5>
+                  <h5 class="card-title">Producto <span>| Nuevo registro</span></h5>
 
-                  <table class="table table-hover">
-                    <thead>
-                      <tr>
-                        <th scope="col"> #Categoria</th>
-                        <th scope="col">Nombre categoria</th>
-                        <th class="text-white" scope="col">E/B</th>
-                        <th class="text-white" scope="col">E/B</th>
-                        
-                      </tr>
-                    </thead>
-                    <tbody id="dataTable">
-
-                    </tbody>
-                  </table>  
-
-                </div>
+                  <div class="row mb-3">
+                      <label   for="razon_social" class="col-md-4 col-lg-3 col-form-label">Razon Social</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input name="razon_social" type="text" class="form-control" id="razon_social">
+                      </div>
+                  </div>
+                  <div class="row mb-3">
+                      <label for="direccion" class="col-md-4 col-lg-3 col-form-label">Direccion</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input name="direccion" type="text" class="form-control" id="direccion">
+                      </div>
+                  </div>
+                  <div class="row mb-3">
+                      <label for="telefono" class="col-md-4 col-lg-3 col-form-label">Telefono</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input name="telefono" type="text" class="form-control" id="telefono">
+                      </div>
+                  </div>
+                  <div class="row mb-3">
+                      <label for="correo" class="col-md-4 col-lg-3 col-form-label">Correo</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input name="correo" type="text" class="form-control" id="correo">
+                      </div>
+                  </div>
+                  <div class="row mb-3">
+                      <label for="rfc" class="col-md-4 col-lg-3 col-form-label">RFC</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input name="rfc" type="text" class="form-control" id="rfc">
+                      </div>
+                  </div>
+                  
+                  <div class="row mb-3">
+                    <div class="col">
+                      <button class="btn " onclick="guardarProveedor()">Guardar</button>
+                    </div>
+                    <div class="col">
+                      <div id="alerta"></div>
+                    </div>
+                  </div>
               </div>
 
             </div><!-- Fin del formulario -->
@@ -266,7 +288,6 @@
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
-  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/chart.js/chart.min.js"></script>
@@ -278,106 +299,41 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
-  <!-- Alertas SCRIPT -->
-  <script src="assets/js/alertas.js"></script>
+
 </body>
-<!--
-<?php
-    include "../main_profesor/Modal_profesor/edita_periodo.php";
-    include_once "./modal_alumno/subir_avatar.php";
-    include $path."includes_general/js.php";
-?>
- -->
+
 </html>
-<!-- CONEXION CON EL BACKEND-->
+
+<!-- -->
+
 <script src="./assets/lib/jquery-3.6.1.min.js"></script>
 <script>
-  cargaCategorias();
 
-  function cargaCategorias(){
-    $.ajax({
-    method: "POST",
-    url: "./services/Ws_ListarCategorias.php",
-    dataType: "json",
-    success: function(result){
-      console.log(result)
-    },
-  })
-          .done(function( result ) {
-            let template = ``;
-            let i= 1;
-            result.forEach(cat=>{
-              template += `<tr>
-                            <th scope="row"><a href="#">#${i}</a></th>
-                            <td><a href="" class="text-secondary">${cat.nombre_categoria}</a></td>
-                            <td> 
-                            <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="editarCategoria(${cat.Id_categoria},'${cat.nombre_categoria}');">
-  <i class="bi bi-pencil-square"></i>
-</button>
-                                  <button type="button" class="btn btn-outline-danger" onclick="eliminaCategoria(${cat.Id_categoria})"><i class="bi bi-trash"></i></button>
-                                  </td>
-                                    <!-- Button trigger modal -->
+  function guardarProveedor() {
+    //Obtenemos los datos del fomilario por ID
+    var razon_social = $("#razon_social").val();
+    var direccion = $("#direccion").val();
+    var telefono = $("#telefono").val();
+    var correo = $("#correo").val();
+    var rfc = $("#rfc").val();
 
+    //Validamos (En caso de ser necesario)
+    if (razon_social === "" || direccion == ""){
+      //El campo de input esta vacio
+      alert("Debe escibir en el campo")
+    }
+    else{
+      //Si escribio algo en el input
 
-                          </tr>`;
-                          i++;
-            })
-            $("#dataTable").html(template);
-          });
-  }
-  
-</script>
-<script>
-  /*
-    Funcion edita categoria 
-  */
-  function editarCategoria(idCategoria,nombreCategoria){
-
-    document.getElementById('idCat').value=idCategoria;
-    document.getElementById('nombre_cat').value=nombreCategoria;
-  }
-  /*
-    Funcion elimina categoria 
-  */
-
-function eliminaCategoria(idCategoria){
-  $.ajax({
-    method: "POST",
-    url: "./services/Ws_DeleteCategoria.php",
-    dataType: "json",
-    data : {idCategoria : idCategoria},
-    success: function(result){
-      //console.log(result)
-    },
-    error: function(result){
-          //console.log(result);
-        }
-  })
-          .done(function( result ) {
-            //console.log(result);
-            cargaCategorias();
-          });
-  }
-</script>
-
-<script>
-
-/*
-Funcion actualizar categoria
-*/
-function updateCategoria(){
-  //Definimos las variables
-  var idCategoria = $("#idCat").val();
-  var nombreCategoria = $("#nombre_cat").val();
-  //Verificamos que los datos no esten vacios
-  if(idCategoria!="" && nombreCategoria !=""){
-    //Enviamos los datos
-    $.ajax({
+      $.ajax({
         method: "POST",
-        url: "./services/Ws_UpdateCategoria.php",
+        url: "./services/Ws_AddProveedor.php",
         data : {
-                  idCategoria : idCategoria,
-                  nombreCategoria: nombreCategoria
+                  razon_social: razon_social,
+                  direccion: direccion,
+                  telefono: telefono,
+                  correo: correo,
+                  rfc: rfc
                 },
         dataType: "json",
         success: function(result){
@@ -388,39 +344,22 @@ function updateCategoria(){
         }
       })
         .done(function( result ) {
-          alert("Se ha actualizado con exito");
-          cargaCategorias();
-           $("#exampleModal").modal("hide");
+          $("#razon_social").val("");
+          $("#telefono").val("");
+          $("#correo").val("");
+          $("#direccion").val("");
+          $("#rfc").val("");
+             let template = `<div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>Excente!</strong> Se ha registrado tu proveedor
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>`;
+          $("#alerta").html(template);
         });
+
+    }
   }
-  
-}
+
+
+
 
 </script>
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <form id="frm-edita-categoria">
-      <div class="modal-body">
-        <div class="mb-3">
-          <input type="hidden" class="form-control" id="idCat" name="idCat" placeholder=" ">
-        </div>
-        <div class="mb-3">
-          <label for="nombre_cat" class="form-label">Nombre Categoria</label>
-          <input type="text" class="form-control" id="nombre_cat" name="nombre_cat" placeholder="Categoria">
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" onclick="updateCategoria();">Guardar Cambios</button>
-      </div>
-    </form>
-    </div>
-  </div>
-</div>
-<!-- CONEXION CON EL BACKEND-->

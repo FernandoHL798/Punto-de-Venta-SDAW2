@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Entradas</title>
+  <title>Nueva Categoria</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -139,7 +139,7 @@
         </a>
         <ul>
           <li>
-            <a class="collapse" id="collapseExample" href="./inventario.html">
+            <a class="collapse" id="collapseExample" href="inventario.php">
               <i class="bi bi-shop-window"></i>
               <span>Stock</span>
             </a>
@@ -147,7 +147,7 @@
         </ul>
         <ul>
           <li>
-            <a class="collapse" id="collapseExample" href="./ordenEntrada.html">
+            <a class="collapse" id="collapseExample" href="ordenEntrada.php">
               <i class="bi bi-box-arrow-in-right"></i>
               <span>Orden Entrada</span>
             </a>
@@ -155,7 +155,7 @@
         </ul>
         <ul>
           <li>
-            <a class="collapse" id="collapseExample" href="./ordenSalida.html">
+            <a class="collapse" id="collapseExample" href="ordenSalida.php">
               <i class="bi bi-box-arrow-in-left"></i>
               <span>Orden Salida</span>
             </a>
@@ -163,7 +163,7 @@
         </ul>
         <ul>
           <li>
-            <a class="collapse" id="collapseExample" href="./proveedores.html">
+            <a class="collapse" id="collapseExample" href="proveedores.php">
               <i class="bi bi-person-lines-fill"></i>
               <span>Proveedores</span>
             </a>
@@ -171,7 +171,7 @@
         </ul>
         <ul>
           <li>
-            <a class="collapse" id="collapseExample" href="./categorias.html">
+            <a class="collapse" id="collapseExample" href="categorias.php">
               <i class="bi bi-ui-radios"></i>
               <span>Categorias</span>
             </a>
@@ -179,7 +179,7 @@
         </ul>
         <ul>
           <li>
-            <a class="collapse" id="collapseExample" href="./productos.html">
+            <a class="collapse" id="collapseExample" href="productos.php">
               <i class="bi bi-bag-check-fill"></i>
               <span>Productos</span>
             </a>
@@ -191,17 +191,17 @@
 
   <main id="main" class="main">
     <div class="pagetitle">
-      <h1>Orden entrada</h1>
-      <a  class="btn " href="./nuevaOrden.html">Nueva Orden</a>
-       
+      <h1>Nueva Categoria</h1>
 
-      <!-- modal-->
+      
       
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="./inicio.html">Inicio</a></li>
-          <li class="breadcrumb-item active">Orden entrada</li>
-            
+          <li class="breadcrumb-item"><a href="inicio.php">Inicio</a></li>
+          <li class="breadcrumb-item active"><a href="categorias.php">Categorias</a></li>
+          <li class="breadcrumb-item active">Categoria Nueva</li>
+
+
         </ol>
       </nav>
     </div>
@@ -216,38 +216,27 @@
             <!-- Formulario -->
             <div class="col-xxl-12 col-xl-12">
               <div class="card info-card customers-card">
-                <div class="filter">
-                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                    <li class="dropdown-header text-start">
-                      <h6>Filtrar</h6>
-                    </li>
-                    <li><a class="dropdown-item" href="#">Este mes</a></li>
-                    <li><a class="dropdown-item" href="#">Este año</a></li>
-                  </ul>
-                </div>
+
                 <div class="card-body">
-                  <h5 class="card-title">Ultimas entradas <span>| Entradas recientes.</span></h5>
-
-                  <table class="table table-hover">
-                    <thead>
-                      <tr>
-                        <th scope="col">#Ticket</th>
-                        <th scope="col">Fecha de compra</th>
-                        <th scope="col">Fecha de alta</th>
-                        <th scope="col">Total de compra</th>
-                      </tr>
-                    </thead>
-                    <tbody id="dataTable">
-                      
-                      
-                    </tbody>
-                  </table>  
-
+                  <h5 class="card-title">Categorias <span>| Nuevo registro</span></h5>
+                  <div class="row mb-3">
+                      <label for="nombreCategoria" class="col-md-4 col-lg-3 col-form-label">Nombre categoria</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input name="nombreCategoria" type="text" class="form-control" id="nombreCategoria">
+                      </div>
+                  </div>
+                  <div class="row mb-3">
+                    <div class="col">
+                      <button class="btn " onclick="guardarCategoria()">Enviar</button>
+                    </div>
+                    <div class="col">
+                      <div id="alerta"></div>
+                    </div>
+                  </div>
                 </div>
               </div>
 
-            </div><!-- Fin de tabla -->
+            </div><!-- Fin del formulario -->
 
 
           </div>
@@ -296,29 +285,49 @@
 ?>
  -->
 </html>
-<!-- CONEXION CON EL BACKEND-->
+
 <script src="./assets/lib/jquery-3.6.1.min.js"></script>
 <script>
-  $.ajax({
-    method: "POST",
-    url: "./services/Ws_ListaEntrada.php",
-    dataType: "json",
-    success: function(result){
-      console.log(result)
+
+  function guardarCategoria() {
+    //Obtenemos los datos del fomilario por ID
+    var nombreCategoria = $("#nombreCategoria").val();
+
+    //Validamos (En caso de ser necesario)
+    if (nombreCategoria === ""){
+      //El campo de input esta vacio
+      alert("Debe escibir un nombre")
     }
-  })
-          .done(function( result ) {
-            let template = ``;
-            result.forEach(cat=>{
-              template += `<tr>
-                            <th scope="row"><a href="#">#${cat.Id_compra}</a></th>
-                            <td><a href="" class="text-secondary">#${cat.fecha_orden}</a></td>
-                            <td><a class="text-secondary">#${cat.create_at}</a></td>
-                            <td><a class="text-secondary">#${cat.total_compra}</a></td>
-                          </tr>
-                      <tr>`;
-            })
-            $("#dataTable").html(template);
-          });
+    else{
+      //Si escribio algo en el input
+
+      $.ajax({
+        method: "POST",
+        url: "./services/Ws_AddCategoria.php",
+        data : {
+                  nombreCategoria: nombreCategoria,
+                },
+        dataType: "json",
+        success: function(result){
+          console.log(result)
+        },
+        error: function(result){
+          console.log(result);
+        }
+      })
+        .done(function( result ) {
+          $("#nombreCategoria").val("");
+             let template = `<div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>Excente!</strong> Se ha registrado tu categoria
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>`;
+          $("#alerta").html(template);
+        });
+
+    }
+  }
+
+
+
+
 </script>
-<!-- CONEXION CON EL BACKEND-->

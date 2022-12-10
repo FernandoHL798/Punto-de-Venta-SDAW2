@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Inventario</title>
+  <title>Categorias</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -42,6 +42,7 @@
       <i class="bi bi-list toggle-sidebar-btn"></i>
     </div>
 
+    <!-- La barra de  búsqueda está aquí -->
     
 
     <nav class="header-nav ms-auto">
@@ -49,7 +50,7 @@
 
         
 
-      <!-- La configuración de usuario está aquí  -->
+      <!-- La configuración de usuario está aquí xd -->
       <!-- Esta es la foto de perfil si es que lleva (Referenciada) -->
         <li class="nav-item dropdown pe-3">
 
@@ -110,7 +111,7 @@
   </header>
 
   <!-- ======= Barra lateral ======= -->
-  <aside id="sidebar" class="sidebar">
+<aside id="sidebar" class="sidebar">
 
     <ul class="sidebar-nav" id="sidebar-nav">
       <li class="nav-item">
@@ -138,7 +139,7 @@
         </a>
         <ul>
           <li>
-            <a class="collapse" id="collapseExample" href="./inventario.html">
+            <a class="collapse" id="collapseExample" href="inventario.php">
               <i class="bi bi-shop-window"></i>
               <span>Stock</span>
             </a>
@@ -146,7 +147,7 @@
         </ul>
         <ul>
           <li>
-            <a class="collapse" id="collapseExample" href="./ordenEntrada.html">
+            <a class="collapse" id="collapseExample" href="ordenEntrada.php">
               <i class="bi bi-box-arrow-in-right"></i>
               <span>Orden Entrada</span>
             </a>
@@ -154,7 +155,7 @@
         </ul>
         <ul>
           <li>
-            <a class="collapse" id="collapseExample" href="./ordenSalida.html">
+            <a class="collapse" id="collapseExample" href="ordenSalida.php">
               <i class="bi bi-box-arrow-in-left"></i>
               <span>Orden Salida</span>
             </a>
@@ -162,7 +163,7 @@
         </ul>
         <ul>
           <li>
-            <a class="collapse" id="collapseExample" href="./proveedores.html">
+            <a class="collapse" id="collapseExample" href="proveedores.php">
               <i class="bi bi-person-lines-fill"></i>
               <span>Proveedores</span>
             </a>
@@ -170,7 +171,7 @@
         </ul>
         <ul>
           <li>
-            <a class="collapse" id="collapseExample" href="./categorias.html">
+            <a class="collapse" id="collapseExample" href="categorias.php">
               <i class="bi bi-ui-radios"></i>
               <span>Categorias</span>
             </a>
@@ -178,7 +179,7 @@
         </ul>
         <ul>
           <li>
-            <a class="collapse" id="collapseExample" href="./productos.html">
+            <a class="collapse" id="collapseExample" href="productos.php">
               <i class="bi bi-bag-check-fill"></i>
               <span>Productos</span>
             </a>
@@ -190,13 +191,17 @@
 
   <main id="main" class="main">
     <div class="pagetitle">
-      <h1>Inventario</h1>
+      <h1>Categorias</h1>
+      <a  class="btn " href="nuevaCategoria.php">Agregar categoria</a>
+       
+
+      <!-- modal-->
       
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="./inicio.html">Inicio</a></li>
-          <li class="breadcrumb-item active">Inventario</li>
-          
+          <li class="breadcrumb-item"><a href="inicio.php">Inicio</a></li>
+          <li class="breadcrumb-item active">Categorias</li>
+
         </ol>
       </nav>
     </div>
@@ -218,139 +223,15 @@
                   <table class="table table-hover">
                     <thead>
                       <tr>
-                        <th scope="col">SKU</th>
-                        <th scope="col">Descripcion</th>
-                        <th scope="col">Categoria</th>
-                        <th scope="col">Stock</th>
-                        <th scope="col">Estado</th>
-                        <th scope="col">Proveedor</th>
-                        <th scope="col">Precio de venta</th>
-                        <th scope="col">Ganancia</th>
+                        <th scope="col"> #Categoria</th>
+                        <th scope="col">Nombre categoria</th>
+                        <th class="text-white" scope="col">E/B</th>
+                        <th class="text-white" scope="col">E/B</th>
                         
-
                       </tr>
                     </thead>
-                    <tbody>
-                      <tr>
-                        <th scope="row"><a href="#">#1234</a></th>
-                        <td><a href="" class="text-secondary">Almohada</a></td>
-                        <td><a class="text-secondary">01</a></td>
-                        <td><a class="text-secondary">5</a></td>
-                        <td><span class="badge bg-danger">Minimo</span></td>
-                        <td><a class="text-secondary">Slim</a></td>
-                        <td><a class="text-secondary">$54</a></td>
-                        <td><a class="text-secondary">5%</a></td>
+                    <tbody id="dataTable">
 
-
-
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#">#1234</a></th>
-                        <td><a href="" class="text-secondary">Almohada</a></td>
-                        <td><a class="text-secondary">01</a></td>
-                        <td><a class="text-secondary">67</a></td>
-                        <td><span class="badge bg-success">Bien</span></td>
-                        <td><a class="text-secondary">Slim</a></td>
-                        <td><a class="text-secondary">$54</a></td>
-                        <td><a class="text-secondary">5%</a></td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#">#1234</a></th>
-                        <td><a href="" class="text-secondary">Almohada</a></td>
-                        <td><a class="text-secondary">01</a></td>
-                        <td><a class="text-secondary">15</a></td>
-                        <td><span class="badge bg-warning">Alerta</span></td>
-                        <td><a class="text-secondary">Slim</a></td>
-                        <td><a class="text-secondary">$54</a></td>
-                        <td><a class="text-secondary">5%</a></td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#">#1234</a></th>
-                        <td><a href="" class="text-secondary">Almohada</a></td>
-                        <td><a class="text-secondary">01</a></td>
-                        <td><a class="text-secondary">67</a></td>
-                        <td></td>
-                        <td><a class="text-secondary">Slim</a></td>
-                        <td><a class="text-secondary">$54</a></td>
-                        <td><a class="text-secondary">5%</a></td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#">#1234</a></th>
-                        <td><a href="" class="text-secondary">Almohada</a></td>
-                        <td><a class="text-secondary">01</a></td>
-                        <td><a class="text-secondary">67</a></td>
-                        <td></td>
-                        <td><a class="text-secondary">Slim</a></td>
-                        <td><a class="text-secondary">$54</a></td>
-                        <td><a class="text-secondary">5%</a></td>
-                      </tr>
-                      <tr>
-                       <th scope="row"><a href="#">#1234</a></th>
-                        <td><a href="" class="text-secondary">Almohada</a></td>
-                        <td><a class="text-secondary">01</a></td>
-                        <td><a class="text-secondary">67</a></td>
-                        <td></td>
-                        <td><a class="text-secondary">Slim</a></td>
-                        <td><a class="text-secondary">$54</a></td>
-                        <td><a class="text-secondary">5%</a></td>
-                      </tr>
-                      <tr>
-                       <th scope="row"><a href="#">#1234</a></th>
-                        <td><a href="" class="text-secondary">Almohada</a></td>
-                        <td><a class="text-secondary">01</a></td>
-                        <td><a class="text-secondary">67</a></td>
-                        <td></td>
-                        <td><a class="text-secondary">Slim</a></td>
-                        <td><a class="text-secondary">$54</a></td>
-                        <td><a class="text-secondary">5%</a></td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#">#1234</a></th>
-                        <td><a href="" class="text-secondary">Almohada</a></td>
-                        <td><a class="text-secondary">01</a></td>
-                        <td><a class="text-secondary">67</a></td>
-                        <td></td>
-                        <td><a class="text-secondary">Slim</a></td>
-                        <td><a class="text-secondary">$54</a></td>
-                        <td><a class="text-secondary">5%</a></td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#">#1234</a></th>
-                        <td><a href="" class="text-secondary">Almohada</a></td>
-                        <td><a class="text-secondary">01</a></td>
-                        <td><a class="text-secondary">67</a></td>
-                        <td></td>
-                        <td><a class="text-secondary">Slim</a></td>
-                        <td><a class="text-secondary">$54</a></td>
-                        <td><a class="text-secondary">5%</a></td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#">#1234</a></th>
-                        <td><a href="" class="text-secondary">Almohada</a></td>
-                        <td><a class="text-secondary">01</a></td>
-                        <td><a class="text-secondary">67</a></td>
-                        <td></td>
-                        <td><a class="text-secondary">Slim</a></td>
-                        <td><a class="text-secondary">$54</a></td>
-                        <td><a class="text-secondary">5%</a></td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#">#1234</a></th>
-                        <td><a href="" class="text-secondary">Almohada</a></td>
-                        <td><a class="text-secondary">01</a></td>
-                        <td><a class="text-secondary">67</a></td>
-                        <td><a class="text-secondary">$54</a></td>
-                        <td><a class="text-secondary">5%</a></td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#">#1234</a></th>
-                        <td><a href="" class="text-secondary">Almohada</a></td>
-                        <td><a class="text-secondary">01</a></td>
-                        <td><a class="text-secondary">67</a></td>
-                        <td><a class="text-secondary">$54</a></td>
-                        <td><a class="text-secondary">5%</a></td>
-                      </tr>
-                      
                     </tbody>
                   </table>  
 
@@ -385,6 +266,7 @@
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/chart.js/chart.min.js"></script>
@@ -396,7 +278,149 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
-
+  <!-- Alertas SCRIPT -->
+  <script src="assets/js/alertas.js"></script>
 </body>
-
+<!--
+<?php
+    include "../main_profesor/Modal_profesor/edita_periodo.php";
+    include_once "./modal_alumno/subir_avatar.php";
+    include $path."includes_general/js.php";
+?>
+ -->
 </html>
+<!-- CONEXION CON EL BACKEND-->
+<script src="./assets/lib/jquery-3.6.1.min.js"></script>
+<script>
+  cargaCategorias();
+
+  function cargaCategorias(){
+    $.ajax({
+    method: "POST",
+    url: "./services/Ws_ListarCategorias.php",
+    dataType: "json",
+    success: function(result){
+      console.log(result)
+    },
+  })
+          .done(function( result ) {
+            let template = ``;
+            let i= 1;
+            result.forEach(cat=>{
+              template += `<tr>
+                            <th scope="row"><a href="#">#${i}</a></th>
+                            <td><a href="" class="text-secondary">${cat.nombre_categoria}</a></td>
+                            <td> 
+                            <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="editarCategoria(${cat.Id_categoria},'${cat.nombre_categoria}');">
+  <i class="bi bi-pencil-square"></i>
+</button>
+                                  <button type="button" class="btn btn-outline-danger" onclick="eliminaCategoria(${cat.Id_categoria})"><i class="bi bi-trash"></i></button>
+                                  </td>
+                                    <!-- Button trigger modal -->
+
+
+                          </tr>`;
+                          i++;
+            })
+            $("#dataTable").html(template);
+          });
+  }
+  
+</script>
+<script>
+  /*
+    Funcion edita categoria 
+  */
+  function editarCategoria(idCategoria,nombreCategoria){
+
+    document.getElementById('idCat').value=idCategoria;
+    document.getElementById('nombre_cat').value=nombreCategoria;
+  }
+  /*
+    Funcion elimina categoria 
+  */
+
+function eliminaCategoria(idCategoria){
+  $.ajax({
+    method: "POST",
+    url: "./services/Ws_DeleteCategoria.php",
+    dataType: "json",
+    data : {idCategoria : idCategoria},
+    success: function(result){
+      //console.log(result)
+    },
+    error: function(result){
+          //console.log(result);
+        }
+  })
+          .done(function( result ) {
+            //console.log(result);
+            cargaCategorias();
+          });
+  }
+</script>
+
+<script>
+
+/*
+Funcion actualizar categoria
+*/
+function updateCategoria(){
+  //Definimos las variables
+  var idCategoria = $("#idCat").val();
+  var nombreCategoria = $("#nombre_cat").val();
+  //Verificamos que los datos no esten vacios
+  if(idCategoria!="" && nombreCategoria !=""){
+    //Enviamos los datos
+    $.ajax({
+        method: "POST",
+        url: "./services/Ws_UpdateCategoria.php",
+        data : {
+                  idCategoria : idCategoria,
+                  nombreCategoria: nombreCategoria
+                },
+        dataType: "json",
+        success: function(result){
+          console.log(result)
+        },
+        error: function(result){
+          console.log(result);
+        }
+      })
+        .done(function( result ) {
+          alert("Se ha actualizado con exito");
+          cargaCategorias();
+           $("#exampleModal").modal("hide");
+        });
+  }
+  
+}
+
+</script>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form id="frm-edita-categoria">
+      <div class="modal-body">
+        <div class="mb-3">
+          <input type="hidden" class="form-control" id="idCat" name="idCat" placeholder=" ">
+        </div>
+        <div class="mb-3">
+          <label for="nombre_cat" class="form-label">Nombre Categoria</label>
+          <input type="text" class="form-control" id="nombre_cat" name="nombre_cat" placeholder="Categoria">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" onclick="updateCategoria();">Guardar Cambios</button>
+      </div>
+    </form>
+    </div>
+  </div>
+</div>
+<!-- CONEXION CON EL BACKEND-->

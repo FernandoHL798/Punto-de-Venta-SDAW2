@@ -1,20 +1,20 @@
 <?php
-
+include_once("./../control/controlUsuarios.php");
 class ControladorClientes
 {
     static public function validaCredenciales(){
-        return (isset($_SERVER['PHP_AUTH_USER']) && isset($_SERVER['PHP_AUTH_PW']));
+        return (self::consultaHeadersAuthEnDBLocal());
     }
 
-    static public function consultaEnDBLocal(){
+    static public function consultaHeadersAuthEnDBLocal(){
         //acceder a la carpeta DE CONTROL USUARIO
-        require_once "../../control/controlRegistros.php";
-        $username = isset($_SERVER['PHP_AUTH_USER']);
-        $pw = $_SERVER['PHP_AUTH_PW'];
-        return consultaUsuario($username, $pw);
+        $username = $_SERVER['PHP_AUTH_USER'];
+        $key = $_SERVER['PHP_AUTH_PW'];
+        return consultaUsuario($username, $key);
     }
 
-    public function registroClient($datos){
+    public function registroClient($datos)
+    {
         /*=============================================
           Validar email
           =============================================*/
@@ -30,43 +30,45 @@ class ControladorClientes
         }
 
         /*=============================================
-		BUSCAR EL CORREO EN LA BASE DE DATOS LOCAL, Y SI NO EXISTE
+		BUSCAR EL CORREO EN LA BASE DE DATOS LOCAL, Y SI NO EXISTE AGREGARLO
 		=============================================*/
-        $resultControlCorreo = false;
+        $resultControlCorreo = buscarEmailRegistrado($datos['email'],$datos['pw']);
 
         /*=============================================
                 ALGORITMO -> REVISAR QUE NO EXISTA ACTRUALMENTE, PARA AGREGARLO
         =============================================*/
-        if (!$resultControlCorreo){
-
-            /*=============================================
-            Generar credenciales del cliente
-            =============================================*/
-            $username= str_replace("$","c",crypt($datos["nombre"].$datos["role"].$datos["email"] ,'$2a$07$afartwetsdAD52356FEDGsfhsd$'));
-
-            $llave_secreta= str_replace("$","a",crypt($datos["email"].$datos["role"].$datos["nombre"] ,'$2a$07$afartwetsdAD52356FEDGsfhsd$'));
-
-            $datos = array("nombre"=>$datos["nombre"],
-                "role"=>$datos["role"],
-                "email"=>$datos["email"],
-                "username"=>$username,
-                "llave_secreta"=>$llave_secreta
+        if ($resultControlCorreo){
+            $json = $this->crearCredenciales($datos);
+            echo json_encode($json,true);
+        }
+        else{
+            $json=array(
+                "status"=>200,
+                "detalle"=> "No ha sido registrado en el sistema de Almacen, primero intente iniciar sesion en el sistema,".
+                    " este usuario es proporcionado por Dashboard, cree una cuenta en https://dashboard-app-sdaw-ii-ecsml.ondigitalocean.app/register",
+                "username"=>null,
+                "llave_secreta"=>null
             );
-            /*=============================================
-            Crear el usuario en la BD y regresar Credenciales
-            =============================================*/
-            $create= true;
-
-            if($create){
-                $json=array(
-                    "status"=>200,
-                    "detalle"=> "se genero sus credenciales",
-                    "username"=>$username,
-                    "llave_secreta"=>$llave_secreta
-                );
-                echo json_encode($json,true);
-            }
+            echo json_encode($json,true);
         }
 
+    }
+
+    static function crearCredenciales($datos) {
+        /*=============================================
+Generar credenciales del cliente
+=============================================*/
+        $username= str_replace("$","c",crypt($datos["nombre"].$datos["email"] ,'$2a$07$afartwetsdAD52356FEDGsfhsd$'));
+
+        $llave_secreta= str_replace("$","a",crypt($datos["email"].$datos["nombre"] ,'$2a$07$afartwetsdAD52356FEDGsfhsd$'));
+
+        //regresamos las credencialess
+        $json=array(
+            "status"=>200,
+            "detalle"=> "Estas son sus credenciales",
+            "username"=>$username,
+            "llave_secreta"=>$llave_secreta
+        );
+        return $json;
     }
 }
