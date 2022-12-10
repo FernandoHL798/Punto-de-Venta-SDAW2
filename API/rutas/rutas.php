@@ -1,7 +1,5 @@
 <?php
-define('RUTA', "2");
-define('PATH', "3");
-define('PARAMETRO', "4");
+include "ConfigAPI.php";
 //const PATH = 3;
 //const RUTA = 4;
 $arrayRutas = explode("/",$_SERVER["REQUEST_URI"]);

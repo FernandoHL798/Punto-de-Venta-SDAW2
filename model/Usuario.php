@@ -1,6 +1,6 @@
 <?php
-include "CONEXION.php";
-include "IUsuario.php";
+require_once "CONEXION.php";
+require_once "IUsuario.php";
 class Usuario extends CONEXION implements IUsuario
 {
     private $IdUsuario;

@@ -1,17 +1,6 @@
 <?php
-include_once("./../control/controlUsuarios.php");
 class ControladorClientes
 {
-    static public function validaCredenciales(){
-        return (self::consultaHeadersAuthEnDBLocal());
-    }
-
-    static public function consultaHeadersAuthEnDBLocal(){
-        //acceder a la carpeta DE CONTROL USUARIO
-        $username = $_SERVER['PHP_AUTH_USER'];
-        $key = $_SERVER['PHP_AUTH_PW'];
-        return consultaUsuario($username, $key);
-    }
 
     public function registroClient($datos)
     {
@@ -32,6 +21,7 @@ class ControladorClientes
         /*=============================================
 		BUSCAR EL CORREO EN LA BASE DE DATOS LOCAL, Y SI NO EXISTE AGREGARLO
 		=============================================*/
+        require_once "../control/controlUsuarios.php";
         $resultControlCorreo = buscarEmailRegistrado($datos['email'],$datos['pw']);
 
         /*=============================================
@@ -56,8 +46,8 @@ class ControladorClientes
 
     static function crearCredenciales($datos) {
         /*=============================================
-Generar credenciales del cliente
-=============================================*/
+        Generar credenciales del cliente
+        =============================================*/
         $username= str_replace("$","c",crypt($datos["nombre"].$datos["email"] ,'$2a$07$afartwetsdAD52356FEDGsfhsd$'));
 
         $llave_secreta= str_replace("$","a",crypt($datos["email"].$datos["nombre"] ,'$2a$07$afartwetsdAD52356FEDGsfhsd$'));
