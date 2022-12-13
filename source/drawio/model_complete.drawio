@@ -1,0 +1,128 @@
+<mxGraphModel dx="0" dy="0" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" background="none" math="0" shadow="0">
+  <root>
+    <mxCell id="0" />
+    <mxCell id="1" parent="0" />
+    <mxCell id="node10" parent="1" vertex="1" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;CONEXION&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt; pass: &lt;br/&gt; host: &lt;br/&gt; usuario: &lt;br/&gt; connection: &lt;br/&gt; db: &lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt; getDataSingleProp(sql, prop): &lt;br/&gt; close(): &lt;br/&gt; getData(sql): &lt;br/&gt; numRows(sql): &lt;br/&gt; getDataSingle(sql): &lt;br/&gt; getLastId(): &lt;br/&gt; connect(): &lt;br/&gt; executeInstruction(sql): &lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=14;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;">
+      <mxGeometry x="603" y="939" width="194" height="320" as="geometry" />
+    </mxCell>
+    <mxCell id="node8" parent="1" vertex="1" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Categoria&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt; idCategoria: &lt;br/&gt; nombreCategoria: &lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt; queryEliminaCategoria(): &lt;br/&gt; queryCrearCategoria(): &lt;br/&gt; getIdCategoria(): &lt;br/&gt; setNombreCategoria(nombreCategoria): &lt;br/&gt; setIdCategoria(idCategoria): &lt;br/&gt; queryEditarCategoria(): &lt;br/&gt; getNombreCategoria(): &lt;br/&gt; querylistaCategoria(): &lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=14;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;">
+      <mxGeometry x="399" y="510" width="251" height="254" as="geometry" />
+    </mxCell>
+    <mxCell id="node0" parent="1" vertex="1" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Entrada&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt; totalCompra: &lt;br/&gt; PRODUCTOS_REGISTRO: &lt;br/&gt; fecha: &lt;br/&gt; createdAt: &lt;br/&gt; PROVEEDOR: &lt;br/&gt; subTotalCompra: &lt;br/&gt; ivaTotal: &lt;br/&gt; idEntrada: &lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt; Listar(fechaIni, FechaFin): &lt;br/&gt; getTotalCompra(): &lt;br/&gt; getPRODUCTOSREGISTRO(): &lt;br/&gt; getSubTotalCompra(): &lt;br/&gt; setIdEntrada(idEntrada): &lt;br/&gt; setIvaTotal(ivaTotal): &lt;br/&gt; getIvaTotal(): &lt;br/&gt; getCreatedAt(): &lt;br/&gt; setPROVEEDOR(PROVEEDOR): &lt;br/&gt; ConsultaEntrada(): &lt;br/&gt; RegistraEntrada(): &lt;br/&gt; setFecha(fecha): &lt;br/&gt; setTotalCompra(totalCompra): &lt;br/&gt; setCreatedAt(createdAt): &lt;br/&gt; setSubTotalCompra(subTotalCompra): &lt;br/&gt; getFecha(): &lt;br/&gt; getPROVEEDOR(): &lt;br/&gt; setPRODUCTOSREGISTRO(PRODUCTOS_REGISTRO): &lt;br/&gt; getIdEntrada(): &lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=14;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;">
+      <mxGeometry x="710" y="250" width="325" height="628" as="geometry" />
+    </mxCell>
+    <mxCell id="node9" parent="1" vertex="1" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;ICategoria&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt; queryEliminaCategoria(): &lt;br/&gt; queryCrearCategoria(): &lt;br/&gt; queryEditarCategoria(): &lt;br/&gt; querylistaCategoria(): &lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=14;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;">
+      <mxGeometry x="280" y="977" width="167" height="130" as="geometry" />
+    </mxCell>
+    <mxCell id="node5" parent="1" vertex="1" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;IEntrada&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt; Listar(fechaIni, FechaFin): &lt;br/&gt; ConsultaEntrada(): &lt;br/&gt; RegistraEntrada(): &lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=14;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;">
+      <mxGeometry x="933" y="947" width="184" height="106" as="geometry" />
+    </mxCell>
+    <mxCell id="node1" parent="1" vertex="1" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;IProducto&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt; queryConsultaInfoProducto(): &lt;br/&gt; queryBuscaProducto(value): &lt;br/&gt; queryCrearProducto(): &lt;br/&gt; queryEditarCategoria(): &lt;br/&gt; queryEliminarProducto(): &lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=14;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;">
+      <mxGeometry x="1177" y="962" width="206" height="142" as="geometry" />
+    </mxCell>
+    <mxCell id="node4" parent="1" vertex="1" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;IProveedor&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt; queryListar(): &lt;br/&gt; queryCreaProveedor(): &lt;br/&gt; queryActualizarProveedor(): &lt;br/&gt; queryEliminaProveedor(): &lt;br/&gt; queryInfoProveedor(): &lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=14;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;">
+      <mxGeometry x="34" y="969" width="183" height="142" as="geometry" />
+    </mxCell>
+    <mxCell id="node11" parent="1" vertex="1" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;IRegistroProducto&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt; RegistraSalida(): &lt;br/&gt; RegistraEntrada(): &lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=14;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;">
+      <mxGeometry x="-74" y="572" width="152" height="82" as="geometry" />
+    </mxCell>
+    <mxCell id="node6" parent="1" vertex="1" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;ISalida&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt; Listar(fechaIni, FechaFin): &lt;br/&gt; ConsultaSalida(): &lt;br/&gt; RegistraSalida(): &lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=14;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;">
+      <mxGeometry x="1443" y="984" width="168" height="106" as="geometry" />
+    </mxCell>
+    <mxCell id="node12" parent="1" vertex="1" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;PoductoRegistro&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt; accion: &lt;br/&gt; precioFinal: &lt;br/&gt; cantidad: &lt;br/&gt; idRegistro: &lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt; getCantidad(): &lt;br/&gt; getIdRegistro(): &lt;br/&gt; setCantidad(cantidad): &lt;br/&gt; getAccion(): &lt;br/&gt; modificaStok(action): &lt;br/&gt; RegistraSalida(): &lt;br/&gt; RegistraEntrada(): &lt;br/&gt; setPrecioFinal(precioFinal): &lt;br/&gt; setAccion(accion): &lt;br/&gt; getPrecioFinal(): &lt;br/&gt; setIdRegistro(idRegistro): &lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=14;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;">
+      <mxGeometry x="442" y="-14" width="177" height="364" as="geometry" />
+    </mxCell>
+    <mxCell id="node7" parent="1" vertex="1" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Producto&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt; idCategoriaFK: &lt;br/&gt; stockMinimo: &lt;br/&gt; idProducto: &lt;br/&gt; stock: &lt;br/&gt; precioVenta: &lt;br/&gt; sku: &lt;br/&gt; nombreProducto: &lt;br/&gt; barCode: &lt;br/&gt; status: &lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt; setBarCode(barCode): &lt;br/&gt; getStockMinimo(): &lt;br/&gt; setIdCategoriaFK(idCategoriaFK): &lt;br/&gt; setPrecioVenta(precioVenta): &lt;br/&gt; getStock(): &lt;br/&gt; getIdCategoriaFK(): &lt;br/&gt; getStatus(): &lt;br/&gt; setStockMinimo(stockMinimo): &lt;br/&gt; queryBuscaProducto(value): &lt;br/&gt; setNombreProducto(nombreProducto): &lt;br/&gt; getNombreProducto(): &lt;br/&gt; queryCrearProducto(): &lt;br/&gt; getBarCode(): &lt;br/&gt; setStock(stock): &lt;br/&gt; queryEditarCategoria(): &lt;br/&gt; getIdProducto(): &lt;br/&gt; getSku(): &lt;br/&gt; setStatus(status): &lt;br/&gt; queryEliminarProducto(): &lt;br/&gt; setSku(sku): &lt;br/&gt; queryConsultaInfoProducto(): &lt;br/&gt; getPrecioVenta(): &lt;br/&gt; setIdProducto(idProducto): &lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=14;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;">
+      <mxGeometry x="1096" y="142" width="243" height="738" as="geometry" />
+    </mxCell>
+    <mxCell id="node3" parent="1" vertex="1" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Proveedor&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt; correo: &lt;br/&gt; direccion: &lt;br/&gt; Id_proveedor: &lt;br/&gt; razon_social: &lt;br/&gt; telefono: &lt;br/&gt; create_at: &lt;br/&gt; rfc: &lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt; queryListar(): &lt;br/&gt; queryCreaProveedor(): &lt;br/&gt; setDireccion(direccion): &lt;br/&gt; getTelefono(): &lt;br/&gt; getRfc(): &lt;br/&gt; setCorreo(correo): &lt;br/&gt; queryActualizarProveedor(): &lt;br/&gt; queryEliminaProveedor(): &lt;br/&gt; setTelefono(telefono): &lt;br/&gt; getDireccion(): &lt;br/&gt; queryInfoProveedor(): &lt;br/&gt; setCreateAt(create_at): &lt;br/&gt; getCreateAt(): &lt;br/&gt; getCorreo(): &lt;br/&gt; setRazonSocial(razon_social): &lt;br/&gt; getIdProveedor(): &lt;br/&gt; setRfc(rfc): &lt;br/&gt; setIdProveedor(Id_proveedor): &lt;br/&gt; getRazonSocial(): &lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=14;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;">
+      <mxGeometry x="139" y="302" width="199" height="606" as="geometry" />
+    </mxCell>
+    <mxCell id="node2" parent="1" vertex="1" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Salida&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt; totalCompra: &lt;br/&gt; PRODUCTOS_REGISTRO: &lt;br/&gt; createdAt: &lt;br/&gt; subTotalCompra: &lt;br/&gt; ivaTotal: &lt;br/&gt; idSalida: &lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt; Listar(fechaIni, FechaFin): &lt;br/&gt; ConsultaSalida(): &lt;br/&gt; RegistraSalida(): &lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=14;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;">
+      <mxGeometry x="1399" y="534" width="184" height="232" as="geometry" />
+    </mxCell>
+    <mxCell id="edge8" edge="1" value="" parent="1" source="node8" target="node10" style="html=1;rounded=1;edgeStyle=orthogonalEdgeStyle;dashed=0;startArrow=none;endArrow=block;endSize=12;strokeColor=#000082;exitX=1.000;exitY=0.500;exitDx=0;exitDy=0;entryX=0.500;entryY=0.000;entryDx=0;entryDy=0;">
+      <mxGeometry width="50" height="50" relative="1" as="geometry">
+        <Array as="points">
+          <mxPoint x="681" y="637" />
+          <mxPoint x="681" y="909" />
+          <mxPoint x="700" y="909" />
+        </Array>
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="edge3" edge="1" value="" parent="1" source="node8" target="node9" style="html=1;rounded=1;edgeStyle=orthogonalEdgeStyle;dashed=1;startArrow=none;endArrow=block;endSize=12;strokeColor=#008200;exitX=0.030;exitY=1.000;exitDx=0;exitDy=0;entryX=0.758;entryY=0.000;entryDx=0;entryDy=0;">
+      <mxGeometry width="50" height="50" relative="1" as="geometry">
+        <Array as="points" />
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="edge7" edge="1" value="" parent="1" source="node0" target="node10" style="html=1;rounded=1;edgeStyle=orthogonalEdgeStyle;dashed=0;startArrow=none;endArrow=block;endSize=12;strokeColor=#000082;exitX=0.000;exitY=0.500;exitDx=0;exitDy=0;entryX=0.500;entryY=0.000;entryDx=0;entryDy=0;">
+      <mxGeometry width="50" height="50" relative="1" as="geometry">
+        <Array as="points">
+          <mxPoint x="681" y="564" />
+          <mxPoint x="681" y="909" />
+          <mxPoint x="700" y="909" />
+        </Array>
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="edge10" edge="1" value="" parent="1" source="node0" target="node5" style="html=1;rounded=1;edgeStyle=orthogonalEdgeStyle;dashed=1;startArrow=none;endArrow=block;endSize=12;strokeColor=#008200;exitX=0.967;exitY=1.000;exitDx=0;exitDy=0;entryX=0.500;entryY=0.000;entryDx=0;entryDy=0;">
+      <mxGeometry width="50" height="50" relative="1" as="geometry">
+        <Array as="points" />
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="edge2" edge="1" value="" parent="1" source="node12" target="node11" style="html=1;rounded=1;edgeStyle=orthogonalEdgeStyle;dashed=1;startArrow=none;endArrow=block;endSize=12;strokeColor=#008200;exitX=0.000;exitY=0.500;exitDx=0;exitDy=0;entryX=0.500;entryY=0.001;entryDx=0;entryDy=0;">
+      <mxGeometry width="50" height="50" relative="1" as="geometry">
+        <Array as="points">
+          <mxPoint x="2" y="168" />
+        </Array>
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="edge9" edge="1" value="" parent="1" source="node12" target="node7" style="html=1;rounded=1;edgeStyle=orthogonalEdgeStyle;dashed=0;startArrow=none;endArrow=block;endSize=12;strokeColor=#000082;exitX=1.000;exitY=0.500;exitDx=0;exitDy=0;entryX=0.000;entryY=0.035;entryDx=0;entryDy=0;">
+      <mxGeometry width="50" height="50" relative="1" as="geometry">
+        <Array as="points" />
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="edge6" edge="1" value="" parent="1" source="node7" target="node10" style="html=1;rounded=1;edgeStyle=orthogonalEdgeStyle;dashed=0;startArrow=none;endArrow=block;endSize=12;strokeColor=#000082;exitX=0.500;exitY=1.000;exitDx=0;exitDy=0;entryX=0.500;entryY=0.000;entryDx=0;entryDy=0;">
+      <mxGeometry width="50" height="50" relative="1" as="geometry">
+        <Array as="points">
+          <mxPoint x="1217" y="909" />
+          <mxPoint x="700" y="909" />
+        </Array>
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="edge1" edge="1" value="" parent="1" source="node7" target="node1" style="html=1;rounded=1;edgeStyle=orthogonalEdgeStyle;dashed=1;startArrow=none;endArrow=block;endSize=12;strokeColor=#008200;exitX=0.758;exitY=1.000;exitDx=0;exitDy=0;entryX=0.500;entryY=0.000;entryDx=0;entryDy=0;">
+      <mxGeometry width="50" height="50" relative="1" as="geometry">
+        <Array as="points" />
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="edge11" edge="1" value="" parent="1" source="node3" target="node10" style="html=1;rounded=1;edgeStyle=orthogonalEdgeStyle;dashed=0;startArrow=none;endArrow=block;endSize=12;strokeColor=#000082;exitX=1.000;exitY=0.315;exitDx=0;exitDy=0;entryX=0.500;entryY=0.000;entryDx=0;entryDy=0;">
+      <mxGeometry width="50" height="50" relative="1" as="geometry">
+        <Array as="points">
+          <mxPoint x="681" y="493" />
+          <mxPoint x="681" y="909" />
+          <mxPoint x="700" y="909" />
+        </Array>
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="edge0" edge="1" value="" parent="1" source="node3" target="node4" style="html=1;rounded=1;edgeStyle=orthogonalEdgeStyle;dashed=1;startArrow=none;endArrow=block;endSize=12;strokeColor=#008200;exitX=0.038;exitY=1.000;exitDx=0;exitDy=0;entryX=0.613;entryY=0.000;entryDx=0;entryDy=0;">
+      <mxGeometry width="50" height="50" relative="1" as="geometry">
+        <Array as="points" />
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="edge4" edge="1" value="" parent="1" source="node2" target="node10" style="html=1;rounded=1;edgeStyle=orthogonalEdgeStyle;dashed=0;startArrow=none;endArrow=block;endSize=12;strokeColor=#000082;exitX=0.500;exitY=1.000;exitDx=0;exitDy=0;entryX=0.500;entryY=0.000;entryDx=0;entryDy=0;">
+      <mxGeometry width="50" height="50" relative="1" as="geometry">
+        <Array as="points">
+          <mxPoint x="1491" y="909" />
+          <mxPoint x="700" y="909" />
+        </Array>
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="edge5" edge="1" value="" parent="1" source="node2" target="node6" style="html=1;rounded=1;edgeStyle=orthogonalEdgeStyle;dashed=1;startArrow=none;endArrow=block;endSize=12;strokeColor=#008200;exitX=0.695;exitY=1.000;exitDx=0;exitDy=0;entryX=0.500;entryY=0.000;entryDx=0;entryDy=0;">
+      <mxGeometry width="50" height="50" relative="1" as="geometry">
+        <Array as="points">
+          <mxPoint x="1527" y="900" />
+          <mxPoint x="1527" y="900" />
+        </Array>
+      </mxGeometry>
+    </mxCell>
+  </root>
+</mxGraphModel>
