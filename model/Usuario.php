@@ -1,6 +1,6 @@
 <?php
-include "CONEXION.php";
-include "IUsuario.php";
+require_once "CONEXION.php";
+require_once "IUsuario.php";
 class Usuario extends CONEXION implements IUsuario
 {
     private $IdUsuario;
@@ -9,6 +9,9 @@ class Usuario extends CONEXION implements IUsuario
     private $Password;
     private $Role;
     private $Username;
+    private $Secret_key;
+    private $CreatedAt;
+    private $UpdatedAt;
 
     /**
      * @return mixed
@@ -25,9 +28,7 @@ class Usuario extends CONEXION implements IUsuario
     {
         $this->Username = $Username;
     }
-    private $Secret_key;
-    private $CreatedAt;
-    private $UpdatedAt;
+
 
     /**
      * @return mixed
@@ -166,7 +167,8 @@ class Usuario extends CONEXION implements IUsuario
         // TODO: Implement queryRegistrarUsuario() method.
 
         $query="INSERT INTO `usuario`(`nombre_usuario`, `email`, `password`, `role`, `username`, `secret_key`, `create_at`)
-        VALUES ('".$this->getNombreUsuario()."','".$this->getEmail()."', '".$this->getPassword()."', '".$this->getRole()."', '".$this->getUsername()."', '".$this->getSecretKey()."', 'current_timestamp()')";
+        VALUES ('".$this->getNombreUsuario()."','".$this->getEmail()."', '".$this->getPassword()."', '".
+            $this->getRole()."', '".$this->getUsername()."', '".$this->getSecretKey()."', 'current_timestamp()')";
         $this->connect();
         $result = $this->executeInstruction($query);
         $this->close();
@@ -183,7 +185,8 @@ class Usuario extends CONEXION implements IUsuario
     {
         // TODO: Implement queryBuscaCorreoDuplicado() method.
 
-        $query="SELECT email, COUNT(*) TotalRepetido FROM usuario WHERE email = '".$this->getEmail()."' GROUP BY email HAVING COUNT(*) > 1";
+        $query="SELECT 1 FROM usuario 
+                WHERE email = '".$this->getEmail()."' AND password = '".$this->getPassword()."' LIMIT 1";
         $this->connect();
         $result = $this->getData($query);
         $this->close();
@@ -197,10 +200,10 @@ class Usuario extends CONEXION implements IUsuario
      */
     public function queryUpdateUsuario()
     {
-        // TODO: Implement queryUpdateUsuario() method.
-
-        $query="UPDATE `usuario` SET `nombre_usuario`=".$this->getNombreUsuario().",`email`=".$this->getEmail().",`password`=".$this->getPassword().",`role`=".$this->getRole().",`username`=".$this->getUsername().",`secret_key`=".$this->getSecretKey().",`update_at`= CURRENT_TIMESTAMP 
-            WHERE id_usuario =".$this->getIdUsuario();
+        $query="UPDATE `usuario` SET `nombre_usuario`='".$this->getNombreUsuario()."',`email`='".$this->getEmail()."',
+        `password`='".$this->getPassword()."',`role`='".$this->getRole()."',`username`='".$this->getUsername()."',
+        `secret_key`='".$this->getSecretKey()."',`update_at`= CURRENT_TIMESTAMP 
+            WHERE email = '".$this->getEmail()."' ";
         $this->connect();
         $result = $this-> executeInstruction($query);
         $this->close();
@@ -213,15 +216,12 @@ class Usuario extends CONEXION implements IUsuario
      */
     public function queryConsultaUsuario()
     {
-
-        // TODO: Implement queryConsultaUsuario() method.
-
-        $query="SELECT `id_usuario`, `nombre_usuario`, `email`, `password`, `role`, `username`, `secret_key`, `create_at`, `update_at` FROM `usuario` WHERE username = '".$this->getUsername()."' and password = '".$this->getPassword();
+        $query="SELECT `id_usuario`, `nombre_usuario`, `email`, `password`, `role`, `username`, `secret_key`, 
+                    `create_at`, `update_at` FROM `usuario` WHERE username = '".$this->getUsername()."' 
+                    and secret_key = '".$this->getSecretKey()."'";
         $this->connect();
-        $result = $this-> executeInstruction($query);
+        $result = $this-> getData($query);
         $this->close();
         return $result;
-
-        /*SELECT `id_usuario`, `nombre_usuario`, `email`, `password`, `role`, `username`, `secret_key`, `create_at`, `update_at` FROM `usuario` WHERE username = 'emmanuel123' and password = 'lalalala'*/
     }
 }

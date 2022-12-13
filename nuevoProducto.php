@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Entradas</title>
+  <title>Nuevo Producto</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -139,7 +139,7 @@
         </a>
         <ul>
           <li>
-            <a class="collapse" id="collapseExample" href="./inventario.html">
+            <a class="collapse" id="collapseExample" href="inventario.php">
               <i class="bi bi-shop-window"></i>
               <span>Stock</span>
             </a>
@@ -147,7 +147,7 @@
         </ul>
         <ul>
           <li>
-            <a class="collapse" id="collapseExample" href="./ordenEntrada.html">
+            <a class="collapse" id="collapseExample" href="ordenEntrada.php">
               <i class="bi bi-box-arrow-in-right"></i>
               <span>Orden Entrada</span>
             </a>
@@ -155,7 +155,7 @@
         </ul>
         <ul>
           <li>
-            <a class="collapse" id="collapseExample" href="./ordenSalida.html">
+            <a class="collapse" id="collapseExample" href="ordenSalida.php">
               <i class="bi bi-box-arrow-in-left"></i>
               <span>Orden Salida</span>
             </a>
@@ -163,7 +163,7 @@
         </ul>
         <ul>
           <li>
-            <a class="collapse" id="collapseExample" href="./proveedores.html">
+            <a class="collapse" id="collapseExample" href="proveedores.php">
               <i class="bi bi-person-lines-fill"></i>
               <span>Proveedores</span>
             </a>
@@ -171,7 +171,7 @@
         </ul>
         <ul>
           <li>
-            <a class="collapse" id="collapseExample" href="./categorias.html">
+            <a class="collapse" id="collapseExample" href="categorias.php">
               <i class="bi bi-ui-radios"></i>
               <span>Categorias</span>
             </a>
@@ -179,7 +179,7 @@
         </ul>
         <ul>
           <li>
-            <a class="collapse" id="collapseExample" href="./productos.html">
+            <a class="collapse" id="collapseExample" href="productos.php">
               <i class="bi bi-bag-check-fill"></i>
               <span>Productos</span>
             </a>
@@ -191,17 +191,16 @@
 
   <main id="main" class="main">
     <div class="pagetitle">
-      <h1>Orden entrada</h1>
-      <a  class="btn " href="./nuevaOrden.html">Nueva Orden</a>
-       
+      <h1>Nuevo producto</h1>
 
-      <!-- modal-->
+      
       
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="inventario.html">Inicio</a></li>
-          <li class="breadcrumb-item active">Orden entrada</li>
-            
+          <li class="breadcrumb-item"><a href="inicio.php">Inicio</a></li>
+          <li class="breadcrumb-item active"><a href="productos.php">Productos</a></li>
+          <li class="breadcrumb-item active">Producto nuevo</li>
+
         </ol>
       </nav>
     </div>
@@ -216,38 +215,77 @@
             <!-- Formulario -->
             <div class="col-xxl-12 col-xl-12">
               <div class="card info-card customers-card">
-                <div class="filter">
-                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                    <li class="dropdown-header text-start">
-                      <h6>Filtrar</h6>
-                    </li>
-                    <li><a class="dropdown-item" href="#">Este mes</a></li>
-                    <li><a class="dropdown-item" href="#">Este año</a></li>
-                  </ul>
-                </div>
+
                 <div class="card-body">
-                  <h5 class="card-title">Ultimas entradas <span>| Entradas recientes.</span></h5>
+                  <h5 class="card-title">Producto <span>| Nuevo registro</span></h5>
 
-                  <table class="table table-hover">
-                    <thead>
-                      <tr>
-                        <th scope="col">#Ticket</th>
-                        <th scope="col">Fecha de compra</th>
-                        <th scope="col">Fecha de alta</th>
-                        <th scope="col">Total de compra</th>
-                      </tr>
-                    </thead>
-                    <tbody id="dataTable">
-                      
-                      
-                    </tbody>
-                  </table>  
+                  <div class="row mb-3">
+                      <label for="firstNombre" class="col-md-4 col-lg-3 col-form-label">Nombre</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input name="firstNombre" type="text" class="form-control" id="nombreProducto">
+                      </div>
+                  </div>
+                  <div class="row mb-3">
+                      <label for="lastName" class="col-md-4 col-lg-3 col-form-label">Stock </label>
+                      <div class="col-md-8 col-lg-9">
+                        <input name="lastName" type="text" class="form-control" id="stock">
+                      </div>
+                  </div>
+                  <div class="row mb-3">
+                      <label for="lastName" class="col-md-4 col-lg-3 col-form-label">Stock minimo</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input name="lastName" type="text" class="form-control" id="stockMinimo">
+                      </div>
+                  </div>
+                  <div class="row mb-3">
+                      <label for="idTicket" class="col-md-4 col-lg-3 col-form-label">SKU</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input name="idTicket" type="text" class="form-control" id="sku">
+                      </div>
+                  </div>
+                  <div class="row mb-3">
+                      <label for="barCode" class="col-md-4 col-lg-3 col-form-label">Bar Code</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input name="barCode" type="text" class="form-control" id="barCode">
+                      </div>
+                  </div>
+                  <div class="row mb-3">
+                      <label for="eMail" class="col-md-4 col-lg-3 col-form-label">Precio de venta</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input name="eMail" type="text" class="form-control" id="precioVenta">
+                      </div>
+                  </div>
 
+                  <div class="mb-3 row">
+                    <label for="" class="col-md-2 col-lg-3">Categoria</label>
+                    <div class="col-md-7 col-lg-7">
+                        <select id="id_categoria_fk" class="form-select" aria-label="Default select example">
+                            <option selected>Seleccione una categoria</option>
+                            
+                          </select>
+                    </div>
+                    <div class="col-md-2">
+                        
+                        <a  class="btn " href="nuevaCategoria.php">Nueva categoria</a>
+                      </div>
+                  </div>
+                  
+                  <div class="input-group mb-3">
+                    <input type="file" class="form-control" id="ruta_img">
+                    <label class="input-group-text" for="inputGroupFile02">Subir</label>
+                  </div>
+                  <div class="row mb-3">
+                    <div class="col">
+                      <button class="btn " onclick="guardarProducto()">Enviar</button>
+                    </div>
+                    <div class="col">
+                      <div id="alerta"></div>
+                    </div>
+                  </div>
                 </div>
               </div>
 
-            </div><!-- Fin de tabla -->
+            </div><!-- Fin del formulario -->
 
 
           </div>
@@ -288,20 +326,15 @@
   <script src="assets/js/main.js"></script>
 
 </body>
-<!--
-<?php
-    include "../main_profesor/Modal_profesor/edita_periodo.php";
-    include_once "./modal_alumno/subir_avatar.php";
-    include $path."includes_general/js.php";
-?>
- -->
+
 </html>
-<!-- CONEXION CON EL BACKEND-->
+
+<!--  Lista proveedores-->
 <script src="./assets/lib/jquery-3.6.1.min.js"></script>
 <script>
   $.ajax({
     method: "POST",
-    url: "./services/Ws_ListaEntrada.php",
+    url: "./services/Ws_ListarCategorias.php",
     dataType: "json",
     success: function(result){
       console.log(result)
@@ -310,15 +343,79 @@
           .done(function( result ) {
             let template = ``;
             result.forEach(cat=>{
-              template += `<tr>
-                            <th scope="row"><a href="#">#${cat.Id_compra}</a></th>
-                            <td><a href="" class="text-secondary">#${cat.fecha_orden}</a></td>
-                            <td><a class="text-secondary">#${cat.create_at}</a></td>
-                            <td><a class="text-secondary">#${cat.total_compra}</a></td>
-                          </tr>
-                      <tr>`;
+              template += `
+                           <option value="${cat.Id_categoria}">${cat.nombre_categoria}</option>`;
             })
-            $("#dataTable").html(template);
+            $("#id_categoria_fk").html(template);
           });
 </script>
 <!-- CONEXION CON EL BACKEND-->
+<!-- Guardar producto -->
+<script>
+
+  function guardarProducto() {
+
+
+
+    //Obtenemos los datos del fomilario por ID
+    var nombreProducto = $("#nombreProducto").val();
+    var stockMinimo = $("#stockMinimo").val();
+    var sku = $("#sku").val();
+    var stock = $("#precioVenta").val();
+    var precioVenta = $("#precioVenta").val();
+    var barCode = $("#barCode").val();
+    var id_categoria_fk = $("#id_categoria_fk").val();
+    //Validamos (En caso de ser necesario)
+    if (nombreProducto === "" || stockMinimo === "" || sku === "" || precioVenta === "" ){
+      //El campo de input esta vacio
+      alert("Debe llenar el campo")
+    }
+    else{
+      //Si escribio algo en el input
+
+      $.ajax({
+        method: "POST",
+        url: "./services/Ws_AddProducto.php",
+        data : {
+                  nombreProducto: nombreProducto,
+                  stockMinimo: stockMinimo,
+                  sku: sku,
+                  stock: stock,
+                  precioVenta: precioVenta,
+                  barCode: barCode,
+                  id_categoria_fk: id_categoria_fk
+                  
+
+                },
+        dataType: "json",
+        success: function(result){
+          console.log(result)
+          alert("Ok")
+        },
+        error: function(result){
+          console.log(result);
+          //solo si la categoria esta definida, se guardan los productos
+          alert("Error")
+        }
+      })
+        .done(function( result ) {
+          $("#nombreProducto").val("");
+          $("#stockMinimo").val("");
+          $("#sku").val("");
+          $("#precioVenta").val("");
+          $("#stock").val("");
+          $("#barCode").val("");
+          $("#id_categoria_fk").val("");
+
+             let template = `<div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>Excente!</strong> Se ha registrado un nuevo producto
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>`;
+          $("#alerta").html(template);
+        });
+
+    }
+  }
+</script>
+>>>>>>> 81735a296a1fbc76b67d3760de543643f99b7ddb:nuevoProducto.php
+<!-- Guardar producto -->

@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Proveedores</title>
+  <title>Entradas</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -140,7 +139,7 @@
         </a>
         <ul>
           <li>
-            <a class="collapse" id="collapseExample" href="./inventario.html">
+            <a class="collapse" id="collapseExample" href="inventario.php">
               <i class="bi bi-shop-window"></i>
               <span>Stock</span>
             </a>
@@ -148,7 +147,7 @@
         </ul>
         <ul>
           <li>
-            <a class="collapse" id="collapseExample" href="./ordenEntrada.html">
+            <a class="collapse" id="collapseExample" href="ordenEntrada.php">
               <i class="bi bi-box-arrow-in-right"></i>
               <span>Orden Entrada</span>
             </a>
@@ -156,7 +155,7 @@
         </ul>
         <ul>
           <li>
-            <a class="collapse" id="collapseExample" href="./ordenSalida.html">
+            <a class="collapse" id="collapseExample" href="ordenSalida.php">
               <i class="bi bi-box-arrow-in-left"></i>
               <span>Orden Salida</span>
             </a>
@@ -164,7 +163,7 @@
         </ul>
         <ul>
           <li>
-            <a class="collapse" id="collapseExample" href="./proveedores.html">
+            <a class="collapse" id="collapseExample" href="proveedores.php">
               <i class="bi bi-person-lines-fill"></i>
               <span>Proveedores</span>
             </a>
@@ -172,7 +171,7 @@
         </ul>
         <ul>
           <li>
-            <a class="collapse" id="collapseExample" href="./categorias.html">
+            <a class="collapse" id="collapseExample" href="categorias.php">
               <i class="bi bi-ui-radios"></i>
               <span>Categorias</span>
             </a>
@@ -180,7 +179,7 @@
         </ul>
         <ul>
           <li>
-            <a class="collapse" id="collapseExample" href="./productos.html">
+            <a class="collapse" id="collapseExample" href="productos.php">
               <i class="bi bi-bag-check-fill"></i>
               <span>Productos</span>
             </a>
@@ -189,19 +188,20 @@
       </li>
     </ul>
   </aside>
+
   <main id="main" class="main">
     <div class="pagetitle">
-      <h1>Proveedores</h1>
-      <a  class="btn " href="./nuevoproveedor.html">Agregar proveedor</a>
+      <h1>Orden entrada</h1>
+      <a  class="btn " href="nuevaOrden.php">Nueva Orden</a>
        
 
       <!-- modal-->
       
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="inventario.html">Inicio</a></li>
-          <li class="breadcrumb-item active">Proveedores</li>
-
+          <li class="breadcrumb-item"><a href="inicio.php">Inicio</a></li>
+          <li class="breadcrumb-item active">Orden entrada</li>
+            
         </ol>
       </nav>
     </div>
@@ -232,98 +232,14 @@
                   <table class="table table-hover">
                     <thead>
                       <tr>
-                        <th scope="col">Razon social</th>
-                        <th scope="col">Direccion</th>
-                        <th scope="col">Tel</th>
-                        <th scope="col">Correo</th>
-                        <th scope="col">RFC</th>
+                        <th scope="col">#Ticket</th>
+                        <th scope="col">Fecha de compra</th>
+                        <th scope="col">Fecha de alta</th>
+                        <th scope="col">Total de compra</th>
                       </tr>
                     </thead>
                     <tbody id="dataTable">
-                      <tr>
-                        <th scope="row"><a href="#">#1234</a></th>
-                        <td><a href="" class="text-secondary">Cuautitlan #3</a></td>
-                        <td><a class="text-secondary">15554221</a></td>
-                        <td><a class="text-secondary">mari@gmail.com</a></td>
-                        <td><a class="text-secondary">ASD1421</a></td>
-
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#">#1456</a></th>
-                        <td><a href="" class="text-secondary">Cuauti #4</a></td>
-                        <td><a class="text-secondary">1234567890</a></td>
-                        <td><a class="text-secondary">sdfghjkl@gmail.com</a></td>
-                        <td><a class="text-secondary">FGHJ1234</a></td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#">#1224</a></th>
-                        <td><a href="" class="text-secondary">Cuautitlan #6</a></td>
-                        <td><a class="text-secondary">15554221</a></td>
-                        <td><a class="text-secondary">mariAS@gmail.com</a></td>
-                        <td><a class="text-secondary">ASD1431</a></td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#">#5678</a></th>
-                        <td><a href="" class="text-secondary">Cuautitlan #6</a></td>
-                        <td><a class="text-secondary">15556789</a></td>
-                        <td><a class="text-secondary">mar@gmail.com</a></td>
-                        <td><a class="text-secondary">ART1421</a></td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#">#12342</a></th>
-                        <td><a href="" class="text-secondary">Cuautitlan #35</a></td>
-                        <td><a class="text-secondary">155542221</a></td>
-                        <td><a class="text-secondary">mar3i@gmail.com</a></td>
-                        <td><a class="text-secondary">ASD14213</a></td>
-                      </tr>
-                      <tr>
-                      <th scope="row"><a href="#">#3456</a></th>
-                        <td><a href="" class="text-secondary">Cuautitlan #3</a></td>
-                        <td><a class="text-secondary">155542212</a></td>
-                        <td><a class="text-secondary">marQi@gmail.com</a></td>
-                        <td><a class="text-secondary">ASD7721</a></td>
-                      </tr>
-                      <tr>
-                       <th scope="row"><a href="#">#5674</a></th>
-                        <td><a href="" class="text-secondary">1234</a></td>
-                        <td><a class="text-secondary">11/09/2022</a></td>
-                        <td><a class="text-secondary">02:25 pm</a></td>
-                        <td><a class="text-secondary">$3,500</a></td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#">#2457</a></th>
-                        <td><a href="" class="text-secondary">1232</a></td>
-                        <td><a class="text-secondary">11/09/2022</a></td>
-                        <td><a class="text-secondary">02:25 pm</a></td>
-                        <td><a class="text-secondary">$3,500</a></td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#">#3457</a></th>
-                        <td><a href="" class="text-secondary">1278</a></td>
-                        <td><a class="text-secondary">11/09/2022</a></td>
-                        <td><a class="text-secondary">02:25 pm</a></td><td><a class="text-secondary">$3,500</a></td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#">#6457</a></th>
-                        <td><a href="" class="text-secondary">5532</a></td>
-                        <td><a class="text-secondary">11/09/2022</a></td>
-                        <td><a class="text-secondary">02:25 pm</a></td>
-                        <td><a class="text-secondary">$3,500</a></td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#">#8457</a></th>
-                        <td><a href="" class="text-secondary">6132</a></td>
-                        <td><a class="text-secondary">11/09/2022</a></td>
-                        <td><a class="text-secondary">02:25 pm</a></td>
-                        <td><a class="text-secondary">$3,500</a></td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#">#2487</a></th>
-                        <td><a href="" class="text-secondary">1932</a></td>
-                        <td><a class="text-secondary">11/09/2022</a></td>
-                        <td><a class="text-secondary">02:25 pm</a></td>
-                        <td><a class="text-secondary">$3,500</a></td>
-                      </tr>
+                      
                       
                     </tbody>
                   </table>  
@@ -331,7 +247,7 @@
                 </div>
               </div>
 
-            </div><!-- Fin del formulario -->
+            </div><!-- Fin de tabla -->
 
 
           </div>
@@ -385,7 +301,7 @@
 <script>
   $.ajax({
     method: "POST",
-    url: "./services/Ws_ListaProveedores.php",
+    url: "./services/Ws_ListaEntrada.php",
     dataType: "json",
     success: function(result){
       console.log(result)
@@ -395,12 +311,12 @@
             let template = ``;
             result.forEach(cat=>{
               template += `<tr>
-                        <th scope="col"><a href="#">${cat.razon_social}</a></th>
-                        <td><a href="" class="text-secondary">${cat.direccion}</a></td>
-                        <td><a class="text-secondary">${cat.telefono}</a></td>
-                        <td><a class="text-secondary">${cat.correo}</a></td>
-                        <td><a class="text-secondary">${cat.rfc}</a></td>
-                      </tr>`;
+                            <th scope="row"><a href="#">#${cat.Id_compra}</a></th>
+                            <td><a href="" class="text-secondary">#${cat.fecha_orden}</a></td>
+                            <td><a class="text-secondary">#${cat.create_at}</a></td>
+                            <td><a class="text-secondary">#${cat.total_compra}</a></td>
+                          </tr>
+                      <tr>`;
             })
             $("#dataTable").html(template);
           });

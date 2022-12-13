@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Productos</title>
+  <title>Categorias</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -139,7 +139,7 @@
         </a>
         <ul>
           <li>
-            <a class="collapse" id="collapseExample" href="./inventario.html">
+            <a class="collapse" id="collapseExample" href="inventario.php">
               <i class="bi bi-shop-window"></i>
               <span>Stock</span>
             </a>
@@ -147,7 +147,7 @@
         </ul>
         <ul>
           <li>
-            <a class="collapse" id="collapseExample" href="./ordenEntrada.html">
+            <a class="collapse" id="collapseExample" href="ordenEntrada.php">
               <i class="bi bi-box-arrow-in-right"></i>
               <span>Orden Entrada</span>
             </a>
@@ -155,7 +155,7 @@
         </ul>
         <ul>
           <li>
-            <a class="collapse" id="collapseExample" href="./ordenSalida.html">
+            <a class="collapse" id="collapseExample" href="ordenSalida.php">
               <i class="bi bi-box-arrow-in-left"></i>
               <span>Orden Salida</span>
             </a>
@@ -163,7 +163,7 @@
         </ul>
         <ul>
           <li>
-            <a class="collapse" id="collapseExample" href="./proveedores.html">
+            <a class="collapse" id="collapseExample" href="proveedores.php">
               <i class="bi bi-person-lines-fill"></i>
               <span>Proveedores</span>
             </a>
@@ -171,7 +171,7 @@
         </ul>
         <ul>
           <li>
-            <a class="collapse" id="collapseExample" href="./categorias.html">
+            <a class="collapse" id="collapseExample" href="categorias.php">
               <i class="bi bi-ui-radios"></i>
               <span>Categorias</span>
             </a>
@@ -179,7 +179,7 @@
         </ul>
         <ul>
           <li>
-            <a class="collapse" id="collapseExample" href="./productos.html">
+            <a class="collapse" id="collapseExample" href="productos.php">
               <i class="bi bi-bag-check-fill"></i>
               <span>Productos</span>
             </a>
@@ -191,16 +191,16 @@
 
   <main id="main" class="main">
     <div class="pagetitle">
-      <h1>Catalogo productos</h1>
-      <a  class="btn " href="./nuevoProducto.html">Nuevo producto</a>
+      <h1>Categorias</h1>
+      <a  class="btn " href="nuevaCategoria.php">Agregar categoria</a>
        
 
       <!-- modal-->
       
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="inventario.html">Inicio</a></li>
-          <li class="breadcrumb-item active">Productos</li>
+          <li class="breadcrumb-item"><a href="inicio.php">Inicio</a></li>
+          <li class="breadcrumb-item active">Categorias</li>
 
         </ol>
       </nav>
@@ -213,51 +213,38 @@
         <div class="col-lg-12">
           <div class="row">
 
-            <!-- Catalogo productos -->
+            <!-- Formulario -->
             <div class="col-xxl-12 col-xl-12">
               <div class="card info-card customers-card">
-                <div class="filter">
-                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                    <li class="dropdown-header text-start">
-                      <h6>Filtrar</h6>
-                    </li>
-                    <li><a class="dropdown-item" href="#">Este mes</a></li>
-                    <li><a class="dropdown-item" href="#">Este año</a></li>
-                  </ul>
-                </div>
+                
                 <div class="card-body">
                   <h5 class="card-title">Ultimas entradas <span>| Entradas recientes.</span></h5>
 
                   <table class="table table-hover">
                     <thead>
                       <tr>
-                        <th scope="col">#Ticket</th>
-                        <th scope="col">Fecha de compra</th>
-                        <th scope="col">Fecha de alta</th>
-                        <th scope="col">Total de compra</th>
+                        <th scope="col"> #Categoria</th>
+                        <th scope="col">Nombre categoria</th>
                         <th class="text-white" scope="col">E/B</th>
                         <th class="text-white" scope="col">E/B</th>
+                        
                       </tr>
                     </thead>
                     <tbody id="dataTable">
-                      
-                      
+
                     </tbody>
                   </table>  
 
                 </div>
               </div>
 
-            </div
-
-            <!-- Fin catalogo -->
+            </div><!-- Fin del formulario -->
 
 
           </div>
         </div><!-- End Left side columns -->
 
-        
+        <!-- Ajustar el tamaño de la barra de otra información -->
         
         </div><!-- End Right side columns -->
 
@@ -279,6 +266,7 @@
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/chart.js/chart.min.js"></script>
@@ -290,7 +278,8 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
-
+  <!-- Alertas SCRIPT -->
+  <script src="assets/js/alertas.js"></script>
 </body>
 <!--
 <?php
@@ -303,28 +292,135 @@
 <!-- CONEXION CON EL BACKEND-->
 <script src="./assets/lib/jquery-3.6.1.min.js"></script>
 <script>
-  $.ajax({
+  cargaCategorias();
+
+  function cargaCategorias(){
+    $.ajax({
     method: "POST",
-    url: "./services/Ws_ListaEntrada.php",
+    url: "./services/Ws_ListarCategorias.php",
     dataType: "json",
     success: function(result){
       console.log(result)
-    }
+    },
   })
           .done(function( result ) {
             let template = ``;
+            let i= 1;
             result.forEach(cat=>{
               template += `<tr>
-                            <td><a class="text-dark" href="#">${cat.id_compra}</a></th>
-                            <td><a href="" class="text-secondary">${cat.fecha_orden}</a></td>
-                            <td><a class="text-secondary">${cat.create_at}</a></td>
-                            <td><a class="text-secondary">${cat.total_compra}</a></td>
-                            <td><a class="text-dark" href="./nuevoProducto.html"><i class="bi bi-pencil-square"></i></td>
-                            <td><a class="text-dark" href="./nuevoProducto.html"><i class="bi bi-trash"></i></td>
-                          </tr>
-                      <tr>`;
+                            <th scope="row"><a href="#">#${i}</a></th>
+                            <td><a href="" class="text-secondary">${cat.nombre_categoria}</a></td>
+                            <td> 
+                            <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="editarCategoria(${cat.Id_categoria},'${cat.nombre_categoria}');">
+  <i class="bi bi-pencil-square"></i>
+</button>
+                                  <button type="button" class="btn btn-outline-danger" onclick="eliminaCategoria(${cat.Id_categoria})"><i class="bi bi-trash"></i></button>
+                                  </td>
+                                    <!-- Button trigger modal -->
+
+
+                          </tr>`;
+                          i++;
             })
             $("#dataTable").html(template);
           });
+  }
+  
 </script>
+<script>
+  /*
+    Funcion edita categoria 
+  */
+  function editarCategoria(idCategoria,nombreCategoria){
+
+    document.getElementById('idCat').value=idCategoria;
+    document.getElementById('nombre_cat').value=nombreCategoria;
+  }
+  /*
+    Funcion elimina categoria 
+  */
+
+function eliminaCategoria(idCategoria){
+  $.ajax({
+    method: "POST",
+    url: "./services/Ws_DeleteCategoria.php",
+    dataType: "json",
+    data : {idCategoria : idCategoria},
+    success: function(result){
+      //console.log(result)
+    },
+    error: function(result){
+          //console.log(result);
+        }
+  })
+          .done(function( result ) {
+            //console.log(result);
+            cargaCategorias();
+          });
+  }
+</script>
+
+<script>
+
+/*
+Funcion actualizar categoria
+*/
+function updateCategoria(){
+  //Definimos las variables
+  var idCategoria = $("#idCat").val();
+  var nombreCategoria = $("#nombre_cat").val();
+  //Verificamos que los datos no esten vacios
+  if(idCategoria!="" && nombreCategoria !=""){
+    //Enviamos los datos
+    $.ajax({
+        method: "POST",
+        url: "./services/Ws_UpdateCategoria.php",
+        data : {
+                  idCategoria : idCategoria,
+                  nombreCategoria: nombreCategoria
+                },
+        dataType: "json",
+        success: function(result){
+          console.log(result)
+        },
+        error: function(result){
+          console.log(result);
+        }
+      })
+        .done(function( result ) {
+          alert("Se ha actualizado con exito");
+          cargaCategorias();
+           $("#exampleModal").modal("hide");
+        });
+  }
+  
+}
+
+</script>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form id="frm-edita-categoria">
+      <div class="modal-body">
+        <div class="mb-3">
+          <input type="hidden" class="form-control" id="idCat" name="idCat" placeholder=" ">
+        </div>
+        <div class="mb-3">
+          <label for="nombre_cat" class="form-label">Nombre Categoria</label>
+          <input type="text" class="form-control" id="nombre_cat" name="nombre_cat" placeholder="Categoria">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary" onclick="updateCategoria();">Guardar Cambios</button>
+      </div>
+    </form>
+    </div>
+  </div>
+</div>
 <!-- CONEXION CON EL BACKEND-->

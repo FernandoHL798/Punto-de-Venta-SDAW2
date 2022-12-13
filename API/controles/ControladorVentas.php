@@ -21,7 +21,7 @@ class ControladorVentas
             $json = array(
                 "data"=>null,
                 "status"=>400,
-                "info"=>"Tokens No validos"
+                "info"=>"Tokens No validos para realizar salida de mercancia"
             );
         }
         echo json_encode($json,true);
@@ -49,11 +49,8 @@ class ControladorVentas
      * @return Regresa true si el usuario esta aunteticado y este aparece en la BD para registrar la salida de mercancia
      */
     private function AuthVentas(){
-        if (!ControladorClientes::validaCredenciales()){
-            return false;
-        }
-        // return ControladorClientes::consultaEnDBLocal();
-        return true;
+        include_once "ControlAuth.php";
+        return ControlAuth::validaCredenciales();
     }
 
 }

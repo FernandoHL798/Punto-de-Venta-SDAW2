@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +8,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Salidas</title>
+  <title>Inicio</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -42,27 +45,23 @@
       <i class="bi bi-list toggle-sidebar-btn"></i>
     </div>
 
-
     
 
     <nav class="header-nav ms-auto">
       <ul class="d-flex align-items-center">
-
-        
-
-      <!-- La configuración de usuario está aquí xd -->
+      <!-- La configuración de usuario está aquí  -->
       <!-- Esta es la foto de perfil si es que lleva (Referenciada) -->
         <li class="nav-item dropdown pe-3">
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-            <img src="assets/img/pp.jpg" alt="Profile" class="rounded-circle">
+            <img src="<?php echo $_SESSION['avatar'] ?>" alt="Profile" class="rounded-circle">
             <span class="d-none d-md-block dropdown-toggle ps-2">Administrador</span>
           </a>
         <!-- Aquí va la info del dropdown-->
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
             <li class="dropdown-header">
               <h6>Administrador</h6>
-              <span>Nombre</span>
+              <span><?php echo $_SESSION['name'] ?></span>
             </li>
         <!-- Aquí vans las configs y otras cosas del perfil-->    
             <li>
@@ -99,7 +98,7 @@
             </li>
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="#">
+              <a class="dropdown-item d-flex align-items-center" href="./log-out.php">
                 <i class="bi bi-box-arrow-right"></i>
                 <span>Salir</span>
               </a>
@@ -111,7 +110,7 @@
   </header>
 
   <!-- ======= Barra lateral ======= -->
-<aside id="sidebar" class="sidebar">
+  <aside id="sidebar" class="sidebar">
 
     <ul class="sidebar-nav" id="sidebar-nav">
       <li class="nav-item">
@@ -139,7 +138,7 @@
         </a>
         <ul>
           <li>
-            <a class="collapse" id="collapseExample" href="./inventario.html">
+            <a class="collapse" id="collapseExample" href="inventario.php">
               <i class="bi bi-shop-window"></i>
               <span>Stock</span>
             </a>
@@ -147,7 +146,7 @@
         </ul>
         <ul>
           <li>
-            <a class="collapse" id="collapseExample" href="./ordenEntrada.html">
+            <a class="collapse" id="collapseExample" href="ordenEntrada.php">
               <i class="bi bi-box-arrow-in-right"></i>
               <span>Orden Entrada</span>
             </a>
@@ -155,7 +154,7 @@
         </ul>
         <ul>
           <li>
-            <a class="collapse" id="collapseExample" href="./ordenSalida.html">
+            <a class="collapse" id="collapseExample" href="ordenSalida.php">
               <i class="bi bi-box-arrow-in-left"></i>
               <span>Orden Salida</span>
             </a>
@@ -163,7 +162,7 @@
         </ul>
         <ul>
           <li>
-            <a class="collapse" id="collapseExample" href="./proveedores.html">
+            <a class="collapse" id="collapseExample" href="proveedores.php">
               <i class="bi bi-person-lines-fill"></i>
               <span>Proveedores</span>
             </a>
@@ -171,7 +170,7 @@
         </ul>
         <ul>
           <li>
-            <a class="collapse" id="collapseExample" href="./categorias.html">
+            <a class="collapse" id="collapseExample" href="categorias.php">
               <i class="bi bi-ui-radios"></i>
               <span>Categorias</span>
             </a>
@@ -179,7 +178,7 @@
         </ul>
         <ul>
           <li>
-            <a class="collapse" id="collapseExample" href="./productos.html">
+            <a class="collapse" id="collapseExample" href="productos.php">
               <i class="bi bi-bag-check-fill"></i>
               <span>Productos</span>
             </a>
@@ -188,22 +187,10 @@
       </li>
     </ul>
   </aside>
-
+<!-- fin sidebar -->
   <main id="main" class="main">
-    <div class="pagetitle">
-      <h1>Orden salida</h1>
-    
-       
-
-
-      
-      <nav>
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="inventario.html">Inicio</a></li>
-          <li class="breadcrumb-item active">Orden salida</li>
-
-        </ol>
-      </nav>
+    <div class="pagetitle" style="text-align: center;">
+      <h1>Inventario</h1>
     </div>
 
     <section class="section dashboard">
@@ -214,104 +201,75 @@
           <div class="row">
 
             <!-- Formulario -->
-            <div class="col-xxl-12 col-xl-12">
-              <div class="card info-card customers-card">
-                <div class="filter">
-                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                    <li class="dropdown-header text-start">
-                      <h6>Filtrar</h6>
-                    </li>
-                    <li><a class="dropdown-item" href="#">Este mes</a></li>
-                    <li><a class="dropdown-item" href="#">Este año</a></li>
-                  </ul>
-                </div>
-                <div class="card-body">
-                  <h5 class="card-title">Ultimas salidas <span>| Salidas recientes.</span></h5>
-
-                  <table class="table table-hover">
-                    <thead>
-                      <tr>
-                        <th scope="col">#Ticket</th>
-                        <th scope="col">Fecha salida</th>
-                        <th scope="col">Fecha alta</th>
-                        
-                      </tr>
-                    </thead>
-                    <tbody id="dataTable">
-                      <tr>
-                        <th scope="row"><a href="#">#1234</a></th>
-                        <td><a class="text-secondary">11/09/2022</a></td>
-                        <td><a class="text-secondary">11/09/2022</a></td>
-
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#">#1234</a></th>
-                        <td><a class="text-secondary">11/09/2022</a></td>
-                        <td><a class="text-secondary">11/09/2022</a></td>
-
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#">#1234</a></th>
-                        <td><a class="text-secondary">11/09/2022</a></td>
-                        <td><a class="text-secondary">11/09/2022</a></td>
-
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#">#1234</a></th>
-                        <td><a class="text-secondary">11/09/2022</a></td>
-                        <td><a class="text-secondary">11/09/2022</a></td>
-
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#">#1234</a></th>
-                        <td><a class="text-secondary">11/09/2022</a></td>
-                        <td><a class="text-secondary">11/09/2022</a></td>
-                        
-
-                      </tr>
-                      <tr>
-                       <th scope="row"><a href="#">#1234</a></th>
-                        <td><a class="text-secondary">11/09/2022</a></td>
-                        <td><a class="text-secondary">11/09/2022</a></td>
-
-                      </tr>
-                      <tr>
-                       <th scope="row"><a href="#">#1234</a></th>
-                        <td><a class="text-secondary">11/09/2022</a></td>
-                        <td><a class="text-secondary">11/09/2022</a></td>
-
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#">#1234</a></th>
-                        <td><a class="text-secondary">11/09/2022</a></td>
-                        <td><a class="text-secondary">11/09/2022</a></td>
-
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#">#1234</a></th>
-                        <td><a class="text-secondary">11/09/2022</a></td>
-                        <td><a class="text-secondary">11/09/2022</a></td>
-
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#">#1234</a></th>
-                        <td><a class="text-secondary">11/09/2022</a></td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#">#1234</a></th>
-                        <td><a class="text-secondary">11/09/2022</a></td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#">#1234</a></th>
-                        <td><a class="text-secondary">11/09/2022</a></td>
-                      </tr>
-                      
-                    </tbody>
-                  </table>  
-
-                </div>
-              </div>
+            <div class="col">
+              <div class="row">
+                    <div class="col-xxl-12 col-xl-12">
+                      <div class="row">
+                        <div class="col-md-4 col-lg-4">
+                          <div class="card" style="text-align: center;">
+                            <div class="card-header" style="color: #012970">
+                              <h5 >Productos</h5>
+                            </div>
+                            <a href="productos.php"><img src="assets/img/bag-check-fill.svg" class="rounded mx-auto d-block" alt="..." style="width: 10rem;"></a>
+                            <div class="card-body">   
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-4 col-lg-4">
+                          <div class="card" style="text-align: center;">
+                            <div class="card-header" style="color: #012970">
+                              <h5 >Entradas</h5>
+                            </div>
+                            <a href="ordenEntrada.php"><img src="assets/img/box-arrow-in-right.svg" class="rounded mx-auto d-block" alt="..." style="width: 10rem;"></a>
+                            <div class="card-body">   
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-4 col-lg-4">
+                          <div class="card" style="text-align: center;">
+                            <div class="card-header" style="color: #012970">
+                              <h5 >Salidas</h5>
+                            </div>
+                            <a href="ordenSalida.php"><img src="assets/img/box-arrow-in-left.svg" class="rounded mx-auto d-block" alt="..." style="width: 10rem;"></a>
+                            <div class="card-body">   
+                            </div>
+                          </div>
+                        </div> 
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <div class="col-md-4 col-lg-4">
+                          <div class="card" style="text-align: center;">
+                            <div class="card-header" style="color: #012970">
+                              <h5 >Proveedores</h5>
+                            </div>
+                            <a href="proveedores.php"><img src="assets/img/person-lines-fill.svg" class="rounded mx-auto d-block" alt="..." style="width: 10rem;"></a>
+                            <div class="card-body">   
+                            </div>
+                          </div>
+                    </div> 
+                    <div class="col-md-4 col-lg-4">
+                          <div class="card" style="text-align: center;">
+                            <div class="card-header" style="color: #012970">
+                              <h5 >Categorias</h5>
+                            </div>
+                            <a href="categorias.php"><img src="assets/img/ui-radios.svg" class="rounded mx-auto d-block" alt="..." style="width: 10rem;"></a>
+                            <div class="card-body">   
+                            </div>
+                          </div>
+                    </div>
+                    <div class="col-md-4 col-lg-4">
+                          <div class="card" style="text-align: center;">
+                            <div class="card-header" style="color: #012970">
+                              <h5 >Productos</h5>
+                            </div>
+                            <img src="assets/img/bag-check-fill.svg" class="rounded mx-auto d-block" alt="..." style="width: 10rem;">
+                            <div class="card-body">   
+                            </div>
+                          </div>
+                    </div>
+                  </div>
 
             </div><!-- Fin del formulario -->
 
@@ -354,11 +312,5 @@
   <script src="assets/js/main.js"></script>
 
 </body>
-<!--
-<?php
-    include "../main_profesor/Modal_profesor/edita_periodo.php";
-    include_once "./modal_alumno/subir_avatar.php";
-    include $path."includes_general/js.php";
-?>
- -->
+
 </html>

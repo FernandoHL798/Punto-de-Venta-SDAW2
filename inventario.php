@@ -138,7 +138,7 @@
         </a>
         <ul>
           <li>
-            <a class="collapse" id="collapseExample" href="./inventario.html">
+            <a class="collapse" id="collapseExample" href="inventario.php">
               <i class="bi bi-shop-window"></i>
               <span>Stock</span>
             </a>
@@ -146,7 +146,7 @@
         </ul>
         <ul>
           <li>
-            <a class="collapse" id="collapseExample" href="./ordenEntrada.html">
+            <a class="collapse" id="collapseExample" href="ordenEntrada.php">
               <i class="bi bi-box-arrow-in-right"></i>
               <span>Orden Entrada</span>
             </a>
@@ -154,7 +154,7 @@
         </ul>
         <ul>
           <li>
-            <a class="collapse" id="collapseExample" href="./ordenSalida.html">
+            <a class="collapse" id="collapseExample" href="ordenSalida.php">
               <i class="bi bi-box-arrow-in-left"></i>
               <span>Orden Salida</span>
             </a>
@@ -162,7 +162,7 @@
         </ul>
         <ul>
           <li>
-            <a class="collapse" id="collapseExample" href="./proveedores.html">
+            <a class="collapse" id="collapseExample" href="proveedores.php">
               <i class="bi bi-person-lines-fill"></i>
               <span>Proveedores</span>
             </a>
@@ -170,7 +170,7 @@
         </ul>
         <ul>
           <li>
-            <a class="collapse" id="collapseExample" href="./categorias.html">
+            <a class="collapse" id="collapseExample" href="categorias.php">
               <i class="bi bi-ui-radios"></i>
               <span>Categorias</span>
             </a>
@@ -178,7 +178,7 @@
         </ul>
         <ul>
           <li>
-            <a class="collapse" id="collapseExample" href="./productos.html">
+            <a class="collapse" id="collapseExample" href="productos.php">
               <i class="bi bi-bag-check-fill"></i>
               <span>Productos</span>
             </a>
@@ -194,7 +194,7 @@
       
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="./inventario.html">Inicio</a></li>
+          <li class="breadcrumb-item"><a href="inicio.php">Inicio</a></li>
           <li class="breadcrumb-item active">Inventario</li>
           
         </ol>

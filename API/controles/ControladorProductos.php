@@ -2,20 +2,6 @@
 
 class ControladorProductos
 {
-    /*===========================================================================================================
-    * VALIDANDO LAS CREDENCIALES DEL CLIENTE
-    =========================================================================================================== */
-    /**
-     * @return Regresa true si el usuario esta aunteticado y este aparece en la BD para acceder a los productos
-     */
-    private function AuthProductos(){
-        if (!ControladorClientes::validaCredenciales()){
-            return false;
-        }
-       // return ControladorClientes::consultaEnDBLocal();
-        return true;
-    }
-
     public function index(){
         if ($this->AuthProductos()){
             //Acceso a los CONTROLES del CORE
@@ -29,7 +15,7 @@ class ControladorProductos
             $json = array(
                 "data"=>null,
                 "status"=>400,
-                "info"=>"Tokens No validos"
+                "info"=>"Tokens No validos, intente reescribir los los valores de Authentication"
             );
         }
         echo json_encode($json,true);
@@ -50,7 +36,7 @@ class ControladorProductos
                 else{
                     $json = array(
                         "data"=>null,
-                        "info"=>"No Se encontraron Productos"
+                        "info"=>"No Se encontraron Productos con este Codigo de Barra"
                     );
                 }
             }
@@ -96,5 +82,17 @@ class ControladorProductos
             );
         }
         echo json_encode($json,true);
+    }
+
+
+    /*===========================================================================================================
+    * VALIDANDO LAS CREDENCIALES DEL CLIENTE
+    =========================================================================================================== */
+    /**
+     * @return Regresa true si el usuario esta aunteticado y este aparece en la BD para acceder a los productos
+     */
+    private function AuthProductos(){
+        include_once "ControlAuth.php";
+        return ControlAuth::validaCredenciales();
     }
 }
