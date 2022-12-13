@@ -226,6 +226,12 @@
                       </div>
                   </div>
                   <div class="row mb-3">
+                      <label for="cantidad" class="col-md-4 col-lg-3 col-form-label">Cantidad</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input name="cantidad" type="text" class="form-control" id="cantidad">
+                      </div>
+                  </div>
+                  <div class="row mb-3">
                       <label for="lastName" class="col-md-4 col-lg-3 col-form-label">Stock minimo</label>
                       <div class="col-md-8 col-lg-9">
                         <input name="lastName" type="text" class="form-control" id="stockMinimo">
@@ -332,19 +338,19 @@
             let template = ``;
             result.forEach(cat=>{
               template += `
-                           <option value="">${cat.nombre_categoria}</option>`;
+                           <option value=${cat.Id_categoria}>${cat.nombre_categoria}</option>`;
             })
             $("#categoria").html(template);
           });
 </script>
 <!-- CONEXION CON EL BACKEND-->
 <!-- Guardar producto -->
-<script src="./assets/lib/jquery-3.6.1.min.js"></script>
 <script>
 
   function guardarProducto() {
     //Obtenemos los datos del fomilario por ID
     var nombreProducto = $("#nombreProducto").val();
+    var cantidad = $("#cantidad").val();
     var stockMinimo = $("#stockMinimo").val();
     var sku = $("#sku").val();
     var precioVenta = $("#precioVenta").val();
@@ -362,11 +368,11 @@
         url: "./services/Ws_AddProducto.php",
         data : {
                   nombreProducto: nombreProducto,
+                  cantidad: cantidad,
                   stockMinimo: stockMinimo,
                   sku: sku,
                   precioVenta: precioVenta,
-                  ruta_img: ruta_img
-
+                  categoria: categoria
                 },
         dataType: "json",
         success: function(result){
@@ -378,10 +384,12 @@
       })
         .done(function( result ) {
           $("#nombreProducto").val("");
+          $("#cantidad").val("");
           $("#stockMinimo").val("");
           $("#sku").val("");
           $("#precioVenta").val("");
           $("#ruta_img").val("");
+          $("#categoria").val("");
 
              let template = `<div class="alert alert-success alert-dismissible fade show" role="alert">
                 <strong>Excente!</strong> Se ha registrado un nuevo producto
