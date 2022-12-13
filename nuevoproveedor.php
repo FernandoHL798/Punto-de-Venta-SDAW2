@@ -217,7 +217,7 @@
               <div class="card info-card customers-card">
 
                 <div class="card-body">
-                  <h5 class="card-title">Producto <span>| Nuevo registro</span></h5>
+                  <h5 class="card-title">Proveedor<span>| Nuevo registro</span></h5>
 
                   <div class="row mb-3">
                       <label   for="razon_social" class="col-md-4 col-lg-3 col-form-label">Razon Social</label>

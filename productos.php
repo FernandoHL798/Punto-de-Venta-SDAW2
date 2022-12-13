@@ -145,6 +145,7 @@
             </a>
           </li>
         </ul>
+            
         <ul>
           <li>
             <a class="collapse" id="collapseExample" href="ordenEntrada.php">
@@ -216,19 +217,8 @@
             <!-- Catalogo productos -->
             <div class="col-xxl-12 col-xl-12">
               <div class="card info-card customers-card">
-                <div class="filter">
-                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                    <li class="dropdown-header text-start">
-                      <h6>Filtrar</h6>
-                    </li>
-                    <li><a class="dropdown-item" href="#">Este mes</a></li>
-                    <li><a class="dropdown-item" href="#">Este año</a></li>
-                  </ul>
-                </div>
-                <div class="card-body">
-                  <h5 class="card-title">Ultimas productos <span>| Entradas recientes.</span></h5>
-
+                
+                
                   <table class="table table-hover">
                     <thead>
                       <tr>
@@ -239,8 +229,7 @@
                         <th scope="col">Precio de venta</th>
                         <th scope="col">Categoria</th>
                         <th scope="col">Estado</th>
-                        <th class="text-white" scope="col">E/B</th>
-                        <th class="text-white" scope="col">E/B</th>
+                       
                       </tr>
                     </thead>
                     <tbody id="dataTable">
@@ -248,9 +237,7 @@
                       
                     </tbody>
                   </table>  
-                  <div class="col">
-                      <div id="alerta"></div>
-                    </div>
+                  
                 </div>
               </div>
 
@@ -324,8 +311,7 @@
                             <td><a class="text-secondary">${cat.precio_venta}</a></td>
                             <td><a class="text-secondary">${cat.id_categoria_fk}</a></td>
                             <td><span class="badge bg-danger" id="estatus">${cat.estatus}</span></td>
-                            <td><a class="text-dark" href="nuevoProducto.php"><i class="bi bi-pencil-square"></i></td>
-                            <td><a class="text-dark" href="nuevoProducto.php"><i class="bi bi-trash"></i></td>
+                            
                           </tr>
                       <tr>`;
             })
