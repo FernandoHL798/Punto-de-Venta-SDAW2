@@ -233,7 +233,7 @@ class Producto extends CONEXION implements IProducto
     {
         // Si el $value es igual a 1 (Codigo de barras), buscar por codigo de barras, sino todos los productos con id mayor a 0
         $condicion  = $value==1 ? " AND bar_code = '".$this->getBarCode()."'": '' ;
-        $query="SELECT * FROM `producto` WHERE Id_producto > 0 ".$condicion;
+        $query="SELECT * FROM `producto` INNER JOIN categoria on producto.id_categoria_fk = categoria.Id_categoria WHERE Id_producto > 0 ".$condicion;
         $this->connect();
         $result = $this->getData($query);
         $this->close();

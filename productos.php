@@ -303,14 +303,26 @@
           .done(function( result ) {
             let template = ``;
             result.forEach(cat=>{
+              let bandana="";
+              let estatus="";
+              if(cat.stock > (cat.stock_minimo * 2)){
+                bandana="badge bg-success";
+                estatus = "Bien";
+              } else if(cat.stock <= (cat.stock_minimo * 2)){
+                bandana = "badge bg-warning";
+                estatus = "Revision";
+              } else{
+                bandana = "badge bg-danger";
+                estatus = "Re Stock";
+              }
               template += `<tr>
                             <td><a class="text-dark" href="#">${cat.nombre_producto}</a></th>
                             <td><a class="text-secondary">${cat.sku}</a></td>
                             <td><a class="text-secondary">${cat.bar_code}</a></td>
                             <td><a class="text-secondary">${cat.stock}</a></td>
                             <td><a class="text-secondary">${cat.precio_venta}</a></td>
-                            <td><a class="text-secondary">${cat.id_categoria_fk}</a></td>
-                            <td><span class="badge bg-danger" id="estatus">${cat.estatus}</span></td>
+                            <td><a class="text-secondary">${cat.nombre_categoria}</a></td>
+                            <td><span class="${bandana}" id="estatus">${estatus}</span></td>
                             
                           </tr>
                       <tr>`;
