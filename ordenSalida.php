@@ -233,80 +233,14 @@
                     <thead>
                       <tr>
                         <th scope="col">#Ticket</th>
-                        <th scope="col">Fecha salida</th>
-                        <th scope="col">Fecha alta</th>
-                        
+                        <th scope="col">Nombre Producto</th>
+                        <th scope="col">Cantidad</th>
+                        <th scope="col">Fecha de registro</th>
+                        <th scope="col">Descripcion</th>
                       </tr>
                     </thead>
-                    <tbody id="dataTable">
-                      <tr>
-                        <th scope="row"><a href="#">#1234</a></th>
-                        <td><a class="text-secondary">11/09/2022</a></td>
-                        <td><a class="text-secondary">11/09/2022</a></td>
-
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#">#1234</a></th>
-                        <td><a class="text-secondary">11/09/2022</a></td>
-                        <td><a class="text-secondary">11/09/2022</a></td>
-
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#">#1234</a></th>
-                        <td><a class="text-secondary">11/09/2022</a></td>
-                        <td><a class="text-secondary">11/09/2022</a></td>
-
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#">#1234</a></th>
-                        <td><a class="text-secondary">11/09/2022</a></td>
-                        <td><a class="text-secondary">11/09/2022</a></td>
-
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#">#1234</a></th>
-                        <td><a class="text-secondary">11/09/2022</a></td>
-                        <td><a class="text-secondary">11/09/2022</a></td>
-                        
-
-                      </tr>
-                      <tr>
-                       <th scope="row"><a href="#">#1234</a></th>
-                        <td><a class="text-secondary">11/09/2022</a></td>
-                        <td><a class="text-secondary">11/09/2022</a></td>
-
-                      </tr>
-                      <tr>
-                       <th scope="row"><a href="#">#1234</a></th>
-                        <td><a class="text-secondary">11/09/2022</a></td>
-                        <td><a class="text-secondary">11/09/2022</a></td>
-
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#">#1234</a></th>
-                        <td><a class="text-secondary">11/09/2022</a></td>
-                        <td><a class="text-secondary">11/09/2022</a></td>
-
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#">#1234</a></th>
-                        <td><a class="text-secondary">11/09/2022</a></td>
-                        <td><a class="text-secondary">11/09/2022</a></td>
-
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#">#1234</a></th>
-                        <td><a class="text-secondary">11/09/2022</a></td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#">#1234</a></th>
-                        <td><a class="text-secondary">11/09/2022</a></td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#">#1234</a></th>
-                        <td><a class="text-secondary">11/09/2022</a></td>
-                      </tr>
-                      
+                    <tbody id="dataSalida">
+                    <!-- RESPUESTA AJAX-->  
                     </tbody>
                   </table>  
 
@@ -339,7 +273,8 @@
   </footer><!-- End Footer -->
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
+<!-- CONEXION CON EL BACKEND-->
+<script src="./assets/lib/jquery-3.6.1.min.js"></script>
   <!-- Vendor JS Files -->
   <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -352,6 +287,30 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+
+  <script>
+    $.ajax({
+    method: "POST",
+    url: "./services/Ws_ListarSalidas.php",
+    dataType: "json",
+    success: function(result){
+      console.log(result)
+    }
+  })
+          .done(function( result ) {
+            let template = ``;
+            result.forEach(sal=>{
+              template += `<tr>
+                                <th scope="row"><a href="#">#${sal.Id_salida}</a></th>
+                                <td><a class="text-secondary">${sal.nombre_producto}</a></td>
+                                <td><a class="text-secondary">${sal.cantidad}</a></td>
+                                <td><a class="text-secondary">${sal.create_at}</a></td>
+                                <td><a class="text-secondary">${sal.log}</a></td>
+                          </tr>`;
+            })
+            $("#dataSalida").html(template);
+          });
+  </script>
 
 </body>
 <!--

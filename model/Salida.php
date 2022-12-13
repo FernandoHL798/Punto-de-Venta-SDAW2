@@ -105,13 +105,13 @@ FROM `registrosalida` INNER JOIN producto on registrosalida.id_producto_fk = pro
         // SELECT `Id_salida`, `log`, `create_at` FROM `salida` WHERE `create_at` BETWEEN '01-01-2020' AND '31-12-2022'
     }
 
-    public function InfoSalida()
+    public function InfoSalida($value)
     {
+        $condicion = $value ? "WHERE registrosalida.id_salida_fk =".$this->getIdSalida() : '';
         $query = "SELECT `Id_registro_s`, `id_producto_fk`, `cantidad`, producto.nombre_producto,
        salida.Id_salida, salida.log, salida.create_at FROM `registrosalida` 
            INNER JOIN producto on registrosalida.id_producto_fk = producto.Id_producto 
-           INNER JOIN salida on registrosalida.id_salida_fk = salida.Id_salida 
-            WHERE registrosalida.id_salida_fk =".$this->getIdSalida();
+           INNER JOIN salida on registrosalida.id_salida_fk = salida.Id_salida ".$condicion;
         $this->connect();
         $result = $this-> getData($query);
         $this->close();
