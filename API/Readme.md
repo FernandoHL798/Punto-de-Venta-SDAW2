@@ -10,10 +10,10 @@ Las peticiones que tenemos a disposicion son:
 | EndPoin | Link | Info |
 | ------ | ------ | ------ |
 | POST |https://reckreastudios.com/proyectos/SDAW2/API/usuario| Consulta las credenciales |
-| GET |http://localhost/Punto-de-Venta-SDAW2/API/producto | Consulta todos los productos|
-| GET |http://localhost/Punto-de-Venta-SDAW2/API/catalogo | Consulta todos los productos|
-| POST |http://localhost/Punto-de-Venta-SDAW2/API/producto | Consulta un producto segun codigo de barra|
-| POST |http://localhost/Punto-de-Venta-SDAW2/API/venta | Para dar de baja los productos de acuerdo a una venta|
+| GET |https://reckreastudios.com/proyectos/SDAW2/API/producto | Consulta todos los productos|
+| GET |https://reckreastudios.com/proyectos/SDAW2/API/catalogo | Consulta todos los productos|
+| POST |https://reckreastudios.com/proyectos/SDAW2/API/producto | Consulta un producto segun codigo de barra|
+| POST |https://reckreastudios.com/proyectos/SDAW2/API/venta | Para dar de baja los productos de acuerdo a una venta|
 
 [![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
 
