@@ -308,7 +308,7 @@
               if(cat.stock > (cat.stock_minimo * 2)){
                 bandana="badge bg-success";
                 estatus = "Bien";
-              } else if(cat.stock <= (cat.stock_minimo * 2)){
+              } else if(cat.stock <= (cat.stock_minimo * 2) && cat.stock > cat.stock_minimo){
                 bandana = "badge bg-warning";
                 estatus = "Revision";
               } else{
