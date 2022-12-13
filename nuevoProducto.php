@@ -417,5 +417,4 @@
     }
   }
 </script>
->>>>>>> 81735a296a1fbc76b67d3760de543643f99b7ddb:nuevoProducto.php
 <!-- Guardar producto -->
