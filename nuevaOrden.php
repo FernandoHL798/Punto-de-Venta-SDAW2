@@ -226,10 +226,10 @@
                     </div>
 
                     <div class="col-md-2 col-lg-2">
-                        <input name="cantidad" type="text" class="form-control" id="cantidad" placeholder="Cantidad">
+                        <input name="cantidad" type="text" required class="form-control" id="cantidad" placeholder="Cantidad">
                     </div>
                     <div class="col-md-2 col-lg-2">
-                        <input name="precio" type="text" class="form-control" id="precio" placeholder="Precio">
+                        <input name="precio" required type="text" class="form-control" id="precio" placeholder="Precio">
                     </div>
                     <div class="col-md-2 ">
                         <button id="boton" type="button" class="btn" onclick="ingresa()">Agregar</button>
@@ -237,11 +237,6 @@
                    
                   </div> 
                 </div>
-                <div class="row mb-3">
-                      <div class="d-grid gap-2 col-6 mx-auto">
-                        <button class="btn" onclick="guardarEntrada()">Guardar</button>  
-                      </div>
-                  </div>
                   <div class="row mb-3">
                     <div class="col">
                       <div id="alerta"></div>
@@ -262,17 +257,23 @@
             <table id="tabla" class="table">
   <thead>
     <tr>
-      <th scope="col">#</th>
-      <th scope="col">Descripción</th>
+      <th scope="col">Nombre Producto</th>
+      <th scope="col">Nombre Proveedor</th>
       <th scope="col">Cantidad</th>
       <th scope="col">Precio</th>
       <th scope="col">Subtotal</th>
     </tr>
   </thead>
-  <tbody>
-    
+  <tbody>    
   </tbody>
 </table>
+                  <div class="row mb-3">
+                      <div class="d-grid gap-2 col-6 mx-auto">
+                        <button class="btn" onclick="guardarEntrada()">Guardar</button>  
+                      </div>
+                  </div>
+                  <div class="row mb-3" id="alerta">
+                  </div>
           </div>
         </div>
       </div>
@@ -323,14 +324,13 @@
             let template = ``;
             result.forEach(cat=>{
               template += `
-                           <option value="">${cat.nombre_producto}</option>`;
+                           <option value=${cat.Id_producto}>${cat.nombre_producto}</option>`;
             })
             $("#producto").html(template);
           });
 </script>
 <!-- CONEXION CON EL BACKEND-->
 <!--  Lista proveedores-->
-<script src="./assets/lib/jquery-3.6.1.min.js"></script>
 <script>
   $.ajax({
     method: "POST",
@@ -344,16 +344,14 @@
             let template = ``;
             result.forEach(cat=>{
               template += `
-                           <option value="">${cat.razon_social}</option>`;
+                           <option value=${cat.Id_proveedor}>${cat.razon_social}</option>`;
             })
             $("#proveedor").html(template);
           });
 </script>
+
 <!-- CONEXION CON EL BACKEND-->
-
 <!-- Funcion guardar 
-
-<script src="./assets/lib/jquery-3.6.1.min.js"></script>
 <script>
 
   function guardarEntrada() {
@@ -400,17 +398,47 @@
     }
   }
 -->
+<script>
+  function guardarEntrada(){
+    $.ajax({
+    method: "POST",
+    url: "./services/Ws_AddEntrada.php",
+    dataType: "json",
+    data: {arrayProductos : guardar},
+    success: function(result){
+      console.log(result)
+    },
+    error: function(result){
+          console.log(result);
+        }
+  })
+          .done(function( result ) {
+            console.log(result.mjeText);
+            let mensaje =result.mjeText;
+            let bandana = result.mjeType==1 ? 'success' : 'danger';
+            let template = `<div class="alert alert-${bandana} alert-dismissible fade show" role="alert">
+                <strong>Excente!</strong> ${mensaje}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>`;
+          $("#alerta").html(template);
+          //$("#tabla").innerHTML("");
+          });
+  }
 
+</script>
 <!-- Tabla -->
 
 <script>
+
     function ingresa() {
       class total {
       constructor({
       producto,
       proveedor,
       cantidad,
-      precio
+      precio,
+      nombreProveedor,
+      nombreProducto
     }) 
       {
 
@@ -418,35 +446,46 @@
       this.proveedor=proveedor;
       this.cantidad=cantidad;
       this.precio=precio;
+      this.nombreProveedor=nombreProveedor;
+      this.nombreProducto=nombreProducto;
     }
 
     }
-
 
     var producto =document.getElementById("producto").value;
     var proveedor =document.getElementById("proveedor").value;
     var cantidad =document.getElementById("cantidad").value;
     var precio =document.getElementById("precio").value;
-
-    hola = new total({
+    var nombreProducto = $('#producto option:selected').html()
+    var nombreProveedor = $('#proveedor option:selected').html()
+    console.log(nombreProducto);
+    console.log(nombreProveedor);
+    if(precio!="" && cantidad!=""){
+      hola = new total({
       producto:producto,
       proveedor:proveedor,
       cantidad:cantidad,
-      precio:precio
-      
-      
+      precio:precio,
+      nombreProducto : nombreProducto,
+      nombreProveedor : nombreProveedor
     });
-
+    console.log(hola.nombreProveedor);
     pasar();
     console.log(hola);     
+    } else {
+      alert("Faltan datos en cantidad o precio");
+    }
     }
     var guardar =[];
       function pasar(){
 
         guardar.push({producto: hola.producto, proveedor: hola.proveedor, cantidad: hola.cantidad, precio: hola.precio});
         console.log(guardar);
-
-        document.getElementById("tabla").innerHTML += '<tbody><tr><td>' +hola.producto+'</td><td>'+hola.proveedor+'</td><td>'+hola.cantidad+'</td><td>'+hola.precio+'</td><tr></tbody';
+        var subtotal = 0;
+        subtotal = hola.cantidad * hola.precio;
+        document.getElementById("tabla").innerHTML += '<tbody><tr><td>' +hola.nombreProducto+'</td><td>'+hola.nombreProveedor+'</td><td>'+hola.cantidad+'</td><td>'+hola.precio+'</td><td>'+subtotal+'</td><tr></tbody';
+        $("#precio").val("");
+        $("#cantidad").val("");
       }
 
 

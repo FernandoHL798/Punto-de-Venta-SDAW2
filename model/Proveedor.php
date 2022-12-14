@@ -155,7 +155,7 @@ class Proveedor extends CONEXION implements IProveedor
 
     public function queryListar()
     {
-        $query="SELECT * FROM `proveedor`";
+        $query="SELECT * FROM `proveedor` WHERE Id_proveedor >0";
         $this->connect();
         $result = $this-> getData($query);
         $this->close();
