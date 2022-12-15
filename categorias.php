@@ -28,7 +28,14 @@
 
     <section class="section dashboard">
         <div class="row">
-
+        <!-- Buscador --> 
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+          <form class="d-flex">
+              <input class="form-control me-2 light-table-filter" data-table="table_id" type="text" 
+                placeholder="Buscar">
+                <hr class="dropdown-divider">
+          </form>
+        </div>
             <!-- Tamaño de colimnas izquierdas xd -->
             <div class="col-lg-12">
                 <div class="row">
@@ -40,7 +47,7 @@
                             <div class="card-body">
                                 <h5 class="card-title">Ultimas entradas <span>| Entradas recientes.</span></h5>
 
-                                <table class="table table-hover">
+                                <table class="table table-hover table_id">
                                     <thead>
                                     <tr>
                                         <th scope="col"> #Categoria</th>
@@ -74,15 +81,8 @@
 </main><!-- End #main -->
 
 <?php include_once "shared/footer.php" ?>
+<script src="assets/js/buscador.js"></script>
 </body>
-
-<!--
-<?php
-    include "../main_profesor/Modal_profesor/edita_periodo.php";
-    include_once "./modal_alumno/subir_avatar.php";
-    include $path."includes_general/js.php";
-?>
- -->
 </html>
 <!-- CONEXION CON EL BACKEND-->
 <script src="./assets/lib/jquery-3.6.1.min.js"></script>

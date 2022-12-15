@@ -27,36 +27,6 @@
                         <h6>Administrador</h6>
                         <span><?php echo $_SESSION['name'] ?></span>
                     </li>
-                    <!-- Aquí vans las configs y otras cosas del perfil-->
-                    <li>
-                        <hr class="dropdown-divider">
-                    </li>
-                    <li>
-                        <a class="dropdown-item d-flex align-items-center" href="users-profile.php">
-                            <i class="bi bi-person"></i>
-                            <span>Perfil</span>
-                        </a>
-                    </li>
-                    <li>
-                        <hr class="dropdown-divider">
-                    </li>
-
-                    <li>
-                        <a class="dropdown-item d-flex align-items-center" href="users-profile.php">
-                            <i class="bi bi-gear"></i>
-                            <span>Configuraciones</span>
-                        </a>
-                    </li>
-                    <li>
-                        <hr class="dropdown-divider">
-                    </li>
-
-                    <li>
-                        <a class="dropdown-item d-flex align-items-center" href="pages-faq.php">
-                            <i class="bi bi-question-circle"></i>
-                            <span>Ayuda</span>
-                        </a>
-                    </li>
                     <li>
                         <hr class="dropdown-divider">
                     </li>
@@ -101,25 +71,9 @@
             </a>
             <ul>
                 <li>
-                    <a class="collapse" id="collapseExample" href="inventario.php">
+                    <a class="collapse" id="collapseExample" href="inicio.php">
                         <i class="bi bi-shop-window"></i>
-                        <span>Stock</span>
-                    </a>
-                </li>
-            </ul>
-            <ul>
-                <li>
-                    <a class="collapse" id="collapseExample" href="ordenEntrada.php">
-                        <i class="bi bi-box-arrow-in-right"></i>
-                        <span>Orden Entrada</span>
-                    </a>
-                </li>
-            </ul>
-            <ul>
-                <li>
-                    <a class="collapse" id="collapseExample" href="ordenSalida.php">
-                        <i class="bi bi-box-arrow-in-left"></i>
-                        <span>Orden Salida</span>
+                        <span>Home</span>
                     </a>
                 </li>
             </ul>
@@ -144,6 +98,22 @@
                     <a class="collapse" id="collapseExample" href="productos.php">
                         <i class="bi bi-bag-check-fill"></i>
                         <span>Productos</span>
+                    </a>
+                </li>
+            </ul>
+            <ul>
+                <li>
+                    <a class="collapse" id="collapseExample" href="ordenEntrada.php">
+                        <i class="bi bi-box-arrow-in-right"></i>
+                        <span>Orden Entrada</span>
+                    </a>
+                </li>
+            </ul>
+            <ul>
+                <li>
+                    <a class="collapse" id="collapseExample" href="ordenSalida.php">
+                        <i class="bi bi-box-arrow-in-left"></i>
+                        <span>Orden Salida</span>
                     </a>
                 </li>
             </ul>
