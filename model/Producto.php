@@ -308,7 +308,7 @@ class Producto extends CONEXION implements IProducto
         $query="SELECT `Id_producto`, `nombre_producto`, `stock`, `precio_venta`, `stock_minimo`, `sku`, `bar_code`,
         `porcentaje_ganancia`, `ruta_img`, `estatus`, `id_categoria_fk`, categoria.nombre_categoria 
         FROM `producto` INNER JOIN categoria on producto.id_categoria_fk = categoria.Id_categoria 
-        WHERE stock <= stock_minimo"
+        WHERE stock <= stock_minimo";
         $this->connect();
         $result = $this-> getData($query);
         $this->close();

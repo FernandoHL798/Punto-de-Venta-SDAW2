@@ -176,7 +176,7 @@
               var stock = cat.stock;
               var s_minimo = cat.stock_minimo;
 
-              if(stock <= s_minimo && stock > 0 ){
+              if(stock <= (s_minimo*2)&& stock>s_minimo){
                 bandana = "badge bg-warning";
                 estatus = "Revision";
                 template += `<tr>
@@ -190,7 +190,7 @@
                             
                           </tr>
                       <tr>`;
-              } else if (stock <= 0 ) {
+              } else if (stock < (s_minimo*2) && stock>=0 ) {
                 bandana = "badge bg-danger";
                 estatus = "Re Stock";
                 template += `<tr>
