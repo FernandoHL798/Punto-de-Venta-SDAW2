@@ -191,53 +191,6 @@
 </script>
 
 <!-- CONEXION CON EL BACKEND-->
-<!-- Funcion guardar 
-<script>
-
-  function guardarEntrada() {
-    //Obtenemos los datos del fomilario por ID
-    var proveedor = $("#proveedor").val();
-    var producto = $("#producto").val();
-    var cantidad = $("#cantidad").val();
-    var precio = $("#precio").val();
-    //Validamos (En caso de ser necesario)
-    if (cantidad === "" || precio ===""){
-      //El campo de input esta vacio
-      alert("Debe escribir precio y cantidad")
-    }
-    else{
-      //Si escribio algo en el input
-
-      $.ajax({
-        method: "POST",
-        url: "./services/Ws_AddRegistroEntrada.php",
-        data : {
-                  producto: producto,
-                  proveedor: proveedor,
-                  cantidad: cantidad,
-                  
-                  precio: precio,
-                },
-        dataType: "json",
-        success: function(result){
-          console.log(result)
-        },
-        error: function(result){
-          console.log(result);
-        }
-      })
-        .done(function( result ) {
-          $("#proveedor").val("");
-             let template = `<div class="alert alert-success alert-dismissible fade show" role="alert">
-                <strong>Excente!</strong> Se ha registrado tu categoria
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-              </div>`;
-          $("#alerta").html(template);
-        });
-
-    }
-  }
--->
 <script>
   function guardarEntrada(){
     $.ajax({
@@ -262,6 +215,7 @@
               </div>`;
           $("#alerta").html(template);
           //$("#tabla").innerHTML("");
+          location.reload();
           });
   }
 

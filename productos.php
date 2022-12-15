@@ -115,10 +115,9 @@
 <!-- CONEXION CON EL BACKEND-->
 <script src="./assets/lib/jquery-3.6.1.min.js"></script>
 <script>
-
-  
-
-  $.ajax({
+cargarProductos();
+  function cargarProductos(){
+$.ajax({
     method: "POST",
     url: "./services/Ws_ListaProductos.php",
     dataType: "json",
@@ -163,19 +162,8 @@
             })
             $("#dataTable").html(template);
           });
-          
-
-  var estatus = $("#estatus").val();
-  //Cambiar valor del status
-    if (estatus == 0 ){
-      //El campo de input esta vacio
-      console.log('Minimo');
-
-    }
-    else{
-      console.log('Maximo');
-
-    }
+  
+  }     
 </script>
 <!-- PETICION A EDITAR PRODUCTOS -->
 <script>
@@ -195,6 +183,7 @@
           .done(function( result ) {
             var producto = result[0];
             console.log(producto);
+            $("#idProducto").val(producto.Id_producto);
             $("#nombreProducto").val(producto.nombre_producto);
             $("#sku").val(producto.sku);
             $("#barcode").val(producto.bar_code);
@@ -207,7 +196,53 @@
   }
 
 </script>
+<!-- UPDATE PRODUCTO-->
 
+<script>
+  function updateProducto(){
+    var idProducto = $("#idProducto").val();
+    var nombreProducto = $("#nombreProducto").val();
+    var precioVenta = $("#precioVenta").val();
+    var stock = $("#stock").val();
+    var stockMinimo = $("#stockMinimo").val();
+    var sku = $("#sku").val();
+    var barCode = $("#barcode").val();
+    var idCategoria = $("#categorias").val();
+    $.ajax({
+    method: "POST",
+    url: "./services/Ws_UpdateProducto.php",
+    dataType: "json",
+    data : {idProducto : idProducto,
+            nombreProducto: nombreProducto,
+            precioVenta:precioVenta,
+            stock : stock,
+            stockMinimo:stockMinimo,
+            sku : sku,
+            barCode:barCode,
+            idCategoria: idCategoria
+
+            },
+    success: function(result){
+      //console.log(result)
+    },
+    error: function(result){
+          console.log(result);
+        }
+  })
+          .done(function( result ) {
+            cargarProductos();
+            let template = `<div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>Excente!</strong> Se ha actualizado un producto
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>`;
+          $("#alerta").html(template);
+          });
+  
+  }
+
+
+</script>
+<!-- LISTA CATEGORIAS-->
 <script>
   
 $.ajax({
@@ -240,7 +275,7 @@ $.ajax({
       </div>
       <div class="modal-body">
         <div class="mb-3">
-          <input type="hidden" class="form-control" id="idProducto">
+          <input type="hidden" class="form-control" id="idProducto" name="idProducto">
         </div>
         <div class="mb-3">
           <label for="exampleFormControlTextarea1" class="form-label">Nombre Producto</label>
@@ -271,9 +306,10 @@ $.ajax({
           </select>
         </div>
       </div>
+      <div id="alerta"></div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary">Guardar</button>
+        <button type="button" class="btn btn-primary" onclick="updateProducto();">Guardar</button>
       </div>
     </div>
   </div>

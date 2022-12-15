@@ -54,9 +54,9 @@ function eliminaProducto($idProducto){
 /**
  * function para editar producto
  */
-function editProduct($nombreProducto,$precioVenta,$stock,$stockMinimo,$sku,$barCode,$status,$porcentaje_ganancia,$idCategoriaFk){
+function editProduct($idProducto,$nombreProducto,$precioVenta,$stock,$stockMinimo,$sku,$barCode,$porcentaje_ganancia,$idCategoriaFk){
     $obj_producto = new Producto();
-
+    $obj_producto->setIdProducto($idProducto);
     $obj_producto->setNombreProducto($nombreProducto);
     $obj_producto->setStock($stock);
     $obj_producto->setPrecioVenta($precioVenta);
