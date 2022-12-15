@@ -54,9 +54,12 @@
                     <thead>
                       <tr>
                         <th scope="col">#Ticket</th>
+                        <th scope="col">Nombre Proveedor</th>
+                        <th scope="col">Nombre Producto</th>
+                        <th scope="col">Cantidad</th>
+                        <th scope="col">Total de compra</th>
                         <th scope="col">Fecha de compra</th>
                         <th scope="col">Fecha de alta</th>
-                        <th scope="col">Total de compra</th>
                       </tr>
                     </thead>
                     <tbody id="dataTable">
@@ -122,7 +125,7 @@
 <script>
   $.ajax({
     method: "POST",
-    url: "./services/Ws_ListaEntrada.php",
+    url: "./services/Ws_ListarOrdenesEntrada.php",
     dataType: "json",
     success: function(result){
       console.log(result)
@@ -132,10 +135,14 @@
             let template = ``;
             result.forEach(cat=>{
               template += `<tr>
-                            <th scope="row"><a href="#">#${cat.Id_compra}</a></th>
-                            <td><a href="" class="text-secondary">#${cat.fecha_orden}</a></td>
-                            <td><a class="text-secondary">#${cat.create_at}</a></td>
-                            <td><a class="text-secondary">#${cat.total_compra}</a></td>
+                            <th scope="row"><a href="#">#${cat.id_orden_fk}</a></th>
+                            <td><a href="" class="text-secondary">${cat.razon_social}</a></td>
+                            <td><a class="text-secondary">${cat.nombre_producto}</a></td>
+                            <td><a class="text-secondary">${cat.cantidad}</a></td>
+                            <td><a class="text-secondary">$${cat.precio_compra}</a></td>
+                            <td><a class="text-secondary">${cat.create_at}</a></td>
+                            <td><a class="text-secondary">${cat.fecha_orden}</a></td>
+                            
                           </tr>
                       <tr>`;
             })

@@ -84,7 +84,6 @@
     </section>
 
   </main><!-- End #main -->
-
   <!-- ======= Footer ======= -->
   <footer id="footer" class="footer">
     <div class="copyright">
@@ -125,7 +124,10 @@
     dataType: "json",
     success: function(result){
       console.log(result)
-    }
+    },
+    error: function(result){
+          //console.log(result);
+        }
   })
           .done(function( result ) {
             let template = ``;
@@ -151,6 +153,10 @@
                             <td><a class="text-secondary">${cat.precio_venta}</a></td>
                             <td><a class="text-secondary">${cat.nombre_categoria}</a></td>
                             <td><span class="${bandana}" id="estatus">${estatus}</span></td>
+                            <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="editaProducto(${cat.Id_producto});">
+                        <i class="bi bi-pencil-square"></i>
+</button>
+</td>
                             
                           </tr>
                       <tr>`;
@@ -171,5 +177,104 @@
 
     }
 </script>
-<!-- CONEXION CON EL BACKEND-->
+<!-- PETICION A EDITAR PRODUCTOS -->
+<script>
+  function editaProducto(idProducto){
+    $.ajax({
+    method: "POST",
+    url: "./services/Ws_InfoProducto.php",
+    dataType: "json",
+    data : {idProducto : idProducto},
+    success: function(result){
+      //console.log(result)
+    },
+    error: function(result){
+          console.log(result);
+        }
+  })
+          .done(function( result ) {
+            var producto = result[0];
+            console.log(producto);
+            $("#nombreProducto").val(producto.nombre_producto);
+            $("#sku").val(producto.sku);
+            $("#barcode").val(producto.bar_code);
+            $("#stock").val(producto.stock);
+            $("#stockMinimo").val(producto.stock_minimo);
+            $("#precioVenta").val(producto.precio_venta);
+            $("#categorias").val(producto.id_categoria_fk);
+          });
 
+  }
+
+</script>
+
+<script>
+  
+$.ajax({
+    method: "POST",
+    url: "./services/Ws_ListarCategorias.php",
+    dataType: "json",
+    success: function(result){
+      console.log(result)
+    }
+  })
+          .done(function( result ) {
+            let template = ``;
+            result.forEach(cat=>{
+              template += `
+                           <option value="${cat.Id_categoria}">${cat.nombre_categoria}</option>`;
+            })
+            $("#categorias").html(template);
+          });
+
+</script>
+<!-- CONEXION CON EL BACKEND-->
+<!-- Button trigger modal -->
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Editar Producto</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="mb-3">
+          <input type="hidden" class="form-control" id="idProducto">
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlTextarea1" class="form-label">Nombre Producto</label>
+          <input class="form-control" id="nombreProducto" name="nombreProducto"></input>
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlTextarea1" class="form-label">SKU</label>
+          <input class="form-control" id="sku" name="sku"></input>
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlTextarea1" class="form-label">Bar Code</label>
+          <input class="form-control" id="barcode" name="barcode"></input>
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlTextarea1" class="form-label">Stock</label>
+          <input class="form-control" id="stock" name="stock"></input>
+          <label for="exampleFormControlTextarea1" class="form-label">Stock Minimo</label>
+          <input class="form-control" id="stockMinimo" name="stockMinimo"></input>
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlTextarea1" class="form-label">Precio Venta</label>
+          <input class="form-control" id="precioVenta" name="precioVenta"></input>
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlTextarea1" class="form-label">Categoria</label>
+          <select class="form-select" aria-label="Default select example" id="categorias">
+            <!-- RESPONSE AJAX -->
+          </select>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>

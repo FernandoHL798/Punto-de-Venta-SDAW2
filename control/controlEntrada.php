@@ -86,10 +86,10 @@ function insertarEntrada($arrayDatos){
 /**
  * Funcion para consultar entrada
  */
-function listarEntrada(){
+function listarEntrada($idEntrada){
     $obj_entrada = new Entrada();
 
-    return $obj_entrada->ConsultaEntrada();
+    return $obj_entrada->ConsultaEntrada($idEntrada);
 }
 
 /**

@@ -89,14 +89,9 @@
                         <a  class="btn " href="nuevaCategoria.php">Nueva categoria</a>
                       </div>
                   </div>
-                  
-                  <div class="input-group mb-3">
-                    <input type="file" class="form-control" id="ruta_img">
-                    <label class="input-group-text" for="inputGroupFile02">Subir</label>
-                  </div>
                   <div class="row mb-3">
                     <div class="col">
-                      <button class="btn " onclick="guardarProducto()">Enviar</button>
+                      <button class="btn " onclick="guardarProducto()">Guardar</button>
                     </div>
                     <div class="col">
                       <div id="alerta"></div>
