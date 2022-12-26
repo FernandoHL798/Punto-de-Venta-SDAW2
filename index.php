@@ -1,7 +1,17 @@
 <?php
     include "./session-login.php";
 ?>
-
+<!-- 
+PROYECTO DESARROLLADO POR EL EQUIPO DE INVENTARIO
+Integrantes:
+    - Alonso Romo Fernanda Denise
+    - Hernandez Ledezma Luis Fernando
+    - Martinez Hernandez Emmanuel
+    - Pioquinto Hernandez Christian Rene
+    - Rubio Ceja Cristian Omar
+    - Silva Hinojosa Zuri Sadai
+Fecha de terminación: 16 de Diciembre 2022    
+-->
 <html lang="es"><head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
