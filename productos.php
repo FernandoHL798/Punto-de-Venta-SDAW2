@@ -1,194 +1,14 @@
+<?php include_once "shared/session.php" ?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
-  <title>Productos</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
-
-  <link href="assets/img/logo.png" rel="icon">
-  <link href="assets/img/logo.png" rel="apple-touch-icon">
-
-  <link href="https://fonts.gstatic.com" rel="preconnect">
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-
-  <!-- CSS -->
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="assets/vendor/quill/quill.snow.css" rel="stylesheet">
-  <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
-  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
-  <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
-
-  <!-- Template Main CSS File -->
-  <link href="assets/css/style.css" rel="stylesheet">
+  <?php include_once "shared/header.php" ?>
 
 </head>
 
 <body>
-
-  <header id="header" class="header fixed-top d-flex align-items-center">
-
-        <!-- El nombre de la pagina y el logo están aquí -->
-    <div class="d-flex align-items-center justify-content-between">
-      <a href="index.html" class="logo d-flex align-items-center">
-        <img src="assets/img/logo.png" alt="">
-        <span class="d-none d-lg-block">Inventario</span>
-      </a>
-      <i class="bi bi-list toggle-sidebar-btn"></i>
-    </div>
-
-    <!-- La barra de  búsqueda está aquí -->
-    
-
-    <nav class="header-nav ms-auto">
-      <ul class="d-flex align-items-center">
-
-        
-
-      <!-- La configuración de usuario está aquí xd -->
-      <!-- Esta es la foto de perfil si es que lleva (Referenciada) -->
-        <li class="nav-item dropdown pe-3">
-
-          <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-            <img src="assets/img/pp.jpg" alt="Profile" class="rounded-circle">
-            <span class="d-none d-md-block dropdown-toggle ps-2">Administrador</span>
-          </a>
-        <!-- Aquí va la info del dropdown-->
-          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
-            <li class="dropdown-header">
-              <h6>Administrador</h6>
-              <span>Nombre</span>
-            </li>
-        <!-- Aquí vans las configs y otras cosas del perfil-->    
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-            <li>
-              <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
-                <i class="bi bi-person"></i>
-                <span>Perfil</span>
-              </a>
-            </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-
-            <li>
-              <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
-                <i class="bi bi-gear"></i>
-                <span>Configuraciones</span>
-              </a>
-            </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-
-            <li>
-              <a class="dropdown-item d-flex align-items-center" href="pages-faq.html">
-                <i class="bi bi-question-circle"></i>
-                <span>Ayuda</span>
-              </a>
-            </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-
-            <li>
-              <a class="dropdown-item d-flex align-items-center" href="#">
-                <i class="bi bi-box-arrow-right"></i>
-                <span>Salir</span>
-              </a>
-            </li>
-          </ul>
-        </li>
-      </ul>
-    </nav>
-  </header>
-
-  <!-- ======= Barra lateral ======= -->
-<aside id="sidebar" class="sidebar">
-
-    <ul class="sidebar-nav" id="sidebar-nav">
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="users-profile.html">
-          <i class="bi bi-handbag"></i>
-          <span>Punto de ventas</span>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="index.html">
-          <i class="bi bi-pc-display"></i>
-          <span>Dashboard</span>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="index.html">
-          <i class="bi bi-receipt"></i>
-          <span>Help Desk</span>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-          <i class="bi bi-box-seam"></i>
-          <span>Inventario</span>
-        </a>
-        <ul>
-          <li>
-            <a class="collapse" id="collapseExample" href="inventario.php">
-              <i class="bi bi-shop-window"></i>
-              <span>Stock</span>
-            </a>
-          </li>
-        </ul>
-            
-        <ul>
-          <li>
-            <a class="collapse" id="collapseExample" href="ordenEntrada.php">
-              <i class="bi bi-box-arrow-in-right"></i>
-              <span>Orden Entrada</span>
-            </a>
-          </li>
-        </ul>
-        <ul>
-          <li>
-            <a class="collapse" id="collapseExample" href="ordenSalida.php">
-              <i class="bi bi-box-arrow-in-left"></i>
-              <span>Orden Salida</span>
-            </a>
-          </li>
-        </ul>
-        <ul>
-          <li>
-            <a class="collapse" id="collapseExample" href="proveedores.php">
-              <i class="bi bi-person-lines-fill"></i>
-              <span>Proveedores</span>
-            </a>
-          </li>
-        </ul>
-        <ul>
-          <li>
-            <a class="collapse" id="collapseExample" href="categorias.php">
-              <i class="bi bi-ui-radios"></i>
-              <span>Categorias</span>
-            </a>
-          </li>
-        </ul>
-        <ul>
-          <li>
-            <a class="collapse" id="collapseExample" href="productos.php">
-              <i class="bi bi-bag-check-fill"></i>
-              <span>Productos</span>
-            </a>
-          </li>
-        </ul>
-      </li>
-    </ul>
-  </aside>
+<?php include_once "shared/head.php" ?>
 
   <main id="main" class="main">
     <div class="pagetitle">
@@ -209,7 +29,13 @@
 
     <section class="section dashboard">
       <div class="row">
-
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+          <form class="d-flex">
+              <input class="form-control me-2 light-table-filter" data-table="table_id" type="text" 
+                placeholder="Buscar">
+                <hr class="dropdown-divider">
+          </form>
+        </div>
         <!-- Tamaño de colimnas izquierdas xd -->
         <div class="col-lg-12">
           <div class="row">
@@ -219,13 +45,14 @@
               <div class="card info-card customers-card">
                 
                 
-                  <table class="table table-hover">
+                  <table class="table table-hover table_id">
                     <thead>
                       <tr>
                         <th scope="col">Nombre</th>
                         <th scope="col">SKU</th>
                         <th scope="col">Bar Code</th>
                         <th scope="col">Stock</th>
+                        <th scope="col">Stock minimo</th>
                         <th scope="col">Precio de venta</th>
                         <th scope="col">Categoria</th>
                         <th scope="col">Estado</th>
@@ -257,7 +84,6 @@
     </section>
 
   </main><!-- End #main -->
-
   <!-- ======= Footer ======= -->
   <footer id="footer" class="footer">
     <div class="copyright">
@@ -279,7 +105,7 @@
   <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
   <script src="assets/vendor/tinymce/tinymce.min.js"></script>
   <script src="assets/vendor/php-email-form/validate.js"></script>
-
+  <script src="assets/js/buscador.js"></script>
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
 
@@ -289,12 +115,139 @@
 <!-- CONEXION CON EL BACKEND-->
 <script src="./assets/lib/jquery-3.6.1.min.js"></script>
 <script>
-
-  
-
-  $.ajax({
+cargarProductos();
+  function cargarProductos(){
+$.ajax({
     method: "POST",
     url: "./services/Ws_ListaProductos.php",
+    dataType: "json",
+    success: function(result){
+      console.log(result)
+    },
+    error: function(result){
+          //console.log(result);
+        }
+  })
+          .done(function( result ) {
+            let template = ``;
+            result.forEach(cat=>{
+              let bandana="";
+              let estatus="";
+              if(cat.stock > (cat.stock_minimo * 2)){
+                bandana="badge bg-success";
+                estatus = "Bien";
+              } else if(cat.stock <= (cat.stock_minimo * 2) && cat.stock > cat.stock_minimo){
+                bandana = "badge bg-warning";
+                estatus = "Revision";
+              } else{
+                bandana = "badge bg-danger";
+                estatus = "Re Stock";
+              }
+              template += `<tr>
+                            <td><a class="text-dark" href="#">${cat.nombre_producto}</a></th>
+                            <td><a class="text-secondary">${cat.sku}</a></td>
+                            <td><a class="text-secondary">${cat.bar_code}</a></td>
+                            <td><a class="text-secondary">${cat.stock}</a></td>
+                            <td><a class="text-secondary">${cat.stock_minimo}</a></td>
+                            <td><a class="text-secondary">${cat.precio_venta}</a></td>
+                            <td><a class="text-secondary">${cat.nombre_categoria}</a></td>
+                            <td><span class="${bandana}" id="estatus">${estatus}</span></td>
+                            <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="editaProducto(${cat.Id_producto});">
+                        <i class="bi bi-pencil-square"></i>
+</button>
+</td>
+                            
+                          </tr>
+                      <tr>`;
+            })
+            $("#dataTable").html(template);
+          });
+  
+  }     
+</script>
+<!-- PETICION A EDITAR PRODUCTOS -->
+<script>
+  function editaProducto(idProducto){
+    $.ajax({
+    method: "POST",
+    url: "./services/Ws_InfoProducto.php",
+    dataType: "json",
+    data : {idProducto : idProducto},
+    success: function(result){
+      //console.log(result)
+    },
+    error: function(result){
+          console.log(result);
+        }
+  })
+          .done(function( result ) {
+            var producto = result[0];
+            console.log(producto);
+            $("#idProducto").val(producto.Id_producto);
+            $("#nombreProducto").val(producto.nombre_producto);
+            $("#sku").val(producto.sku);
+            $("#barcode").val(producto.bar_code);
+            $("#stock").val(producto.stock);
+            $("#stockMinimo").val(producto.stock_minimo);
+            $("#precioVenta").val(producto.precio_venta);
+            $("#categorias").val(producto.id_categoria_fk);
+          });
+
+  }
+
+</script>
+<!-- UPDATE PRODUCTO-->
+
+<script>
+  function updateProducto(){
+    var idProducto = $("#idProducto").val();
+    var nombreProducto = $("#nombreProducto").val();
+    var precioVenta = $("#precioVenta").val();
+    var stock = $("#stock").val();
+    var stockMinimo = $("#stockMinimo").val();
+    var sku = $("#sku").val();
+    var barCode = $("#barcode").val();
+    var idCategoria = $("#categorias").val();
+    $.ajax({
+    method: "POST",
+    url: "./services/Ws_UpdateProducto.php",
+    dataType: "json",
+    data : {idProducto : idProducto,
+            nombreProducto: nombreProducto,
+            precioVenta:precioVenta,
+            stock : stock,
+            stockMinimo:stockMinimo,
+            sku : sku,
+            barCode:barCode,
+            idCategoria: idCategoria
+
+            },
+    success: function(result){
+      //console.log(result)
+    },
+    error: function(result){
+          console.log(result);
+        }
+  })
+          .done(function( result ) {
+            cargarProductos();
+            let template = `<div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>Excente!</strong> Se ha actualizado un producto
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>`;
+          $("#alerta").html(template);
+          });
+  
+  }
+
+
+</script>
+<!-- LISTA CATEGORIAS-->
+<script>
+  
+$.ajax({
+    method: "POST",
+    url: "./services/Ws_ListarCategorias.php",
     dataType: "json",
     success: function(result){
       console.log(result)
@@ -303,33 +256,61 @@
           .done(function( result ) {
             let template = ``;
             result.forEach(cat=>{
-              template += `<tr>
-                            <td><a class="text-dark" href="#">${cat.nombre_producto}</a></th>
-                            <td><a class="text-secondary">${cat.sku}</a></td>
-                            <td><a class="text-secondary">${cat.bar_code}</a></td>
-                            <td><a class="text-secondary">${cat.stock}</a></td>
-                            <td><a class="text-secondary">${cat.precio_venta}</a></td>
-                            <td><a class="text-secondary">${cat.id_categoria_fk}</a></td>
-                            <td><span class="badge bg-danger" id="estatus">${cat.estatus}</span></td>
-                            
-                          </tr>
-                      <tr>`;
+              template += `
+                           <option value="${cat.Id_categoria}">${cat.nombre_categoria}</option>`;
             })
-            $("#dataTable").html(template);
+            $("#categorias").html(template);
           });
-          
 
-  var estatus = $("#estatus").val();
-  //Cambiar valor del status
-    if (estatus == 0 ){
-      //El campo de input esta vacio
-      console.log('Minimo');
-
-    }
-    else{
-      console.log('Maximo');
-
-    }
 </script>
 <!-- CONEXION CON EL BACKEND-->
-
+<!-- Button trigger modal -->
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Editar Producto</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="mb-3">
+          <input type="hidden" class="form-control" id="idProducto" name="idProducto">
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlTextarea1" class="form-label">Nombre Producto</label>
+          <input class="form-control" id="nombreProducto" name="nombreProducto"></input>
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlTextarea1" class="form-label">SKU</label>
+          <input class="form-control" id="sku" name="sku"></input>
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlTextarea1" class="form-label">Bar Code</label>
+          <input class="form-control" id="barcode" name="barcode"></input>
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlTextarea1" class="form-label">Stock</label>
+          <input class="form-control" id="stock" name="stock"></input>
+          <label for="exampleFormControlTextarea1" class="form-label">Stock Minimo</label>
+          <input class="form-control" id="stockMinimo" name="stockMinimo"></input>
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlTextarea1" class="form-label">Precio Venta</label>
+          <input class="form-control" id="precioVenta" name="precioVenta"></input>
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlTextarea1" class="form-label">Categoria</label>
+          <select class="form-select" aria-label="Default select example" id="categorias">
+            <!-- RESPONSE AJAX -->
+          </select>
+        </div>
+      </div>
+      <div id="alerta"></div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary" onclick="updateProducto();">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>

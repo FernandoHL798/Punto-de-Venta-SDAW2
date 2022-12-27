@@ -1,7 +1,7 @@
 <?php
 include_once "../control/controlProductos.php";
 
-$idProducto = 2;
+$idProducto = $_POST['idProducto'];
 
 echo  json_encode(buscaInfoProducto($idProducto));
 

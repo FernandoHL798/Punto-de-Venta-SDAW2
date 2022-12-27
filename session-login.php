@@ -5,5 +5,5 @@ if(isset($_SESSION['email']))
     header('Location: ./inicio.php');
 }
 else{
-    //header('Location: ./index.php');
+   // header('Location: ./index.php');
 }

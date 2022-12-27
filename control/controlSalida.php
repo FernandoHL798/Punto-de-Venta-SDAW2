@@ -24,10 +24,12 @@ function insertarSalida($PRODUCTOS_REGISTRO,$createdAT,$subTotalCompra,$ivaTotal
 /**
  * Funcion para consultar salida
  */
-function consultaSalida(){
+function consultaSalida($value,$idSalida){
     $obj_salida = new Salida();
-
-    return $obj_salida->ConsultaSalida();
+    if($value){
+        $obj_salida->setIdSalida($idSalida);
+    }
+    return $obj_salida->InfoSalida($value);
 }
 
 /**

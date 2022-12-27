@@ -233,7 +233,7 @@ class Producto extends CONEXION implements IProducto
     {
         // Si el $value es igual a 1 (Codigo de barras), buscar por codigo de barras, sino todos los productos con id mayor a 0
         $condicion  = $value==1 ? " AND bar_code = '".$this->getBarCode()."'": '' ;
-        $query="SELECT * FROM `producto` WHERE Id_producto > 0 ".$condicion;
+        $query="SELECT * FROM `producto` INNER JOIN categoria on producto.id_categoria_fk = categoria.Id_categoria WHERE Id_producto > 0 ".$condicion;
         $this->connect();
         $result = $this->getData($query);
         $this->close();
@@ -268,7 +268,7 @@ class Producto extends CONEXION implements IProducto
      */
     public function queryEditarProducto()
     {
-        $query="UPDATE producto SET nombre_producto=".$this->getNombreProducto().",precio_venta = ".$this->getPrecioVenta().", sku = ".$this->getSku().", bar_code =".$this->getBarCode().", porcentaje_ganancia =".$this->getPorcentajeGanancia()."WHERE Id_producto =".$this->getIdProducto();
+        $query="UPDATE `producto` SET `nombre_producto` = '".$this->getNombreProducto()."', `stock` = '".$this->getStock()."', `precio_venta` = '".$this->getPrecioVenta()."', `stock_minimo` = '".$this->getStockMinimo()."', `sku` = '".$this->getSku()."', `bar_code` = '".$this->getBarCode()."', `porcentaje_ganancia` = '".$this->getPorcentajeGanancia()."', `id_categoria_fk` = '".$this->getIdCategoriaFK()."' WHERE `producto`.`Id_producto` = ".$this->getIdProducto();
         $this->connect();
         $result = $this-> executeInstruction($query);
         $this->close();
@@ -300,4 +300,27 @@ class Producto extends CONEXION implements IProducto
         $this->close();
         return $result;
     }
+
+
+
+     public function queryConsultaProductosHome()
+    {
+        $query="SELECT `Id_producto`, `nombre_producto`, `stock`, `precio_venta`, `stock_minimo`, `sku`, `bar_code`,
+        `porcentaje_ganancia`, `ruta_img`, `estatus`, `id_categoria_fk`, categoria.nombre_categoria 
+        FROM `producto` INNER JOIN categoria on producto.id_categoria_fk = categoria.Id_categoria 
+        WHERE stock <= stock_minimo";
+        $this->connect();
+        $result = $this-> getData($query);
+        $this->close();
+        return $result;
+
+    }
 }
+ 
+
+
+
+
+
+
+
